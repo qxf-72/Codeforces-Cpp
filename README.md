@@ -51,7 +51,7 @@
 ### 数学
 
 - 位运算
-- 高精度计算
+- [高精度计算](https://github.com/qxf-72/Codeforces-Cpp/blob/main/copypasta/math/Arbitrary_Precision_Arithmetic.md)
 - 快速幂运算
 - 数论
 - 组合数学
