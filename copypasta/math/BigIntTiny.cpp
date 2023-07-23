@@ -216,7 +216,7 @@ struct BigIntTiny
         std::reverse(res.begin(),res.end());
         BigIntTiny ans;
         ans.v=std::move(res);
-        ans.zip(0);
+
         return ans;
     }
 
