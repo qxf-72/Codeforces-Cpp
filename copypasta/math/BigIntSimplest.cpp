@@ -6,12 +6,12 @@
 
 
 const int N = 5000;
-struct BigInt_simplest {
+struct BigIntSimplest {
     int data[N]{};
 
-    BigInt_simplest() { data[0] = 1;}
+    BigIntSimplest() { data[0] = 1;}
 
-    explicit BigInt_simplest(int x) {
+    explicit BigIntSimplest(int x) {
         data[0] = 1;
         int i = 1;
         while (x) {
@@ -21,8 +21,8 @@ struct BigInt_simplest {
         data[0] = --i;
     }
 
-    BigInt_simplest operator*(const int &x) {
-        BigInt_simplest a;
+    BigIntSimplest operator*(const int &x) {
+        BigIntSimplest a;
         int len;
         a.data[0] = data[0];
         for(int i=1;i<=data[0];++i)
@@ -36,8 +36,8 @@ struct BigInt_simplest {
         return a;
     }
 
-    BigInt_simplest operator/(const int &x) {
-        BigInt_simplest a;
+    BigIntSimplest operator/(const int &x) {
+        BigIntSimplest a;
         a.data[0] = data[0];
         int rest = 0;
         for (int i = data[0]; i >= 1; i--) {
@@ -49,7 +49,7 @@ struct BigInt_simplest {
         return a;
     }
 
-    bool operator<(const BigInt_simplest &x) const {
+    bool operator<(const BigIntSimplest &x) const {
         if (data[0] == x.data[0]) {
             int i;
             for (i = data[0]; data[i] == x.data[i] && i > 1; i--);
