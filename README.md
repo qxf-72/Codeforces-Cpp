@@ -48,7 +48,7 @@
 - 优化DP
 ### 字符串
 
-- 前缀树 `Trie`
+- [前缀树 `Trie`](https://github.com/qxf-72/Codeforces-Cpp/blob/main/copypasta/string/Trie.md)
 - 后缀数组 `SA`
 ### 数学
 
