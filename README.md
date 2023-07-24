@@ -48,12 +48,12 @@
 - 优化DP
 ### 字符串
 
-- [前缀树 `Trie`](https://github.com/qxf-72/Codeforces-Cpp/blob/main/copypasta/string/Trie.md)
+- [前缀树 `Trie`](https://github.com/qxf-72/Codeforces-Cpp/blob/main/copypasta/string/trie/Trie.md)
 - 后缀数组 `SA`
 ### 数学
 
 - 位运算
-- [高精度计算](https://github.com/qxf-72/Codeforces-Cpp/blob/main/copypasta/Math/Arbitrary_Precision_Arithmetic.md)
+- [高精度计算](https://github.com/qxf-72/Codeforces-Cpp/blob/main/copypasta/Math/Arbitrary_Precision_Arithmetic/Arbitrary_Precision_Arithmetic.md)
 - 快速幂运算
 - 数论
 - 组合数学
