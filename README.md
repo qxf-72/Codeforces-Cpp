@@ -48,7 +48,7 @@
 - 优化DP
 ### 字符串
 
-- [前缀树 `Trie`](https://github.com/qxf-72/Codeforces-Cpp/blob/main/copypasta/string/trie/Trie.md)
+- [前缀树 ](https://github.com/qxf-72/Codeforces-Cpp/blob/main/copypasta/string/trie/Trie.md)`Trie`
 - 后缀数组 `SA`
 ### 数学
 
@@ -62,7 +62,7 @@
 - 哈希表
 - 堆
 - 并查集
-- 线段树
+- [线段树](https://github.com/qxf-72/Codeforces-Cpp/blob/main/copypasta/data_structure/segment_tree/segment_tree.md)
 - 树状数组
 ### 图论
 
