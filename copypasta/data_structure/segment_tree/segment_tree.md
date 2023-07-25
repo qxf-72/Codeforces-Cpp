@@ -6,6 +6,12 @@
 
 
 
+## 参考资料
+
+oiwiki的segmentTree介绍：https://oi-wiki.org/ds/seg/
+
+
+
 ## 模板代码
 
 以下以实现 区间求和 的线段树 为例，要实现其他区间查询操作进行需要进行少量改动即可。
@@ -23,3 +29,7 @@
 区间(绝对)众数及其出现次数(摩尔投票法)
 
 - [1157. 子数组中占绝大多数的元素](https://leetcode.cn/problems/online-majority-element-in-subarray/)
+
+最长连续相同子串问题
+
+- [2213. 由单个字符重复的最长子字符串](https://leetcode.cn/problems/longest-substring-of-one-repeating-character/)
