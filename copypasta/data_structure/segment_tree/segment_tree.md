@@ -8,7 +8,7 @@
 
 ## 参考资料
 
-oiwiki的segmentTree介绍：https://oi-wiki.org/ds/seg/
+OIWiki的SegmentTree介绍：https://oi-wiki.org/ds/seg/
 
 
 
@@ -18,9 +18,9 @@ oiwiki的segmentTree介绍：https://oi-wiki.org/ds/seg/
 
 |                    | 区间求和                                                     |
 | ------------------ | ------------------------------------------------------------ |
-| 单点修改           | [`SegTree`](https://github.com/qxf-72/Codeforces-Cpp/blob/main/copypasta/data_structure/segment_tree/SegTree.cpp) |
-| 单点修改、区间加   | [`SegTree_LazyRangeAdd`](https://github.com/qxf-72/Codeforces-Cpp/blob/main/copypasta/data_structure/segment_tree/SegTree_LazyRangeAdd.cpp) |
-| 单点修改、区间修改 | [`SegTree_LazyRangeSet`](https://github.com/qxf-72/Codeforces-Cpp/blob/main/copypasta/data_structure/segment_tree/SegTree_LazyRangeSet.cpp) |
+| 单点修改           | **`SegTree`(**[点击访问代码](https://github.com/qxf-72/Codeforces-Cpp/blob/main/copypasta/data_structure/segment_tree/SegTree.cpp)) |
+| 单点修改、区间加   | **`SegTree_LazyRangeAdd`**([点击访问代码](https://github.com/qxf-72/Codeforces-Cpp/blob/main/copypasta/data_structure/segment_tree/SegTree_LazyRangeAdd.cpp)) |
+| 单点修改、区间修改 | **`SegTree_LazyRangeSet`**([点击访问代码](https://github.com/qxf-72/Codeforces-Cpp/blob/main/copypasta/data_structure/segment_tree/SegTree_LazyRangeSet.cpp)) |
 
 
 
@@ -33,3 +33,10 @@ oiwiki的segmentTree介绍：https://oi-wiki.org/ds/seg/
 最长连续相同子串问题
 
 - [2213. 由单个字符重复的最长子字符串](https://leetcode.cn/problems/longest-substring-of-one-repeating-character/)
+
+关于区间01反转的区间修改问题
+
+- [2569. 更新数组后处理求和查询](https://leetcode.cn/problems/handling-sum-queries-after-update/)    
+
+
+
