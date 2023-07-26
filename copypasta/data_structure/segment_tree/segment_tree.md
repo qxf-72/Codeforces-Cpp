@@ -34,7 +34,7 @@ OIWiki的SegmentTree介绍：https://oi-wiki.org/ds/seg/
 
 - [2213. 由单个字符重复的最长子字符串](https://leetcode.cn/problems/longest-substring-of-one-repeating-character/)
 
-关于区间01反转的区间修改问题
+关于区间01反转的懒惰更新问题
 
 - [2569. 更新数组后处理求和查询](https://leetcode.cn/problems/handling-sum-queries-after-update/)    
 
