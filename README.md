@@ -33,10 +33,10 @@
 - 单调栈
 ### 搜索
 
-- 深度优先搜索 `DFS`
-- 广度优先搜索 `BFS`
+- 深度优先搜索 DFS
+- 广度优先搜索 BFS
 - 回溯
-- 启发式搜索 `A*`
+- 启发式搜索 A*
 ### 动态规划
 
 - 记忆化搜索
@@ -48,8 +48,8 @@
 - 优化DP
 ### 字符串
 
-- [前缀树 ](https://github.com/qxf-72/Codeforces-Cpp/blob/main/copypasta/string/trie/Trie.md)`Trie`
-- 后缀数组 `SA`
+- [前缀树 ](https://github.com/qxf-72/Codeforces-Cpp/blob/main/copypasta/string/trie/Trie.md)Trie
+- 后缀数组 SA
 ### 数学
 
 - 位运算
