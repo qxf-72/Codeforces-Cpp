@@ -11,7 +11,7 @@
 
 ## 模板代码
 
-##### **`Tire`**([点击访问代码](https://github.com/qxf-72/Codeforces-Cpp/blob/main/copypasta/string/trie/Trie.cpp))
+#### **`Tire`**([点击访问代码](https://github.com/qxf-72/Codeforces-Cpp/blob/main/copypasta/string/trie/Trie.cpp))
 
 
 <br/>

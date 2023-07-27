@@ -11,16 +11,16 @@
 
 以下以实现 **区间求和** 的线段树 为例，要实现其他区间查询操作进行需要进行少量改动即可。
 
-##### **`SegTree`(**[点击访问代码](https://github.com/qxf-72/Codeforces-Cpp/blob/main/copypasta/data_structure/segment_tree/SegTree.cpp))：
+#### **`SegTree`(**[点击访问代码](https://github.com/qxf-72/Codeforces-Cpp/blob/main/copypasta/data_structure/segment_tree/SegTree.cpp))：
 
 - 单点修改
 
-##### **`SegTree_LazyRangeAdd`**([点击访问代码](https://github.com/qxf-72/Codeforces-Cpp/blob/main/copypasta/data_structure/segment_tree/SegTree_LazyRangeAdd.cpp))：
+#### **`SegTree_LazyRangeAdd`**([点击访问代码](https://github.com/qxf-72/Codeforces-Cpp/blob/main/copypasta/data_structure/segment_tree/SegTree_LazyRangeAdd.cpp))：
 
 - 单点修改
 - 区间懒惰更新（区间所有数都加一个数）
 
-##### **`SegTree_LazyRangeSet`**([点击访问代码](https://github.com/qxf-72/Codeforces-Cpp/blob/main/copypasta/data_structure/segment_tree/SegTree_LazyRangeSet.cpp))：
+#### **`SegTree_LazyRangeSet`**([点击访问代码](https://github.com/qxf-72/Codeforces-Cpp/blob/main/copypasta/data_structure/segment_tree/SegTree_LazyRangeSet.cpp))：
 
 - 单点修改
 - 区间懒惰更新（区间所有数修改为给定数值）

@@ -16,12 +16,12 @@
 
 ## 模板代码
 
-##### **`BIT`**([点击访问模板代码](https://github.com/qxf-72/Codeforces-Cpp/blob/main/copypasta/data_structure/binary_index_tree/BIT.cpp))：
+#### **`BIT`**([点击访问模板代码](https://github.com/qxf-72/Codeforces-Cpp/blob/main/copypasta/data_structure/binary_index_tree/BIT.cpp))：
 
 - 求区间和
 - 单点修改
 
-##### **`BIT_Diff`**([点击访问模板代码](https://github.com/qxf-72/Codeforces-Cpp/blob/main/copypasta/data_structure/binary_index_tree/BIT_Diff.cpp))：差分
+#### **`BIT_Diff`**([点击访问模板代码](https://github.com/qxf-72/Codeforces-Cpp/blob/main/copypasta/data_structure/binary_index_tree/BIT_Diff.cpp))：差分
 
 - 求区间和
 - 区间加（区间每一个数都加上同一个数）
