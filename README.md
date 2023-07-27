@@ -63,7 +63,7 @@
 - 堆
 - 并查集
 - [线段树](https://github.com/qxf-72/Codeforces-Cpp/blob/main/copypasta/data_structure/segment_tree/segment_tree.md)
-- 树状数组
+- [树状数组](https://github.com/qxf-72/Codeforces-Cpp/blob/main/copypasta/data_structure/binary_index_tree/binary_index_tree.md)
 ### 图论
 
 - 最短路算法
