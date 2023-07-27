@@ -16,16 +16,15 @@
 
 ## 模板代码
 
-**`BIT`**([点击访问模板代码](https://github.com/qxf-72/Codeforces-Cpp/blob/main/copypasta/data_structure/binary_index_tree/BIT.cpp))：
+##### **`BIT`**([点击访问模板代码](https://github.com/qxf-72/Codeforces-Cpp/blob/main/copypasta/data_structure/binary_index_tree/BIT.cpp))：
 
 - 求区间和
 - 单点修改
 
-**`BIT_Diff`**([点击访问模板代码](https://github.com/qxf-72/Codeforces-Cpp/blob/main/copypasta/data_structure/binary_index_tree/BIT_Diff.cpp))：差分
+##### **`BIT_Diff`**([点击访问模板代码](https://github.com/qxf-72/Codeforces-Cpp/blob/main/copypasta/data_structure/binary_index_tree/BIT_Diff.cpp))：差分
 
 - 求区间和
 - 区间加（区间每一个数都加上同一个数）
-
 
 <br/>
 <br/>
@@ -39,3 +38,9 @@
 
 [manim | 算法 | 数据结构](https://www.bilibili.com/video/BV1pE41197Qj/?spm_id_from=333.337.search-card.all.click&vd_source=a7d5a38480a5acb21de3325d1ec0cf14) ：差分树状数组原理讲得很好
 
+<br/>
+<br/>
+
+## 相关例题
+
+[2659. 将数组清空](https://leetcode.cn/problems/make-array-empty/)
