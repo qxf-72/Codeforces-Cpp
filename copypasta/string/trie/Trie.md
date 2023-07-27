@@ -10,7 +10,7 @@
 
 ## 模板代码
 
-### [`Tire`](https://github.com/qxf-72/Codeforces-Cpp/blob/main/copypasta/string/Trie.cpp)类
+**`Tire`**([点击访问代码](https://github.com/qxf-72/Codeforces-Cpp/blob/main/copypasta/string/trie/Trie.cpp))
 
 
 
