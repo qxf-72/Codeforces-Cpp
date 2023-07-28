@@ -40,15 +40,15 @@
 
 ## 相关题目
 
-###### 区间(绝对)众数及其出现次数(摩尔投票法)
+#### 区间(绝对)众数及其出现次数(摩尔投票法)
 
 - [1157. 子数组中占绝大多数的元素](https://leetcode.cn/problems/online-majority-element-in-subarray/)
 
-###### 最长连续相同子串问题
+#### 最长连续相同子串问题
 
 - [2213. 由单个字符重复的最长子字符串](https://leetcode.cn/problems/longest-substring-of-one-repeating-character/)
 
-###### 关于区间01反转的懒惰更新问题
+#### 关于区间01反转的懒惰更新问题
 
 - [2569. 更新数组后处理求和查询](https://leetcode.cn/problems/handling-sum-queries-after-update/)    
 
