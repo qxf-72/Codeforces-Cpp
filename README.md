@@ -48,12 +48,12 @@
 - 优化DP
 ### 字符串
 
-- [前缀树 ](https://github.com/qxf-72/Codeforces-Cpp/blob/main/copypasta/String/Trie/Trie.md)Trie
+- [前缀树 ](/copypasta/String/Trie/Trie.md)Trie
 - 后缀数组 SA
 ### 数学
 
 - 位运算
-- [高精度计算](https://github.com/qxf-72/Codeforces-Cpp/blob/main/copypasta/Math/Arbitrary_Precision_Arithmetic/Arbitrary_Precision_Arithmetic.md)
+- [高精度计算](/copypasta/Math/Arbitrary_Precision_Arithmetic/Arbitrary_Precision_Arithmetic.md)
 - 快速幂运算
 - 数论
 - 组合数学
@@ -61,9 +61,9 @@
 
 - 哈希表
 - 堆
-- [并查集](https://github.com/qxf-72/Codeforces-Cpp/blob/main/copypasta/Data_Structure/Disjoint_Set_Union/Disjoint_Set_Union.md)
-- [线段树](https://github.com/qxf-72/Codeforces-Cpp/blob/main/copypasta/Data_Structure/Segment_Tree/segment_tree.md)
-- [树状数组](https://github.com/qxf-72/Codeforces-Cpp/blob/main/copypasta/Data_Structure/Binary_Index_Tree/binary_index_tree.md)
+- [并查集](/copypasta/Data_Structure/Disjoint_Set_Union/Disjoint_Set_Union.md)
+- [线段树](/copypasta/Data_Structure/Segment_Tree/segment_tree.md)
+- [树状数组](/copypasta/Data_Structure/Binary_Index_Tree/binary_index_tree.md)
 ### 图论
 
 - 最短路算法
