@@ -61,7 +61,7 @@
 
 - 哈希表
 - 堆
-- [并查集](https://github.com/qxf-72/Codeforces-Cpp/blob/main/copypasta/data_structure/Disjoint_Set_Union/Disjoint Set Union.md)
+- [并查集](https://github.com/qxf-72/Codeforces-Cpp/blob/main/copypasta/data_structure/Disjoint_Set_Union/Disjoint_Set_Union.md)
 - [线段树](https://github.com/qxf-72/Codeforces-Cpp/blob/main/copypasta/data_structure/segment_tree/segment_tree.md)
 - [树状数组](https://github.com/qxf-72/Codeforces-Cpp/blob/main/copypasta/data_structure/binary_index_tree/binary_index_tree.md)
 ### 图论
