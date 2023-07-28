@@ -3,7 +3,7 @@
 
 ## 算法 `Algorithm`
 
-受到灵茶山艾府💭💡🎈的启发，决定仿照灵茶山艾府的[算法竞赛`Go`语言模板库](https://github.com/EndlessCheng/codeforces-go)建立一个`C++`的算法模板库。
+受到灵茶山艾府💭💡🎈的启发，决定仿照灵茶山艾府的[算法竞赛**`Go`**语言模板库](https://github.com/EndlessCheng/codeforces-go)建立一个**`C++`**的算法模板库。
 
 由于算法知识点繁杂，将自己学习到的算法、做过的题目分类整理好是有必要的。
 
