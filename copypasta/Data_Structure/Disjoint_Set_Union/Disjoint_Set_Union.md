@@ -12,7 +12,7 @@
 
 ## 模板代码
 
-#### `DSU`([点击访问代码](https://github.com/qxf-72/Codeforces-Cpp/blob/main/copypasta/data_structure/Disjoint_Set_Union/DSU.cpp))
+#### `DSU`([点击访问代码](https://github.com/qxf-72/Codeforces-Cpp/blob/main/copypasta/Data_Structure/Disjoint_Set_Union/DSU.cpp))
 
 - 查找（路径压缩）
 - 合并（启发式合并）
