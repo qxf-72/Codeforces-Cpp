@@ -67,6 +67,7 @@
 ### 图论
 
 - 最短路算法
+- [最小环](/copypasta\Graph_Theory\Min_Cycle\Min_Cycle.md)
 
 ### 杂项
 
