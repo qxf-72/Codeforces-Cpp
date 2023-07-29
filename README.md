@@ -73,7 +73,7 @@
   - Dijkstra
   - Floyd_Warshall
 
-- [最小环](/copypasta\Graph_Theory\Min_Cycle\Min_Cycle.md)
+- [最小环](/copypasta/Graph_Theory/Min_Cycle/Min_Cycle.md)
 
 ### 杂项
 
