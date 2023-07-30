@@ -61,7 +61,7 @@
 
 - 二叉树
 - [链表](/copypasta/Data_Structure/Linked_List/Linked_List.md)
-- 单调栈
+- [单调栈](/copypasta/Data_Structure/Monotonic_Stack/Monotonic_Stack.md)
 - 哈希表
 - 堆
 - [并查集](/copypasta/Data_Structure/Disjoint_Set_Union/Disjoint_Set_Union.md)
