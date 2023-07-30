@@ -28,22 +28,9 @@ C++标准库中有单链表和双向链表的实现，这里主要介绍链表�
 
 该算法可以在不使用常量空间的情况下，使用线性的时间来判断链表是否存在环。主要依赖两个快慢指针——fast、slow。fast指针一次走两步，slow指针一次走一步，如果存在环，两者必定会相遇。
 
-```c++
-bool hasCycle(ListNode *head) {
-    if (!head)
-        return false;
-    ListNode *slow = head, *fast = head;
-    while (fast->next && fast->next->next) {
-        slow = slow->next;
-        fast = fast->next->next;
-        if (fast == slow)
-            return true;
-    }
-    return false;
-}
-```
+### [模板代码](./Floyd_Cycle_Detection.cpp)
 
-相关题目：
+### 相关题目
 
 [141. 环形链表](https://leetcode.cn/problems/linked-list-cycle/)
 
@@ -62,28 +49,9 @@ Floyd判圈算法能够判断链表中是否存在环，但是如果要求环的
 
 由上面文章的推导可以知，此时slow指针再走a（链表中非环部分长度）步就能回到环的起点，此时只需要增加一个指针p指向头部，和slow指针一起移动知道相遇即可。
 
-```c++
-ListNode *detectCycle(ListNode *head) {
-    if (!head)
-        return nullptr;
-    ListNode *fast = head, *slow = head;
-    while (fast->next && fast->next->next) {
-        slow = slow->next;
-        fast = fast->next->next;
-        if (slow == fast) {
-            ListNode *p = head;
-            while (p != slow) {
-                p = p->next;
-                slow = slow->next;
-            }
-            return p;
-        }
-    }
-    return nullptr;
-}
-```
+### [模板代码](./Floyd_Cycle_Detection_Find_Beginning.cpp)
 
-相关题目：
+### 相关题目
 
 [142. 环形链表 II](https://leetcode.cn/problems/linked-list-cycle-ii/)
 
