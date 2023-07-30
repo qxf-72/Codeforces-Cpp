@@ -29,10 +29,7 @@
 - 排序
 - 前缀和 & 差分
 - 构造
-### 基础数据结构
 
-- 二叉树
-- 单调栈
 ### 搜索
 
 - 深度优先搜索 DFS
@@ -52,6 +49,7 @@
 
 - [前缀树 ](/copypasta/String/Trie/Trie.md)
 - 后缀数组 
+
 ### 数学
 
 - 位运算
@@ -59,24 +57,26 @@
 - 快速幂运算
 - 数论
 - 组合数学
-### 高级数据结构
+### 数据结构
 
+- 二叉树
+- [链表](/copypasta/Data_Structure/Linked_List/Linked_List.md)
+- 单调栈
 - 哈希表
 - 堆
 - [并查集](/copypasta/Data_Structure/Disjoint_Set_Union/Disjoint_Set_Union.md)
 - [线段树](/copypasta/Data_Structure/Segment_Tree/segment_tree.md)
 - [树状数组](/copypasta/Data_Structure/Binary_Index_Tree/binary_index_tree.md)
+
 ### 图论
 
 - 最短路算法
   - Bellman_Ford
   - Dijkstra
   - Floyd_Warshall
-
 - [最小环](/copypasta\Graph_Theory\Min_Cycle\Min_Cycle.md)
 
 ### 杂项
 
 - 位运算
-
 - 双指针(滑动窗口)
