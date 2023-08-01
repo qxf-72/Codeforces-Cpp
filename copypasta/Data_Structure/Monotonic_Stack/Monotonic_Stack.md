@@ -15,7 +15,9 @@
 
 ### [模板代码](./Monotonic_Stack.cpp)
 
-模板的代码以下一个更小的元素为例，可以求出该元素之后和该元素之前第一个更小元素的下标。此时可以得到**以该元素为最小值的最大区间边界**。通常与贡献法结合。
+模板的代码以下一个更小的元素为例，可以求出该元素之后和该元素之前第一个更小元素的下标。此时可以得到**以该元素为最小值的最大区间边界**。
+
+通常与贡献法结合，此外还可以求柱状图的最大矩形面积，如下面相关题目中的题目。
 
 模板代码以求下一个更小元素为例，但是如果将数组中的元素取反，此时求的就是下一个更大元素。
 
@@ -25,6 +27,7 @@
 - [1856. 子数组最小乘积的最大值](https://leetcode.cn/problems/maximum-subarray-min-product/)
 - [2104. 子数组范围和](https://leetcode.cn/problems/sum-of-subarray-ranges/)
 - [2281. 巫师的总力量和](https://leetcode.cn/problems/sum-of-total-strength-of-wizards/)
+- [84. 柱状图中最大的矩形](https://leetcode.cn/problems/largest-rectangle-in-histogram/)  ->  [85. 最大矩形](https://leetcode.cn/problems/maximal-rectangle/)
 
 <br/><br/>
 
