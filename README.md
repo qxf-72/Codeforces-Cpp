@@ -62,6 +62,7 @@
 - 二叉树
 - [链表](/copypasta/Data_Structure/Linked_List/Linked_List.md)
 - [单调栈](/copypasta/Data_Structure/Monotonic_Stack/Monotonic_Stack.md)
+- [单调队列](/copypasta/Data_Structure/Monotone_Queue/Monotone_Queue.md)
 - 哈希表
 - 堆
 - [并查集](/copypasta/Data_Structure/Disjoint_Set_Union/Disjoint_Set_Union.md)
@@ -80,4 +81,5 @@
 ### 杂项
 
 - 位运算
+- [贡献法](/copypasta/Sundry_Items/Contribution_Methodology/Contribution_Methodology.md)
 - 双指针(滑动窗口)
