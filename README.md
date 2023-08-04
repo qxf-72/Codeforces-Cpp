@@ -23,12 +23,23 @@
 
 ### 算法基础
 
-- 模拟
 - 贪心
 - 二分
 - 排序
+- 倍增
 - 前缀和 & 差分
-- 构造
+
+### 数据结构
+
+- 二叉树
+- [链表](/copypasta/Data_Structure/Linked_List/Linked_List.md)
+- [单调栈](/copypasta/Data_Structure/Monotonic_Stack/Monotonic_Stack.md)
+- [单调队列](/copypasta/Data_Structure/Monotone_Queue/Monotone_Queue.md)
+- 哈希表
+- 堆
+- [并查集](/copypasta/Data_Structure/Disjoint_Set_Union/Disjoint_Set_Union.md)
+- [线段树](/copypasta/Data_Structure/Segment_Tree/segment_tree.md)
+- [树状数组](/copypasta/Data_Structure/Binary_Index_Tree/binary_index_tree.md)
 
 ### 搜索
 
@@ -52,22 +63,10 @@
 
 ### 数学
 
-- 位运算
 - [高精度计算](/copypasta/Math/Arbitrary_Precision_Arithmetic/Arbitrary_Precision_Arithmetic.md)
 - 快速幂运算
-- 数论
+- 数论          
 - 组合数学
-### 数据结构
-
-- 二叉树
-- [链表](/copypasta/Data_Structure/Linked_List/Linked_List.md)
-- [单调栈](/copypasta/Data_Structure/Monotonic_Stack/Monotonic_Stack.md)
-- [单调队列](/copypasta/Data_Structure/Monotone_Queue/Monotone_Queue.md)
-- 哈希表
-- 堆
-- [并查集](/copypasta/Data_Structure/Disjoint_Set_Union/Disjoint_Set_Union.md)
-- [线段树](/copypasta/Data_Structure/Segment_Tree/segment_tree.md)
-- [树状数组](/copypasta/Data_Structure/Binary_Index_Tree/binary_index_tree.md)
 
 ### 图论
 
@@ -78,8 +77,8 @@
 - [最小环](/copypasta/Graph_Theory/Min_Cycle/Min_Cycle.md)
 
 
-### 杂项
+### 其他
 
-- 位运算
 - [贡献法](/copypasta/Sundry_Items/Contribution_Methodology/Contribution_Methodology.md)
+- [区间位运算](/copypasta/Sundry_Items/Interval_Bitwise_Arithmetic/Interval_Bitwise_Arithmetic.md)
 - 双指针(滑动窗口)
