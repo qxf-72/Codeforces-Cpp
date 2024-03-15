@@ -74,7 +74,22 @@ int fast_power(long long base, long long power)
 
 [100. 增减序列 - AcWing题库](https://www.acwing.com/problem/content/102/)
 
+---
 
+
+<br/>
+
+
+<br/>
+
+
+# 高精度运算
+
+由于 C++没有大数类，所以需要自己手写实现大数类。
+
+
+[**BigInt.cpp**](/copypasta/Basic_Algorithm/BigInt.cpp)
+只能用于**正数**，并且乘除的对象是普通类型。
 
 
 ---
@@ -84,6 +99,9 @@ int fast_power(long long base, long long power)
 
 
 <br/>
+
+
+
 
 # 二分
 
@@ -289,6 +307,69 @@ ll merge_sort(vector<int>& a, int l, int r)
 
 ## ST 算法
 
+ST 表（Sparse Table）稀疏表，是基于倍增思想，在 RMQ 问题的产物。给定一个长度为 N 的序列，ST 算法在经过 **N*logN 时间的预处理**之后，以 **O (1) 复杂度在线查询**某个区间的信息，比如区间最大值。
 
+ST 表能维护的区间信息必须是**可重复贡献**的信息：
+- 最大值
+- 区间 按位和
+- 区间 按位或
+- 区间 GCD
+
+[**SparseTable. cpp**](/copypasta/Basic_Algorithm/SparseTable.cpp)
+该模板使用了 template，根据数据类型设置 T，同时根据题目设置操作类型 op，op 为 `function<T(const T&,const T&)>` 类型。
+
+---
+
+
+<br/>
+
+
+<br/>
+
+
+# 贪心
+
+贪心是一种每次决策是采取当前的最优解（局部最优解），因此贪心问题的整体最优性可以由局部最优性导出。常见的证明手段：
+- 微扰：交换邻项，证明对局部最优解的任何改动都会造成整体结果变差。
+- 反证法
+- 数学归纳法
+
+
+#### 相关题目
+
+[110. 防晒 - AcWing题库](https://www.acwing.com/problem/content/112/)
+
+[111. 畜栏预定 - AcWing题库](https://www.acwing.com/problem/content/113/)
+
+[112. 雷达设备 - AcWing题库](https://www.acwing.com/problem/content/114/) 
+和一维的情况有区别，不能线性的扫描 (对于左端点，要求 y 从大到小排列，但是已经确定雷达位置，来跳过雷达的覆盖范围时，要求 y 从小到大排列。)
+对于每一个小岛，确定一段雷达能够放置的区间，对于所有区间，有重叠部分，可以合并，问题转化为——将重叠的区间合并之后，有多少个独立的区间。
+
+[114. 国王游戏 - AcWing题库](https://www.acwing.com/problem/content/116/)
+本题使用**微扰法**解决。对于两个相邻的大臣 $i$ 和 $i+1$ ，他们获得奖励：
+
+$$
+\frac{1}{B\left[ i \right]}\times \prod_{j=0}^{i-1}{A\left[ j \right]}\ ,\ \frac{1}{B\left[ i+1 \right]}\times \prod_{j=0}^i{A\left[ j \right]}
+$$
+
+将两个大臣的顺序交换，他们获得的奖励变为：
+
+$$
+\frac{1}{B\left[ i+1 \right]}\times \prod_{j=0}^{i-1}{A\left[ j \right]}\ ,\ \frac{1}{B\left[ i \right]}\times \prod_{j=0}^i{A\left[ j \right]}
+$$
+
+去除公因子之后，只需要比较以下两个式子：
+
+$$
+\max \left( \frac{1}{B\left[ i \right]},\frac{A\left[ i \right]}{B\left[ i+1 \right]} \right) \ \ \ \max \left( \frac{1}{B\left[ i+1 \right]},\frac{A\left[ i+1 \right]}{B\left[ i \right]} \right) 
+$$
+
+如果想要交换操作有意义，必须证明上左式大于等于右式，即
+
+$$
+\frac{A\left[ i \right]}{B\left[ i+1 \right]}\ge \frac{A\left[ i+1 \right]}{B\left[ i \right]}\ \rightarrow \ A\left[ i \right] \times B\left[ i \right] \ \ge \ A\left[ i+1 \right] \times B\left[ i+1 \right] 
+$$
+
+所以可以按照 ab 乘积从小到大排序，得到最优顺序。另外，需要实现**高精度**。
 
 ---
