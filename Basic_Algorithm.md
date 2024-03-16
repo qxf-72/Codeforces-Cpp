@@ -54,13 +54,16 @@ int fast_power(long long base, long long power)
 
 ## 前缀和
 
-可以通过递推方式得出的基本信息，是一种重要的预处理方式。
+前缀和是一种重要的预处理方式，能大大降低查询的时间复杂度。
+
+C++ 标准库中实现了前缀和函数 [`std::partial_sum`](https://zh.cppreference.com/w/cpp/algorithm/partial_sum)，定义于头文件 `<numeric>` 中。
+
 
 **一维前缀和**
 一般设置一个开头，便于处理边界问题，下标从 1 开始。
 
 **二维前缀和**
-一维的拓展，计算公式稍有不同。
+多维前缀和的普通求解方法几乎都是基于容斥原理。
 
 ---
 
@@ -337,6 +340,8 @@ ST 表能维护的区间信息必须是**可重复贡献**的信息：
 
 #### 相关题目
 
+[1055. 股票买卖 II - AcWing题库](https://www.acwing.com/problem/content/1057/)
+
 [110. 防晒 - AcWing题库](https://www.acwing.com/problem/content/112/)
 
 [111. 畜栏预定 - AcWing题库](https://www.acwing.com/problem/content/113/)
@@ -371,5 +376,9 @@ $$
 $$
 
 所以可以按照 ab 乘积从小到大排序，得到最优顺序。另外，需要实现**高精度**。
+
+
+[115. 给树染色 - AcWing题库](https://www.acwing.com/problem/content/117/)
+困难题，[题解链接]((https://www.acwing.com/solution/content/1065/))
 
 ---

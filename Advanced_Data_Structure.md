@@ -42,7 +42,7 @@
 
 #### 模板代码
 
-[**BIT.cpp**](/copypast/Advanced_Data_Structure/BIT.cpp) 以维护区间和为例，支持以下操作：
+[**BIT.cpp**](/copypasta/Advanced_Data_Structure/BIT.cpp) 以维护区间和为例，支持以下操作：
 
 - **求 1 到 i 的区间和**：时间复杂度为 $log_2^n$ 。在此基础上进行修改可以实现求任意区间和，需要注意，树状数组的下标是从 1 开始的。
 - **单点修改**：即修改当个点值。时间复杂度为 $log_2^n$ 。
@@ -76,7 +76,7 @@
 <br/>
 
 
-# 线段数
+# 线段树
 
 线段树是算法竞赛中常用的用来维护 **区间信息** 的数据结构。线段树可以在 log N 的时间复杂度内实现单点修改、区间修改、区间查询等操作。
 
@@ -86,15 +86,13 @@
 
 以下以实现 **区间求和** 的线段树 为例，要实现其他区间查询操作进行需要进行少量改动即可。
 
-#### **`SegTree`(**[点击访问代码](https://github.com/qxf-72/Codeforces-Cpp/blob/main/copypasta/Data_Structure/Segment_Tree/SegTree.cpp))：
 
-  
 
 - 单点修改
 
   
 
-#### **`SegTree_LazyRangeAdd`**([点击访问代码](https://github.com/qxf-72/Codeforces-Cpp/blob/main/copypasta/Data_Structure/Segment_Tree/SegTree_LazyRangeAdd.cpp))：
+
 
   
 
@@ -104,7 +102,7 @@
 
   
 
-#### **`SegTree_LazyRangeSet`**([点击访问代码](https://github.com/qxf-72/Codeforces-Cpp/blob/main/copypasta/Data_Structure/Segment_Tree/SegTree_LazyRangeSet.cpp))：
+
 
   
 
@@ -132,20 +130,19 @@
 <br/>
 
   
-  
 
-## 相关题目
+#### 相关题目
 
-#### 区间(绝对)众数及其出现次数(摩尔投票法)
+**区间(绝对)众数及其出现次数(摩尔投票法)**
 
-- [1157. 子数组中占绝大多数的元素](https://leetcode.cn/problems/online-majority-element-in-subarray/)
+[1157. 子数组中占绝大多数的元素](https://leetcode.cn/problems/online-majority-element-in-subarray/)
 
-#### 最长连续相同子串问题
+**最长连续相同子串问题**
 
-- [2213. 由单个字符重复的最长子字符串](https://leetcode.cn/problems/longest-substring-of-one-repeating-character/)
+[2213. 由单个字符重复的最长子字符串](https://leetcode.cn/problems/longest-substring-of-one-repeating-character/)
 
-#### 关于区间01反转的懒惰更新问题
+**关于区间01反转的懒惰更新问题**
 
-- [2569. 更新数组后处理求和查询](https://leetcode.cn/problems/handling-sum-queries-after-update/)
+[2569. 更新数组后处理求和查询](https://leetcode.cn/problems/handling-sum-queries-after-update/)
 
 ---
