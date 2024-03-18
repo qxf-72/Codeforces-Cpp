@@ -1,9 +1,9 @@
 # 位运算
 
-灵茶山艾府 [位运算的技巧汇总](https://leetcode.cn/circle/discuss/CaOJ45/)
+[位运算的技巧汇总](https://leetcode.cn/circle/discuss/CaOJ45/)
 
 ## lowbit 运算
-取出一个数二进制表示形式的最低位的 1 以及之后的位，所表示的数。主要用于树状数组中下标的计算。
+取出一个数二进制表示形式的 最低位的 1 以及之后的位，所表示的数。主要用于树状数组中下标的计算。
 
 ```cpp
 int lowbit(int x)
@@ -49,6 +49,12 @@ int fast_power(long long base, long long power)
 <br/>
 
 
+<br/>
+
+
+<br/>
+
+
 
 # 前缀和 与 差分
 
@@ -86,13 +92,27 @@ C++ 标准库中实现了前缀和函数 [`std::partial_sum`](https://zh.cppref
 <br/>
 
 
+<br/>
+
+
+<br/>
+
+
+
 # 高精度运算
 
 由于 C++没有大数类，所以需要自己手写实现大数类。
 
 
 [**BigInt.cpp**](/copypasta/Basic_Algorithm/BigInt.cpp)
-只能用于**正数**，并且乘除的对象是普通类型。
+- 只能用于**正数**
+- **乘除**对象为普通类型
+
+
+[**BigInt.cpp**](/copypasta/Basic_Algorithm/BigIntZip.cpp)
+- 实现**压位**，计算效率更高。
+- 乘法
+- 输出
 
 
 ---
@@ -104,13 +124,18 @@ C++ 标准库中实现了前缀和函数 [`std::partial_sum`](https://zh.cppref
 <br/>
 
 
+<br/>
+
+
+<br/>
+
 
 
 # 二分
 
 判定难度小于求解，当问题答案具有某种单调性时，通过二分法把问题求解转化为判定。
 
-## 整数二分
+
   
 
 ---
@@ -120,6 +145,13 @@ C++ 标准库中实现了前缀和函数 [`std::partial_sum`](https://zh.cppref
 
 
 <br/>
+
+
+<br/>
+
+
+<br/>
+
 
 
 
@@ -287,6 +319,13 @@ ll merge_sort(vector<int>& a, int l, int r)
 <br/>
 
 
+<br/>
+
+
+<br/>
+
+
+
 # 倍增 
 
 ## 倍增算法
@@ -328,6 +367,13 @@ ST 表能维护的区间信息必须是**可重复贡献**的信息：
 
 
 <br/>
+
+
+<br/>
+
+
+<br/>
+
 
 
 # 贪心
