@@ -72,3 +72,58 @@ class Trie
 		return counter;
 	}
 };
+
+
+class Tire_Xor
+{
+	struct TireNode
+	{
+		TireNode* child[2]{};
+		void deleteTireNode()
+		{
+			for (auto& i : child)
+			{
+				if (i != nullptr)
+					i->deleteTireNode();
+				free(i);
+				i = nullptr;
+			}
+		};
+	};
+	TireNode* root;
+ public:
+	Tire_Xor() : root(new TireNode())
+	{
+	}
+	~Tire_Xor()
+	{
+		root->deleteTireNode();
+		root = nullptr;
+	}
+	void insert(int num)
+	{
+		TireNode* p = root;
+		for (int i = 31; i >= 0; --i)
+		{
+			int nxt = (num >> i) & 1;
+			if (p->child[nxt] == nullptr)
+				p->child[nxt] = new TireNode();
+			p = p->child[nxt];
+		}
+	}
+	int cal(int num)
+	{
+		TireNode* p = root;
+		int ans = 0;
+		for (int i = 31; i >= 0; --i)
+		{
+			int nxt = ((num >> i) & 1) ? 0 : 1;
+			if (p->child[nxt] == nullptr)
+				nxt = nxt == 0 ? 1 : 0;
+			else
+				ans |= (1 << i);
+			p = p->child[nxt];
+		}
+		return ans;
+	}
+};

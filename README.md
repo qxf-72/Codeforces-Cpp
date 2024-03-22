@@ -2,7 +2,7 @@
 
 ## 算法 `Algorithm`
 
-受到灵茶山艾府💭💡🎈的启发，决定仿照灵茶山艾府的[算法竞赛 Go 语言模板库](https://github.com/EndlessCheng/codeforces-go)建立一个 **C++** 的算法模板库。
+受到灵茶山艾府💭💡🎈的启发，决定仿照灵茶山艾府的[算法竞赛 Go 语言模板库](https://github.com/EndlessCheng/codeforces-go)建立一个 **C++** 算法模板库。
 
 由于算法知识点繁杂，将自己学习到的算法、做过的题目分类整理好是有必要的。一个算法模板应当涵盖以下几点：
 
@@ -24,7 +24,7 @@
 ### [基本算法](/Basic_Algorithm.md)
 
 - 位运算
-- 前缀和与差分
+- 前缀和 与 差分
 - 二分
 - 排序
 - 倍增
@@ -34,11 +34,11 @@
 
 - 栈
 - 队列
-- 链表和邻接表
-- Hash
+- 链表
+- Hash 表
 - 字符串
-- Trie
-- 二叉堆
+- 字典树 Trie
+- 堆
 
 ### [搜索](/Search_Algorithm.md)
 

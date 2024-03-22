@@ -79,7 +79,7 @@ C++ 标准库中实现了前缀和函数 [`std::partial_sum`](https://zh.cppref
 
 在差分数组进行标记，可以实现对原数组某一段区间的全体元素加一个数，或减去一个数。
 
-#### 相关题目
+### 相关题目
 
 [100. 增减序列 - AcWing题库](https://www.acwing.com/problem/content/102/)
 
@@ -103,6 +103,7 @@ C++ 标准库中实现了前缀和函数 [`std::partial_sum`](https://zh.cppref
 
 由于 C++没有大数类，所以需要自己手写实现大数类。
 
+### 模板代码
 
 [**BigInt.cpp**](/copypasta/Basic_Algorithm/BigInt.cpp)
 - 只能用于**正数**
@@ -163,7 +164,7 @@ C++ 标准库中实现了前缀和函数 [`std::partial_sum`](https://zh.cppref
 
 当数的取值范围很大，但是数的个数有限时，可以进行离散化操作，进行排序之后去重，然后用下标代替这个数，查找某个数对应的下标，使用二分查找即可。
 
-#### 相关题目
+### 相关题目
 
 [103. 电影 - AcWing题库](https://www.acwing.com/problem/content/105/) ——本题使用哈希表也可以。
 
@@ -208,7 +209,7 @@ for (int i = 1; i <= m; ++i)
 
 
 
-#### 相关题目
+### 相关题目
 
 [104. 货仓选址 - AcWing题库](https://www.acwing.com/problem/content/106/) ——中位数性质
 
@@ -262,7 +263,7 @@ int quick_select(vector<int>& a, int left, int right, int k)
 ```
 
 
-#### 相关题目
+### 相关题目
 
 [LCR 076. 数组中的第 K 个最大元素 - 力扣（LeetCode）](https://leetcode.cn/problems/xx4gT2/description/) ——快速选择
 
@@ -306,7 +307,7 @@ ll merge_sort(vector<int>& a, int l, int r)
 }
 ```
 
-#### 相关题目
+### 相关题目
 
 [107. 超快速排序 - AcWing题库](https://www.acwing.com/problem/content/109/) ——逆序对
 
@@ -343,7 +344,7 @@ ll merge_sort(vector<int>& a, int l, int r)
 在可以使用倍增算法的地方，其实也可以使用二分法；当时，如果当答案很靠近左端点时，二分法的效率很低，甚至不如线性扫描。
 
 
-#### 相关题目
+### 相关题目
 
 [109. 天才ACM - AcWing题库](https://www.acwing.com/problem/content/111/) ——倍增、归并优化
 
@@ -353,11 +354,13 @@ ll merge_sort(vector<int>& a, int l, int r)
 
 ST 表（Sparse Table）稀疏表，是基于倍增思想，在 RMQ 问题的产物。给定一个长度为 N 的序列，ST 算法在经过 **N * logN 时间的预处理**之后，以 **O (1) 复杂度在线查询**某个区间的信息，比如区间最大值。
 
-ST 表能维护的区间信息必须是**可重复贡献**的信息，并且 ST 表**不支持进行修改**：
+ST 表能维护的区间信息必须是**可重复贡献**的信息，并且 ST 表**不支持进行修改**，适合存在大量离线查询且无修改的情况。
 - 最大值
 - 区间 按位和
 - 区间 按位或
 - 区间 GCD
+
+### 模板代码
 
 [**SparseTable. cpp**](/copypasta/Basic_Algorithm/SparseTable.cpp)
 该模板使用了 template，根据数据类型设置 T，同时根据题目设置操作类型 op，op 为 `function<T(const T&,const T&)>` 类型。
@@ -386,7 +389,7 @@ ST 表能维护的区间信息必须是**可重复贡献**的信息，并且 ST 
 - 数学归纳法
 
 
-#### 相关题目
+### 相关题目
 
 [1055. 股票买卖 II - AcWing题库](https://www.acwing.com/problem/content/1057/)
 
