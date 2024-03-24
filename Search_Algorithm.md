@@ -12,6 +12,57 @@
 
 ### 相关题目
 
+[164. 可达性统计 - AcWing题库](https://www.acwing.com/problem/content/166/)
+想要知道当前节点可达点数，需要先取出与之直接相邻的之后的点可达情况。所有先进行拓扑排序，然后倒序进行统计，在统计时，可以使用 `bitset` 进行或操作。
+
+---
+
+
+<br/>
+
+
+<br/>
+
+
+<br/>
+
+
+<br/>
+
+
+# 深度优先搜索
+
+深度优先搜索，就是按照当前路径深度从大到小排序，优先出队拓展的搜索算法。
+
+
+### 例题
+
+[2151. 基于陈述统计最多好人数 - 力扣（LeetCode）](https://leetcode.cn/problems/maximum-good-people-based-on-statements/description/)
+数据量很小，可以 dfs 或者二进制枚举，关键在于判断一种状态是否合法，关键在于集合中两个好人说的话不能相冲突。
+
+
+[AcWing 165. 小猫爬山 - AcWing](https://www.acwing.com/activity/content/problem/content/400/)
+递归处理每只小猫的分配过程，对于每只小猫，要么从已分配到缆车中，挑一个放进去，要么新增一个缆车。为了使得搜索更高效，可以进行优化——重量大的小猫更难运送，所以可以先处理重量大的小猫。
+
+[166. 数独 - AcWing题库](https://www.acwing.com/problem/content/168/)
+优先尝试能够填写数字较少的位置。
 
 
 ---
+
+
+<br/>
+
+
+<br/>
+
+
+<br/>
+
+
+<br/>
+
+
+# 剪枝
+
+
