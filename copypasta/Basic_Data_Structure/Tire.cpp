@@ -8,6 +8,12 @@ class Trie
 		bool is_word;
 		int cnt = 0;
 		TireNode* children[26]{};
+	
+		~TireNode(){
+			// 如果Node中有其他动态分配的内存，需要在此释放
+			for(int i=0;i<26;++i)
+				delete children[i];
+		}
 	};
 	const TireNode* find(const string& prefix)
 	{
@@ -19,14 +25,17 @@ class Trie
 		}
 		return p;
 	}
-	std::unique_ptr<TireNode> root_;
+	TrieNode * root;
 
  public:
 	Trie() : root_(new TireNode())
 	{
 	}
+	~Tire(){
+		delete root;
+	}
 
-	// 插入字符串，通常在建立前缀树时使用
+	// 插入字符串
 	void insert(const string& word)
 	{
 		TireNode* p = root_.get();
@@ -40,7 +49,7 @@ class Trie
 		++p->cnt;
 	}
 
-	// 字符集合中是否有word
+	// 集合中是否有word
 	bool search(const string& word)
 	{
 		const TireNode* p = find(word);
@@ -49,7 +58,7 @@ class Trie
 		return false;
 	}
 
-	// prefix是否为集合中某个字符串的前缀
+	// prefix 是否为 集合中某个字符串 的前缀
 	bool startsWith(const string& prefix)
 	{
 		const TireNode* p = find(prefix);
@@ -58,7 +67,7 @@ class Trie
 		return false;
 	}
 
-	// 集合中有多少个字符串是str的前缀
+	// 集合中有多少个字符串 是 str的前缀
 	int prefixCounter(const string& str)
 	{
 		int counter = 0;
@@ -70,60 +79,5 @@ class Trie
 			counter += p->cnt;
 		}
 		return counter;
-	}
-};
-
-
-class Tire_Xor
-{
-	struct TireNode
-	{
-		TireNode* child[2]{};
-		void deleteTireNode()
-		{
-			for (auto& i : child)
-			{
-				if (i != nullptr)
-					i->deleteTireNode();
-				free(i);
-				i = nullptr;
-			}
-		};
-	};
-	TireNode* root;
- public:
-	Tire_Xor() : root(new TireNode())
-	{
-	}
-	~Tire_Xor()
-	{
-		root->deleteTireNode();
-		root = nullptr;
-	}
-	void insert(int num)
-	{
-		TireNode* p = root;
-		for (int i = 31; i >= 0; --i)
-		{
-			int nxt = (num >> i) & 1;
-			if (p->child[nxt] == nullptr)
-				p->child[nxt] = new TireNode();
-			p = p->child[nxt];
-		}
-	}
-	int cal(int num)
-	{
-		TireNode* p = root;
-		int ans = 0;
-		for (int i = 31; i >= 0; --i)
-		{
-			int nxt = ((num >> i) & 1) ? 0 : 1;
-			if (p->child[nxt] == nullptr)
-				nxt = nxt == 0 ? 1 : 0;
-			else
-				ans |= (1 << i);
-			p = p->child[nxt];
-		}
-		return ans;
 	}
 };
