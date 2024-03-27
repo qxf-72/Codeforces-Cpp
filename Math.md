@@ -24,3 +24,32 @@ void divide(int n)
 ```
 
 ---
+
+
+<br/>
+
+
+<br/>
+
+
+<br/>
+
+
+<br/>
+
+
+# 约数
+
+
+> C++17 提供了两个模板函数求最小公倍数和最大公约数—— `gcd` 和 `lcm`
+
+## 裴蜀定理
+
+对于不全为零的任意整数 $a$ 和 $b$ ，记 $g=gcd⁡(a, b)$ ，则对于任意整数 $x$ 和 $y$ 都满足 $a\times x+b \times y$ 是 $g$ 的倍数，特别地，存在整数 $x$ 和 $y$ 满足 $a \times x + b \times y = g$ 。
+
+### 例题
+
+[1250. 检查「好数组」 - 力扣（LeetCode）](https://leetcode.cn/problems/check-if-it-is-a-good-array/description/)
+从头开始遍历数组，一旦前 i 个数的最大公约数为 1，就提前跳出循环。为什么不枚举子集进行判定？因为数越多，越能使 gcd 向 1 靠近，正好符合题目要求，所以直接遍历整个数组判定。
+
+---
