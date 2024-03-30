@@ -46,11 +46,6 @@
 - 链表
 	- Floyd 判圈算法
 - Hash 
-	- 字符串哈希
-- 字符串
-	- KMP
-	- 最小表示法
-- 字典树 Trie
 - 堆
 	- Huffman 树
 
@@ -69,7 +64,15 @@
 - A*
 - IDA*
 
-### [数学知识](/Math.md)
+### [字符串](/String.md)
+
+- KMP
+- 字符串 Hash
+- 前缀树 Tire
+- Manacher 算法
+- 最小表示法
+
+### [数学](/Math.md)
 
 - 质数
 - 约数
