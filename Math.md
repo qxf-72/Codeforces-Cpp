@@ -246,7 +246,9 @@ C++17 提供了两个模板函数求最小公倍数和最大公约数—— `gcd
 **定理**
 
 $$
+
 \forall a,b\in N\ ,\ \ gcd\left( a,b \right) *lcm\left( a,b \right) =a*b
+
 $$
 
 设 $d=gcd(a,b)$ ， $a_0=a/d,b_0=b/d$ ，则 $lcm(a,b)=a_0\times b_0$ 。
