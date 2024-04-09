@@ -12,7 +12,8 @@
 
 ### 相关题目
 
-[164. 可达性统计 - AcWing题库](https://www.acwing.com/problem/content/166/)
+[**164. 可达性统计 - AcWing题库**](https://www.acwing.com/problem/content/166/)
+
 想要知道当前节点可达点数，需要先取出与之直接相邻的之后的点可达情况。所有先进行拓扑排序，然后倒序进行统计，在统计时，可以使用 `bitset` 进行或操作。
 
 ---
@@ -37,14 +38,20 @@
 
 ### 例题
 
-[2151. 基于陈述统计最多好人数 - 力扣（LeetCode）](https://leetcode.cn/problems/maximum-good-people-based-on-statements/description/)
+[**2151. 基于陈述统计最多好人数 - 力扣（LeetCode）**](https://leetcode.cn/problems/maximum-good-people-based-on-statements/description/)
+
 数据量很小，可以 dfs 或者二进制枚举，关键在于判断一种状态是否合法，关键在于集合中两个好人说的话不能相冲突。
 
+<br/>
 
-[AcWing 165. 小猫爬山 - AcWing](https://www.acwing.com/activity/content/problem/content/400/)
+[**AcWing 165. 小猫爬山 - AcWing**](https://www.acwing.com/activity/content/problem/content/400/)
+
 递归处理每只小猫的分配过程，对于每只小猫，要么从已分配到缆车中，挑一个放进去，要么新增一个缆车。为了使得搜索更高效，可以进行优化——重量大的小猫更难运送，所以可以先处理重量大的小猫。
 
-[166. 数独 - AcWing题库](https://www.acwing.com/problem/content/168/)
+<br/>
+
+[**166. 数独 - AcWing题库**](https://www.acwing.com/problem/content/168/)
+
 优先尝试能够填写数字较少的位置。
 
 
@@ -74,16 +81,23 @@
 
 ### 例题
 
-[167. 木棒 - AcWing题库](https://www.acwing.com/problem/content/169/)
+[**167. 木棒 - AcWing题库**](https://www.acwing.com/problem/content/169/)
+
 优化搜索顺序，把木棒从大到小排序。排序等效冗余，记录上一次添加小木棒的 idx。
 
-[168. 生日蛋糕 - AcWing题库](https://www.acwing.com/problem/content/170/)
+<br/>
+
+
+[**168. 生日蛋糕 - AcWing题库**](https://www.acwing.com/problem/content/170/)
+
 从底层向高层搜索，同时进行剪枝优化：
 - 对于确定的 r 和 h 的范围，可以从大到小来枚举，因为越大的越容易超过限制，所以可以尽早排除出答案。
 - 预处理从上打下的最小体积和表面积，一旦当前+后续最小的还是超过限制，直接回溯。
 - 最优性剪枝，如果当前代价超过已经搜索到的最小代价，直接回溯。
 
-[169. 数独2 - AcWing题库](https://www.acwing.com/problem/content/171/)
+<br/>
+
+[**169. 数独2 - AcWing题库**](https://www.acwing.com/problem/content/171/)
 
 
 
@@ -112,10 +126,16 @@
 
 ### 例题
 
-[170. 加成序列 - AcWing题库](https://www.acwing.com/problem/content/172/)
+[**170. 加成序列 - AcWing题库**](https://www.acwing.com/problem/content/172/)
+
 题目不仅要求找到可行解，还要求路径长度最小，如果使用 dfs，每找到一个解就需要更新维护答案，如果使用 bfs，空间爆炸性增长。不妨使用迭代加深，**为了保证找到的第一个答案就是最短的，必须限制每次加大的深度为一**。
 
 ---
+
+<br/>
+
+
+<br/>
 
 ## 双向搜索
 
@@ -126,7 +146,8 @@
 
 ### 例题
 
-[171. 送礼物 - AcWing题库](https://www.acwing.com/problem/content/173/)
+[**171. 送礼物 - AcWing题库**](https://www.acwing.com/problem/content/173/)
+
 超大体积背包问题。直接解法是对每一个礼物进行枚举，时间复杂度为 $O(2^{45})$ ，显然无法接受。但是如果分两段进行枚举，然后将两段的各种能装入背包的重量，进行二分。总时间复杂度为 $O(2^{n/2}+n\times logn)$ 。
 
 ---
@@ -155,13 +176,21 @@
 
 ### 例题
 
-[172. 立体推箱子 - AcWing题库](https://www.acwing.com/problem/content/174/)
+[**172. 立体推箱子 - AcWing题库**](https://www.acwing.com/problem/content/174/)
+
 题目本意并不难，需要设计好如果记录状态，以及不同状态之间的转移。代码量较大，对调试能力要求较高。
 
-[173. 矩阵距离 - AcWing题库](https://www.acwing.com/problem/content/175/)
+<br/>
+
+[**173. 矩阵距离 - AcWing题库**](https://www.acwing.com/problem/content/175/)
+
 存在多个起点，先预处理放入 queue 中，再开始 bfs。
 
-[174. 推箱子 - AcWing题库](https://www.acwing.com/problem/content/description/176/)
+<br/>
+
+
+[**174. 推箱子 - AcWing题库**](https://www.acwing.com/problem/content/description/176/)
+
 将箱子的状态和人的状态打包成一个三元组，之后进行拓展，同时需要记录从哪一个状态转移而来的，以便于输出路径。也可以采用变形广搜，使用优先队列保持队列性质。
 
 ---
@@ -194,7 +223,8 @@
 
 ### 例题
 
-[175. 电路维修 - AcWing题库](https://www.acwing.com/problem/content/177/)
+[**175. 电路维修 - AcWing题库**](https://www.acwing.com/problem/content/177/)
+
 可以将电路板中每个格点，看作是一个节点。问题等于是求点（0,0）到（n, m）的最短路径，可以使用 Dijkstra 算法，每次取出路径权值和最小的点进行拓展，这种算法肯定是正确的。在本题中，由于边权很特殊，只有 0 和 1，完全可以使用双端队列来代替 Dijkstra 算法中的优先队列，其余操作和最短路算法一样。
 
 **为什么不能像朴素 BFS 那样每个节点更新一次**？在朴素 BFS 中，路径的权值永远是 1，因为路径一样，所以先到达一个节点的路径就是最短路径，但是本题中存在边权为 0 的边，并不能保证先到达的就是最短的。
@@ -203,6 +233,12 @@
 
 
 ---
+
+<br/>
+
+
+<br/>
+
 
 ## 优先队列 BFS
 
@@ -213,10 +249,19 @@
 
 ### 例题
 
-[176. 装满的油箱 - AcWing题库](https://www.acwing.com/problem/content/178/)
-使用一个三元组（city，fuel，cost）记录每一个状态，使用数组 d[ city ][ fuel ] 记录最下花费。应该注意的是，在使用 priority_queue 时，**状态节点需要记录 cost 状态，而不是使用数组 d[ city ][ fuel ]进行比较，因为数组的值是会被修改，可能会导致堆中失去二叉堆的有序性，而不能被及时调整，**导致一些意想不到的后果。
+[**176. 装满的油箱 - AcWing题库**](https://www.acwing.com/problem/content/178/)
+
+使用一个三元组（city，fuel，cost）记录每一个状态，使用数组 d[ city ][ fuel ] 记录最下花费。
+
+应该注意的是，在使用 priority_queue 时，**状态节点需要记录 cost 状态，而不是使用数组 d[ city ][ fuel ]进行比较，因为数组的值是会被修改，可能会导致堆中失去二叉堆的有序性，而不能被及时调整，**导致一些意想不到的后果。
 
 ----
+
+<br/>
+
+
+<br/>
+
 
 ## 双向 BFS
 
@@ -225,7 +270,8 @@
 
 ### 例题
 
-[177. 噩梦 - AcWing题库](https://www.acwing.com/problem/content/179/)
+[**177. 噩梦 - AcWing题库**](https://www.acwing.com/problem/content/179/)
+
 同时在男孩和女孩位置开始进行 bfs，每一轮 t，各自进行拓展，男孩拓展 3 轮，女孩拓展 1 轮。同时需要注意，鬼在每一轮开始是先移动的。控制拓展轮数代码如下：
 
 ```cpp
@@ -279,9 +325,9 @@ A* 是启发式搜索的一种。对于问题，能够设计启发式函数—�
 
 ### 例题
 
-[178. 第K短路 - AcWing题库](https://www.acwing.com/problem/content/180/)
+[**178. 第K短路 - AcWing题库**](https://www.acwing.com/problem/content/180/)
 
-**第 k 短路问题**——**对于一个节点，当该节点第 i 次从堆中被取出，就得到了从起点到该节点第 i 短路径的长度**。
+<span style="background:#fff88f">**第 k 短路问题**——**对于一个节点，当该节点第 i 次从堆中被取出，就得到了从起点到该节点第 i 短路径的长度**。</span>
 
 朴素做法最坏时间复杂度为 $O(k\times (m+n)log(m+n))$ 。由于给定了起点 s 和终点 t，在此情况下，可以考虑使用启发式搜索，使用 dijkstra 算法在反向图上求 t 到其他各个点的最短路，这样就可以得到每个节点到 t 的最短距离，其符合启发式函数的要求。
 
@@ -339,17 +385,22 @@ bool IDA_star(int depth,int limit)
 
 ### 例题
 
-[180. 排书 - AcWing题库](https://www.acwing.com/problem/content/182/)
+[**180. 排书 - AcWing题库**](https://www.acwing.com/problem/content/182/)
 
 在目标状态下，第 i 本书之后应该是第 i+1 本书，**可以统计序列的错误后继数 t，可以发现每次更改最多可以改变 3 个后继**，可以设置估计函数为 $f\left( s \right) =\lceil \frac{t}{3} \rceil$ 。使用 IDA\*求解。
 
 
-[181. 回转游戏 - AcWing题库](https://www.acwing.com/problem/content/183/)
+<br/>
+
+
+[**181. 回转游戏 - AcWing题库**](https://www.acwing.com/problem/content/183/)
 
 估值函数设计——中间 8 个各自出现次数最多数字出现次数为 k，则至少需要移动 8-k 次。
 
+<br/>
 
-[182. 破坏正方形 - AcWing题库](https://www.acwing.com/problem/content/184/)
+
+[**182. 破坏正方形 - AcWing题库**](https://www.acwing.com/problem/content/184/)
 
 首先可以枚举当前移除哪一根火柴棒，考虑使用 A\*，使用 BFS 式的搜索，需要维护当前移除了哪些火柴棒，每一层的分支较多，所需空间太大。所以考虑使用 DFS 式搜索——IDA\*，关键在于设计估值函数——不断从当前图像中，选出还没有被破坏的正方形，去掉他边界上所有火柴棒，但是只记作一次操作，这样得到的估值函数必然是乐观的。
 
