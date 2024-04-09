@@ -17,6 +17,12 @@
 以上几个问题是线性 DP 中最简单的一类，需要计算的对象表现出明显的维度以及有序性，每个状态的求解直接构成一个阶段。只需要在**每个维度上各取一个坐标值作为 DP 的状态**。
 
 
+**求解线性 DP 方法**
+
+- 先确定"阶段"，在阶段各个维度上各取一个坐标值作为 DP 状态，如果"阶段"不足以表示一个状态，则把所需要的附加状态作为状态的维度。
+- 在确定 DP 的状态时，要选用注销掉能够覆盖整个状态空间的"维度集合"。
+
+
 ### 例题
 
 [**271. 杨老师的照相排列 - AcWing题库**](https://www.acwing.com/problem/content/273/)
@@ -138,5 +144,258 @@ f\left[ i \right] \left[ j \right] =\underset{0\le k<i}{\min}\left\{ f\left[ k \
 $$
 
 本题还需要给出一个具体方案，使用一个额外的数组记录当前状态是从哪一个状态转移而来的。**对于目标状态进行回溯找到起点状态，从底往上计算答案**。
+
+---
+
+
+<br/>
+
+
+<br/>
+
+
+<br/>
+
+
+<br/>
+
+
+# 背包 DP
+
+背包 DP 是线性 DP 中一类重要而特殊的模型。
+
+## 0/1 背包
+
+**问题模型**——给定 $N$ 个物品，其中第 $i$ 个物品体积和价值分别为 $V_i$ 和 $W_i$ 。有一个容积为 $M$ 的背包，要求选择一些物品放入背包中，使得总体积不超过 $M$ 的前提下，物品价值总和最大。
+
+根据线性 DP 的性质，可以将问题的阶段——已经处理到物品数，作为 DP 的阶段，还需要把放入背包的总体积作为附加信息
+
+$$
+f\left[ i \right] \left[ j \right] =\max \left\{ \begin{array}{l}
+	f\left[ i-1 \right] \left[ j \right]\\
+	f\left[ i-1 \right] \left[ j-V_i \right] +W_i\\
+\end{array} \right. 
+$$
+
+
+从以上状态转移方程，可以看出，在进行状态转移方程时，每一阶段 $i$ 只和上一阶段 $i-1$ 的状态有关，可以使用**滚动数组**降低空间开销。
+
+```cpp
+const int MAX_N = 1000;  
+void bag_dp()  
+{  
+    int f[2][MAX_N];  
+    memset(f, 0xcf, sizeof f);  
+    f[0][0] = 0;  
+    for (int i = 1; i <= n; ++i)  
+    {  
+       for (int j = 0; j <= m; ++j)  
+          f[i & 1][j] = f[(i - 1) & 1][j];  
+       for (int j = 0; j <= m; ++j)  
+          f[i & 1][j] = max(f[i & 1][j], f[(i - 1) & 1][j - v[i]] + w[i]);  
+    }  
+}
+```
+
+经过观察，发现其实用一个一维数组已经足够了，但需要注意遍历到顺序——**倒序遍历**。
+
+```cpp
+const int MAX_N = 1000;  
+void bag_dp()  
+{  
+    int f[MAX_N];  
+    memset(f, 0xcf, sizeof f);  
+    f[0] = 0;  
+    for (int i = 1; i <= n; ++i)  
+    {  
+       for (int j = m; j >= 0; --j)  
+          f[j] = max(f[j], f[j - v[i]] + w[i]);  
+    }  
+}
+```
+
+
+### 例题
+
+
+[**278. 数字组合 - AcWing题库**](https://www.acwing.com/problem/content/280/)
+
+
+
+---
+
+
+<br/>
+
+
+<br/>
+
+
+## 完全背包
+
+**问题模型**——在 01 背包的基础上，**物品的数量为无穷**。
+
+和 01 背包DP 的状态设置一样，状态转移方程略有不同
+
+$$
+f\left[ i \right] \left[ j \right] =\max \left\{ \begin{array}{l}
+	f\left[ i-1 \right] \left[ j \right]\\
+	f\left[ i \right] \left[ j-V_i \right] +W_i\\
+\end{array} \right. 
+$$
+
+同样的，DP 数组可以被压缩为一维，根据状态转移方程，应该**正序遍历**。
+
+### 例题
+
+[**279. 自然数拆分 - AcWing题库**](https://www.acwing.com/problem/content/281/)
+
+典型的完全背包问题，1 到 N 这个 N 个数是 N 个物品，每个数字可以无限使用，背包容积是 N 。
+
+```cpp
+#define int long long  
+const int mod = 2147483648;  
+void solve()  
+{  
+    int n;  
+    cin >> n;  
+    int f[n + 1];  
+    memset(f, 0, sizeof f);  
+    f[0] = 1;  
+    for (int i = 1; i <= n; ++i)  
+    {  
+       for (int j = i; j <= n; ++j)  
+          f[j] = (f[j] + f[j - i]) % mod;  
+    }  
+    cout << (f[n] == 0 ? mod - 1 : f[n] - 1);  
+}
+```
+
+
+<br/>
+
+
+[**280. 陪审团 - AcWing题库**](https://www.acwing.com/problem/content/282/)
+
+该问题可以视为有多个"体积维度"的 0/1 背包问题。把 N 个候选人看作 N 个物品，每个物品有如下三种体积：
+- 人数：每个人体积为 1，最终要填满 M。
+- 辩方得分
+- 控方得分
+
+根据线性 DP 的一般方法，可以设计出来这样的 DP 状态—— $f(i,j,a,b)$ 表示处理完前 $i$ 个人，选出来 $j$ 个人，辩方和控方的总分分别为 $a$ 和 $b$ ，此时是否可行。递推结束之后，在 $f(n,m,-,-)==true$ 中选出 $|a-b|$ 最小且 $a+b$ 最大那个作为答案。
+
+以上算法的"价值"这一维度用一个 `bool` 类型表示状态是否可行，**并没有很好进行利用"价值"这一维度**。可以把辩方和控方得分之差 $a-b$ 作为体积，得分之和 $a+b$ 作为价值。初始化 `f[0][0][0]=0`，其余为负无穷，当价值不为负数时，说明状态可行。
+
+$$
+f\left[ j \right] \left[ k \right] =\max \left( f\left[ j \right] \left[ k \right] ,f\left[ j-1 \right] \left[ k-\left( a\left[ i \right] -b\left[ i \right] \right) \right] +a\left[ i \right] +b\left[ i \right] \right) 
+$$
+
+
+---
+
+
+<br/>
+
+
+<br/>
+
+
+## 多重背包
+
+**问题模型**——在 0/1 背包的基础上，第 $i$ 种 物品的数量有 $c_i$ 个 ， $c_i$ 可能大于 1， 但不是无穷。
+
+<br/>
+
+**直接拆分法**
+
+把第 $i$ 种物品看作是 $c_i$ 个独立的物品，转化为 0/1 背包问题，时间复杂度为 $M\times \sum_{i=1}^N{C_i}$ ，效率较低。
+
+
+<br/>
+
+
+**二进制拆分法**
+
+已知 从 $2^0,2^1,...,2^{k-1}$ 这 $k$ 个数中选出若干的数，可以表示出 $0$ 到 $2^k-1$ 之间任意整数。设 $2^0+2^1+...+2^p \le c_i$ ， $R=c_i-(2^0+2^1+...+2^p)$ ，则 $2^0,2^1,...,2^p,R$ 可以表示任意 $0$ 到 $c_i$ 的整数，**且不会超出 $c_i$** 。
+
+所以，可以把第 $i$ 件物品拆分为 $p+2$ 件物品。算法时间复杂度为 $M\times \sum_{i=1}^N{log_{C_i}}$ ，效率较高。
+
+
+<br/>
+
+
+**单调队列优化**
+
+单调队列优化 DP 求解多重背包问题，可以将时间复杂度进一步降低为 $M\times N$ 。
+
+
+### 例题
+
+[**281. 硬币 - AcWing题库**](https://www.acwing.com/problem/content/283/)
+
+本题仅仅关注**可行性**，价值维度可以加以利用， $f[i][j]$ 表示在前 $i$ 中硬币中，得到面值为 $j$ ，最少需要多少第 $i$ 种硬币数量。初始 `f[0][0]=0`，其余为正无穷。
+
+$$
+f\left[ i \right] \left[ j \right] =\left\{ \begin{array}{l}
+	0,\ f\left[ i-1 \right] \left[ j \right] \le c\left[ i-1 \right]\\
+	f\left[ i \right] \left[ j-a\left[ i \right] \right] +1\\
+\end{array} \right. 
+$$
+
+根据状态转移方程，可以进行状态压缩。时间复杂度为 $O(M\times N)$ 。本题卡常数，以上算法并不能通过 。
+
+更好的算法是，使用一个数组 $used[j]$ 表示要让 $f[j]$ 变为 $true$ 至少需要的第 $i$ 种 硬币数量。时间复杂度一样，但是常数更小。
+
+```cpp
+bool f[m + 1];  
+memset(f, 0, sizeof f);  
+int used[m + 1];  
+f[0] = true;  
+for (int i = 1; i <= n; ++i)  
+{  
+    for (int j = 0; j <= m; ++j)  
+       used[j] = 0;  
+    for (int j = a[i]; j <= m; ++j)  
+    {  
+       if (!f[j] && f[j - a[i]] && used[j - a[i]] < c[i])  
+       {  
+          f[j] = true;  
+          used[j] = used[j - a[i]] + 1;  
+       }  
+    }  
+}  
+int ans = 0;  
+for (int i = 1; i <= m; ++i)  
+    if (f[i]) ++ans;  
+cout << ans << '\n';
+```
+
+---
+
+
+<br/>
+
+
+<br/>
+
+
+## 分组背包
+
+**问题模型**——给定 $N$ 组物品，其中第 $i$ 组有 $C_i$ 个物品，第 $i$ 组的第 $j$ 个物品的体积和价值分别为 $V_{ij}$ 和 $W_{ij}$ ，每组最多可以选一个物品并且物品总体积不超过 $M$ 的情况下，求物品最大价值总和。
+
+
+$f(i,j)$ 表示在前 $i$ 组中，选出体积为 $j$ 的物品的最大价值总和
+
+$$
+f\left( i,j \right) =\max \left\{ \begin{array}{l}
+	f\left( i-1,j \right) ,\ \text{不选第}i\text{组物品}\\
+	\underset{1\le k\le C_i}{\max}f\left( i-1,j-V_{ik} \right) +W_{ik},\ \text{选}i\text{组第}k\text{个}\\
+\end{array} \right. 
+$$
+
+同样的阶段 $i$ 从阶段 $i-1$ 转移而来，所以可以省略数组的第一位，第二维使用倒序遍历。
+
+
+
 
 ---
