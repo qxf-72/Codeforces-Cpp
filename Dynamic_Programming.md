@@ -396,6 +396,109 @@ $$
 同样的阶段 $i$ 从阶段 $i-1$ 转移而来，所以可以省略数组的第一位，第二维使用倒序遍历。
 
 
+---
 
+
+<br/>
+
+
+<br/>
+
+
+<br/>
+
+
+<br/>
+
+
+# 区间 DP
+
+区间 DP 也属于线性 DP 的一种，以**区间长度**作为 DP 的阶段，使用两个坐标（区间端点）描述每个维度，**一个状态由若干个比它更小且包含于它的区间所代表的状态转移而来
+**。区间 DP 的初态一般由长度为 1 的**元区间**构成。
+
+区间 DP 先预处理元区间，然后从区间长度 $len$ 为 2 开始递推，每一步枚举长度为 $len$ 区间的起点，最后递推到 $len=n$ 结束。
+
+
+### 例题
+
+[**282. 石子合并 - AcWing题库**](https://www.acwing.com/problem/content/284/)
+
+任何对于石子可以使用一个区间 $[l,r]$ 表示，区间 $[l,r]$ 被合并成一堆之前，有区间 $[l,k]$ 和 $[k+1,r]$ 各自被合并成一堆，然后将这两堆合并成对于。
+
+$f(l,r)$ 表示将区间 $[l,r]$ 合并的代价，转移方程为：
+
+$$
+f\left( l,r \right) =\underset{l\le k<r}{\min}\left\{ f\left[ l,r \right] +f\left( k+1,r \right) \right\} +\sum_{i=l}^r{a_i}
+$$
+
+初始状态为 $f(i,i)=0$ ，根据区间长度从小往大递推，对于每个区间长度，枚举端点。
+
+```cpp
+for (int len = 2; len <= n; ++len)  
+{  
+    for (int l = 1; l + len - 1 <= n; ++l)  
+    {  
+       int r = l + len - 1;  
+       for (int k = l; k < r; ++k)  
+          f[l][r] = min(f[l][r], f[l][k] + f[k + 1][r]);  
+       f[l][r] += a[r] - a[l - 1];  
+    }  
+}
+```
+
+本题也可以使用记忆化搜索。
+
+
+<br/>
+
+
+[**283. 多边形 - AcWing题库**](https://www.acwing.com/problem/content/285/)
+
+在本题中，序列是一个环形结构，对于一个环形结构，第一步中先选一条边进行删除，断开之后就是链状结构，所以可以枚举每一个断开的位置。其实<span style="background:#fff88f">**解决环形结构更通用的办法时，复制形成 2 倍长的链**</span>。
+
+本题中，由于存在乘法运算符，一个很大的值可以是两个很小的负值相乘得到，需要考虑每个区间的极小值。
+
+
+<br/>
+
+[**284. 金字塔 - AcWing题库**](https://www.acwing.com/problem/content/286/)
+
+显然，在本题中应设 $f(l,r)$ 为 $s[l,r]$ 对应的树状结构数量，关键在于如何进行状态的转移，如果将一棵树分为两半，枚举划分点，这样会进行重复的计数。**为了不重不漏的计算，可以只考虑 $s[l,r]$ 的第一颗子树是由哪一段构成的**，如果第一颗子树不同，那么不可能产生同样的结构。
+
+可以使用记忆化搜索实现。
+
+```cpp
+using LL = long long;
+const int mod = 1'000'000'000;
+
+string s;
+LL f[310][310];
+
+LL func(int l, int r)
+{
+	if (f[l][r] != -1)
+		return f[l][r];
+	if (l > r || s[l] != s[r])
+		return f[l][r] = 0;
+	if (l == r)
+		return f[l][r] = 1;
+	f[l][r] = 0;
+	for (int k = l + 2; k <= r; ++k)
+	{
+		// func(l+1,r-1)是第1颗子树可能的形状数量
+		f[l][r] = (f[l][r] + func(l + 1, k - 1) * func(k, r)) % mod;
+	}
+	return f[l][r];
+}
+
+signed main()
+{
+	cin >> s;
+	memset(f, -1, sizeof f);
+	cout << func(0, s.size() - 1);
+	return 0;
+}
+
+```
 
 ---
