@@ -109,10 +109,19 @@ C++ 标准库中实现了前缀和函数 [`std::partial_sum`](https://zh.cppref
 - 只能用于**正数**
 - **乘除**对象为普通类型
 
+[**BigInt_mul.cpp**](/copypasta/Basic_Algorithm/BigInt_mul.cpp)
+- 只能用于**正数**
+- 乘法
+	- 大数类 乘 大数类
+	- 大数类 乘  int
+- 大数的比较
+- 大数加法
+- 大数减法
+
 
 [**BigInt.cpp**](/copypasta/Basic_Algorithm/BigIntZip.cpp)
 - 实现**压位**，计算效率更高。
-- 乘法
+- 乘法——大数类 乘以 int
 - 输出
 
 

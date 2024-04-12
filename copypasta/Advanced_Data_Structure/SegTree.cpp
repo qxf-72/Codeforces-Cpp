@@ -1,80 +1,96 @@
-template <typename T>
-class SegmentTree
-{
-private:
-    int n = 1;
-    vector<T> tree;
-    vector<T> *arr;
+#include <algorithm>
+#include <iostream>
+#include <vector>
+using namespace std;
 
-    void build(int k)
+class SegTree {
+    int n;
+    vector<long long> data, lazy;
+    vector<int>* arr;
+
+    void build(int k, int a, int b)
     {
-        if (k >= n - 1)
-        {
-            if (k - n + 1 < arr->size())
-                tree[k] = (*arr)[k - n + 1];
-            else
-            {
-                // do something
-                // 由不会影响结果的值填充到空白节点
-            }
+        if (a == b) {
+            data[k] = (*arr)[a];
             return;
         }
-        build(2 * k + 1);
-        build(2 * k + 2);
-        // do something
-        // 由tree[2*k+1]和tree[2*k+2]的值得到tree[k]
+        int mid = (a + b) / 2;
+        build(2 * k + 1, a, mid);
+        build(2 * k + 2, mid + 1, b);
+        // 从下往上合并信息
+        data[k] = data[2 * k + 1] + data[2 * k + 2];
     }
-
-    T query(int a, int b, int k, int l, int r)
+    void spread(int k, int a, int b)
     {
-        if (r <= a || b <= l)
-        {
-            // return something
-            // 返回一个不会影响结果的值
+        if (lazy[k] != 0) {
+            int mid = (a + b) / 2;
+            data[2 * k + 1] += lazy[k] * (mid - a + 1);
+            data[2 * k + 2] += lazy[k] * (b - mid);
+            lazy[2 * k + 1] += lazy[k];
+            lazy[2 * k + 2] += lazy[k];
+            lazy[k] = 0;
         }
-        if (a <= l && b >= r)
-            return tree[k];
-        T v_l = query(a, b, k * 2 + 1, l, (l + r) / 2);
-        T v_r = query(a, b, k * 2 + 2, (l + r) / 2, r);
-        // return something
-        // 返回的值由左右两边得到
+    }
+    void update(int k, int a, int b, int l, int r, int e)
+    {
+        if (a >= l && b <= r) {
+            data[k] += (long long)e * (b - a + 1);
+            lazy[k] += e;
+            return;
+        }
+        // 往下更新之前必须先向下传递延迟标记
+        spread(k, a, b);
+        int mid = (a + b) / 2;
+        if (l <= mid)
+            update(2 * k + 1, a, mid, l, r, e);
+        if (r > mid)
+            update(2 * k + 2, mid + 1, b, l, r, e);
+        // // 返回一个不影响合并的数
+        data[k] = data[2 * k + 1] + data[2 * k + 2];
+    }
+    long long query(int k, int a, int b, int l, int r)
+    {
+        if (a >= l && b <= r)
+            return data[k];
+        spread(k, a, b);
+        int mid = (a + b) / 2;
+        long long ret = 0;
+        if (l <= mid)
+            ret += query(2 * k + 1, a, mid, l, r);
+        if (r > mid)
+            ret += query(2 * k + 2, mid + 1, b, l, r);
+        // 从下往上合并信息
+        return ret;
     }
 
 public:
-    SegmentTree<T>() = default;
-
-    explicit SegmentTree<T>(vector<T> *arr) : arr(arr)
+    explicit SegTree(vector<int>* a)
+        : arr(a)
     {
-        while (n < arr->size())
-            n *= 2;
-        tree.resize(2 * n - 1);
-        build(0);
+        n = (*a).size();
+        data.assign(4 * n, 0);
+        lazy.assign(4 * n, 0);
+        build(0, 0, n - 1);
     }
 
-    void update(int k, T a)
+    void update(int l, int r, int e)
     {
-        k += n - 1;
-        tree[k] = a;
-        while (k > 0)
-        {
-            k = (k - 1) / 2;
-            // do something
-            // 由tree[2*k+1]和tree[2*k+2]的值得到tree[k]
-        }
+        update(0, 0, n - 1, l, r, e);
     }
-
-    T query(int a, int b)
+    long long query(int l, int r)
     {
-        return query(a, b, 0, 0, n);
-    }
-
-    SegmentTree<T> &operator=(const SegmentTree<T> &segmentTree)
-    {
-        if (this == &segmentTree)
-            return *this;
-        n = segmentTree.n;
-        arr = segmentTree.arr;
-        tree = std::move(segmentTree.tree);
-        return *this;
+        return query(0, 0, n - 1, l, r);
     }
 };
+
+int main()
+{
+    int n;
+    cin >> n;
+    vector<int> a(n);
+    for (int i = 0; i < n; ++i)
+        cin >> a[i];
+    SegTree segTree = SegTree(&a);
+
+    return 0;
+}

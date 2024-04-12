@@ -1,51 +1,34 @@
-#include<bits/stdc++.h>
+#include <algorithm>
+#include <vector>
+#include <iostream>
+#include <numeric>
 using namespace std;
 
-// T一般设置为int，并查集较大时可以设置更大的类型
-template <typename T>
-class DSU
+struct DSU
 {
-private:
-    T n;
-    vector<T> pa, height, size; // 父节点  树的高度  集合大小
+	vector<size_t> fa, size;
 
-public:
-    explicit DSU(T n) : n(n), pa(n), height(n), size(n, 1)
-    {
-        iota(pa.begin(), pa.end(), 0);
-    }
-    // 查询父节点
-    T find(T x)
-    {
-        if (pa[x] == x)
-            return x;
-        return pa[x] = find(pa[x]);
-    }
-    // 当前所在集合的大小
-    T getUnionSize(int x)
-    {
-        x = find(x);
-        return size[x];
-    }
-    // 合并操作
-    void unite(T x, T y)
-    {
-        x = find(x);
-        y = find(y);
-        if (x == y)
-            return;
-        // 合并时，利用树的高度，或者集合的大小，进行启发式合并
-        if (height[x] < height[y])
-        {
-            pa[x] = y;
-            size[y] += size[x];
-        }
-        else
-        {
-            if (height[x] == height[y])
-                ++height[x];
-            pa[y] = x;
-            size[x] += size[y];
-        }
-    }
+	explicit DSU(size_t size_) : fa(size_), size(size_, 1)
+	{
+		iota(fa.begin(), fa.end(), 0);
+	}
+	size_t find(size_t x)
+	{
+		if (x == fa[x])
+			return x;
+		return fa[x] = find(fa[x]);
+	}
+	void unite(size_t x, size_t y)
+	{
+		x = find(x), y = find(y);
+		if (x == y) return;
+		if (size[x] < size[y]) swap(x, y);
+		fa[y] = x;
+		size[x] += size[y];
+	}
 };
+
+int main()
+{
+	return 0;
+}
