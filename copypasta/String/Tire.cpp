@@ -1,83 +1,91 @@
-class Trie
-{
-	struct TireNode
-	{
-		TireNode() : is_word(false)
-		{
-		}
-		bool is_word;
-		int cnt = 0;
-		TireNode* children[26]{};
-	
-		~TireNode(){
-			// 如果Node中有其他动态分配的内存，需要在此释放
-			for(int i=0;i<26;++i)
-				delete children[i];
-		}
-	};
-	const TireNode* find(const string& prefix)
-	{
-		const TireNode* p = root_.get();
-		for (const char c : prefix)
-		{
-			p = p->children[c - 'a'];
-			if (p == nullptr) break;
-		}
-		return p;
-	}
-	TrieNode * root;
+/**
+ * @brief 前缀树模板
+ *
+ */
+class Trie {
+    struct TrieNode {
+        int cnt = 0; // 有多少个字符串以该字符结尾
+        TrieNode *children[26]{};
+        ~TrieNode() {
+            for (int i = 0; i < 26; ++i)
+                delete children[i];
+        }
+    };
+    const TrieNode *find(const string &prefix) {
+        const TrieNode *p = root;
+        for (const char c : prefix) {
+            p = p->children[c - 'a'];
+            if (p == nullptr) break;
+        }
+        return p;
+    }
+    TrieNode *root;
 
- public:
-	Trie() : root_(new TireNode())
-	{
-	}
-	~Tire(){
-		delete root;
-	}
+public:
+    Trie() :
+        root(new TrieNode()) {
+    }
+    ~Trie() {
+        delete root;
+    }
 
-	// 插入字符串
-	void insert(const string& word)
-	{
-		TireNode* p = root_.get();
-		for (const char c : word)
-		{
-			if (p->children[c - 'a'] == nullptr)
-				p->children[c - 'a'] = new TireNode();
-			p = p->children[c - 'a'];
-		}
-		p->is_word = true;
-		++p->cnt;
-	}
+    /**
+     * @brief 插入字符串
+     *
+     * @param word
+     */
+    void insert(const string &word) {
+        TrieNode *p = root;
+        for (const char c : word) {
+            if (p->children[c - 'a'] == nullptr)
+                p->children[c - 'a'] = new TrieNode();
+            p = p->children[c - 'a'];
+        }
+        ++p->cnt;
+    }
 
-	// 集合中是否有word
-	bool search(const string& word)
-	{
-		const TireNode* p = find(word);
-		if (p != nullptr && p->is_word)
-			return true;
-		return false;
-	}
+    /**
+     * @brief 判断集合中是否存在word
+     *
+     * @param word
+     * @return true
+     * @return false
+     */
+    bool search(const string &word) {
+        const TrieNode *p = find(word);
+        if (p != nullptr && p->cnt)
+            return true;
+        return false;
+    }
 
-	// prefix 是否为 集合中某个字符串 的前缀
-	bool startsWith(const string& prefix)
-	{
-		const TireNode* p = find(prefix);
-		if (p != nullptr)
-			return true;
-		return false;
-	}
+    /**
+     * @brief 判断 prefix 是否为 集合中某个字符串 的前缀
+     *
+     * @param prefix
+     * @return true
+     * @return false
+     */
+    bool startsWith(const string &prefix) {
+        const TrieNode *p = find(prefix);
+        if (p != nullptr)
+            return true;
+        return false;
+    }
 
-	// 集合中有多少个字符串 是 str的前缀
-	int prefixCounter(const string& str)
-	{
-		int counter = 0;
-		const TireNode* p = root_.get();
-		for (const char c : str)
-		{
-			p = p->children[c - 'a'];
-			if (p == nullptr) break;
-			counter += p->cnt;
-		}
-		return counter;
-	}
+    /**
+     * @brief 统计 集合中有多少个字符串 是 str的前缀
+     *
+     * @param str
+     * @return int
+     */
+    int prefixCounter(const string &str) {
+        int counter = 0;
+        const TrieNode *p = root;
+        for (const char c : str) {
+            p = p->children[c - 'a'];
+            if (p == nullptr) break;
+            counter += p->cnt;
+        }
+        return counter;
+    }
 };
