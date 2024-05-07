@@ -50,10 +50,16 @@ class MinStack
 
 ### 相关题目
 
-[41. 包含min函数的栈 - AcWing题库](https://www.acwing.com/problem/content/90/)
+[**41. 包含min函数的栈 - AcWing题库**](https://www.acwing.com/problem/content/90/)
 
 
 ---
+
+<br/>
+
+
+<br/>
+
 
 
 ## 出栈序列问题
@@ -73,10 +79,17 @@ $$
 
 ### 相关题目
 
-[130. 火车进出栈问题 - AcWing题库](https://www.acwing.com/problem/content/132/)
+[**130. 火车进出栈问题 - AcWing题库**](https://www.acwing.com/problem/content/132/)
+
 结合**压位高精度**求解和质因数分解求卡塔兰数。
 
 ---
+
+<br/>
+
+
+<br/>
+
 
 ## 表达式计算
 
@@ -92,10 +105,17 @@ $$
 **中缀表达式转后缀表达式**
 - 遇到一个数，直接输出
 - 遇到左括号，入栈
-- 遇到右括号，不断取栈顶出栈，知道遇到左括号
-- 遇到运算符，只要栈顶运算符优先级**大于等于**新运算符（左括号优先级最低，其余按运算优先级排列），不断取栈顶出栈（优先级高的先出栈计算），然后新运算符入栈
+- 遇到右括号，不断取栈顶出栈，直到遇到左括号
+- 遇到运算符，只要栈顶运算符优先级**大于等于**新运算符（在具体实现时，可以将左括号优先级最低），不断取栈顶出栈，最后新运算符入栈（**优先级高的先出栈计算**）。
+- 最后将栈中剩余运算符一一弹出。
 
 ---
+
+<br/>
+
+
+<br/>
+
 
 ## 单调栈
 
@@ -112,19 +132,20 @@ $$
 ### 模板代码
 
 [**Monotonic_Stack.cpp**](/copypasta/Basic_Data_Structure/Monotonic_Stack.cpp)
+
 模板的代码以下一个更小的元素为例，可以求出该元素前后 第一个更小元素的下标。此时可以得到**以该元素为最小值的最大区间边界**。将数组中的元素取反，此时求的就是下一个更大元素。
 
 通常与贡献法结合，此外还可以求柱状图的最大矩形面积。
 
 ### 相关题目
 
-[131. 直方图中最大的矩形 - AcWing题库](https://www.acwing.com/problem/content/133/)
-使用贡献法求解，对于每个元素，求出上一个和下一个 更小元素的 index，得出该元素的作用范围，更新答案。
+[**131. 直方图中最大的矩形 - AcWing题库**](https://www.acwing.com/problem/content/133/)
+
+贡献法思想求解，对于每个元素，求出上一个和下一个 更小元素的 index，得出该元素的对答案的贡献的范围，更新答案。
 
 
 ---
 
-
 <br/>
 
 
@@ -135,7 +156,6 @@ $$
 
 
 <br/>
-
 
 
 # 队列
@@ -145,11 +165,11 @@ $$
 
 ## 单调队列
 
-给出一个长度为 n 的数组，输出每 k 个连续的数中的最大值、最小值。
+> 给出一个长度为 n 的数组，输出每 k 个连续的数中的最大值、最小值。
 
-以求最大值为例，单调队列维护信息的本质是，一个元素入队时将队内比他小的元素踢出（被踢出元素必然不是当前维护区间的最大值）。
+以求最大值为例，**单调队列维护信息的本质是，一个元素入队时将队内比他小的元素踢出**（被踢出元素必然不是当前维护区间的最大值）。
 
-算法步骤：
+**算法步骤**
 - 如果当前元素的值 > 队尾元素， **队尾出队**，直到队尾 > 当前元素。然后将当前元素入队。
 - 判断队头元素是否超出范围，如果超出就**队头出队**。
 - 此时队头就是答案。
@@ -159,7 +179,7 @@ $$
 
 ### 相关题目
 
-[135. 最大子序和 - AcWing题库](https://www.acwing.com/problem/content/137/)
+[**135. 最大子序和 - AcWing题库**](https://www.acwing.com/problem/content/137/)
 
 ---
 
@@ -182,19 +202,31 @@ $$
 
 链表和二叉树主要是在工作面试中考察。下面讨论 C++STL 中链表的使用，和一些相关算法。
 
-## list 和 forward_list
+## `list` 和 `forward_list`
 
-list 是双向链表。forward_list 为单链表，forward_list 不提供 size 操作，效率接近手写的链表，此外，forward_list 的插入操作与其他容器很不一样，是在指定位置之后插入。
+`list `是双向链表。`forward_list` 为单链表，`forward_list` 不提供 `size` 操作，效率接近手写的链表，此外，`forward_list `的插入操作与其他容器很不一样，是在指定位置之后插入。
 
 ---
 
+<br/>
+
+
+<br/>
+
+
 ## Floyd 判圈算法
 
-> **Floyd判圈算法**(Floyd Cycle Detection Algorithm)，又称**龟兔赛跑算法**(Tortoise and Hare Algorithm)，是一个可以在有限状态机、迭代函数或者链表上判断是否存在环，求出该环的起点与长度的算法。该算法据高德纳称由美国科学家罗伯特-弗洛伊德发明。
+### Floyd 判圈算法
+
+又称**龟兔赛跑算法**(Tortoise and Hare Algorithm)，是一个可以在有限状态机、迭代函数或者链表上判断是否存在环，求出该环的起点与长度的算法。该算法据高德纳称由美国科学家罗伯特-弗洛伊德发明。
 
 该算法可以在不使用常量空间的情况下，使用线性的时间来判断链表是否存在环。主要依赖快慢指针。fast 指针一次走两步，slow 指针一次走一步，如果存在环，两者必定会相遇。
 
-如何**求环的起点**呢？假设慢指针走了 x 步，则快指针走了 2 x 步，设非环部分长度为 a，环长度为 b，可得：
+<br/>
+
+### 求环的起点
+
+假设慢指针走了 x 步，则快指针走了 2 x 步，设非环部分长度为 a，环长度为 b，可得：
 
 $$
 2x-x=kb,即 \ \ x=kb
@@ -204,9 +236,9 @@ $$
 
 ### 相关题目 
 
-[141. 环形链表](https://leetcode.cn/problems/linked-list-cycle/)
+[**141. 环形链表**](https://leetcode.cn/problems/linked-list-cycle/)
 
-[142. 环形链表 II](https://leetcode.cn/problems/linked-list-cycle-ii/)
+[**142. 环形链表 II**](https://leetcode.cn/problems/linked-list-cycle-ii/)
 
 ---
 
@@ -263,7 +295,7 @@ int main() {
 
 ### 例题
 
-[137. 雪花雪花雪花 - AcWing题库](https://www.acwing.com/problem/content/139/)
+[**137. 雪花雪花雪花 - AcWing题库**](https://www.acwing.com/problem/content/139/)
 
 ---
 
@@ -290,14 +322,26 @@ C++STL 中实现了堆的数据结构—— `priority_queue< >`，默认为大�
 
 ### 相关题目
 
-[145. 超市 - AcWing题库](https://www.acwing.com/problem/content/147/) 
+[**145. 超市 - AcWing题库**](https://www.acwing.com/problem/content/147/) 
+
 对于每个时间 t，应该在保证不卖出过期商品的同时，尽量卖出前 t 大的商品。把商品按照过期时间排序，从头扫描每个商品，查看在该日期前最大能买多少利润，使用小根堆进行维护。同时也可以按利润降序排序，优先选择利润高的商品，然后剔除一个在过期日期之前的时间，可以使用并查集优化。
 
-[146. 序列 - AcWing题库](https://www.acwing.com/problem/content/148/)
+<br/>
+
+
+[**146. 序列 - AcWing题库**](https://www.acwing.com/problem/content/148/)
+
 将问题进行分解，首先研究前两个序列，得到一个长度为 n 的序列，接下来再进行合并。
 
-[147. 数据备份 - AcWing题库](https://www.acwing.com/problem/content/149/)
-两个配对的办公楼是相邻的，讲问题换化为从一个序列中，选出不超过 k 个数，且不能相邻，是他们的和最小。关键点在于—— ** 要么选 $D_i$ ，要么同时选中 $D_{i-1}$ 和 $D_{i+1}$  ** ，究竟是选中间还是两边，可以先尝试选中中间，将两边剔除，然后 加入新节点 $D_{i-1}+D_{i+1}-D_i$ 。在实现算法时，难点在于如何维护节点的关系，可以使用**下标模拟链表** 。
+
+<br/>
+
+
+[**147. 数据备份 - AcWing题库**](https://www.acwing.com/problem/content/149/)
+
+两个配对的办公楼是相邻的，将问题换化为从一个序列中，选出不超过 k 个数，且不能相邻，是他们的和最小。
+
+关键点在于—— ** 要么选 $D_i$ ，要么同时选中 $D_{i-1}$ 和 $D_{i+1}$  ** ，究竟是选中间还是两边，可以先尝试选中中间，将两边剔除，然后 加入新节点 $D_{i-1}+D_{i+1}-D_i$ 。在实现算法时，难点在于如何维护节点的关系，可以使用**下标模拟链表** 。
 ```cpp
 vector<LL> a;
 struct cmp
@@ -369,6 +413,12 @@ void solve()
 
 ---
 
+<br/>
+
+
+<br/>
+
+
 ## Huffman 树
 
 引入问题：给定一颗包含了 n 个叶子节点的 **k 叉树**，其中第 i 个叶子节点带有权值 $w_i$ ，要求最小化 $\sum{w_i\times l_i}$ ，问题的解称为 **k 叉 Huffman 树**。
@@ -383,9 +433,12 @@ void solve()
 
 ### 相关题目
 
-[148. 合并果子 - AcWing题库](https://www.acwing.com/problem/content/150/)
+[**148. 合并果子 - AcWing题库**](https://www.acwing.com/problem/content/150/)
 
-[149. 荷马史诗 - AcWing题库](https://www.acwing.com/problem/content/151/)
+<br/>
+
+[**149. 荷马史诗 - AcWing题库**](https://www.acwing.com/problem/content/151/)
+
 k 叉霍夫曼树，由于要求树的深度最小化，所以**优先合并深度小的节点**。
 
 ---

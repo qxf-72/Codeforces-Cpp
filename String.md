@@ -1,6 +1,6 @@
 # KMP
 
-**字符串模式匹配问题**——判定 A 是否为 B 的字串，并求出 A 在 B 各次出现的位置。
+**字符串模式匹配问题**——判定 **A（模式串）** 是否为 **B（主串）** 的子串，并求出 A 在 B 各次出现的位置。
 
 使用字符串 hash 也可以在线性时间内求解。使用 KMP 算法求解更高效，并且可以提供一些额外的信息。KMP 关键在于减少模式串的回退步数，需要维护一个 **next 数组**—— `next[i]` 表示  **以 A[i]结尾的非前缀子串  与  A 的前缀能够匹配的最大长度**。
 
@@ -32,7 +32,9 @@ for(int i=1,j=0;i<=m;++i){
 
 ### 相关题目
 
-[141. 周期 - AcWing题库](https://www.acwing.com/problem/content/143/) KMP 算法 next 数组的应用——**最小循环元**
+[**141. 周期 - AcWing题库**](https://www.acwing.com/problem/content/143/) 
+
+KMP 算法 next 数组的应用——**最小循环元**
 
 ---
 
@@ -72,9 +74,12 @@ for(int i=1,j=0;i<=m;++i){
 
 ### 相关题目
 
-[138. 兔子与兔子 - AcWing题库](https://www.acwing.com/problem/content/140/)
+[**138. 兔子与兔子 - AcWing题库**](https://www.acwing.com/problem/content/140/)
 
-[139. 回文子串的最大长度 - AcWing题库](https://www.acwing.com/problem/content/141/)
+
+<br/>
+
+[**139. 回文子串的最大长度 - AcWing题库**](https://www.acwing.com/problem/content/141/)
 
 ---
 
@@ -103,7 +108,9 @@ Tire 的本质，就是利用字符串之间的公共前缀，将重复的前缀
 
 Tire 类是典型的前缀树，实现的功能：判断字符串集合中是否存在一个字符串，prefix 是否是字符串集中某个字符串的前缀，统计字符串集合中有多少个字符串是 str 的前缀。
 
-[**Tire.cpp**](/copypasta/String/TireXor.cpp)
+<br/>
+
+[**TireXor.cpp**](/copypasta/String/TireXor.cpp)
 
 **前缀树拓展应用**，将 32 位整数集合存入树中，用于**求解最大异或对问题**。
 
@@ -111,11 +118,21 @@ Tire 类是典型的前缀树，实现的功能：判断字符串集合中是否
 ### 例题
 
 
-[142. 前缀统计 - AcWing题库](https://www.acwing.com/problem/content/description/144/)
+[**142. 前缀统计 - AcWing题库**](https://www.acwing.com/problem/content/description/144/)
 
-[143. 最大异或对 - AcWing题库](https://www.acwing.com/problem/content/145/) Tire 的拓展应用。
+<br/>
 
-[144. 最长异或值路径 - AcWing题库](https://www.acwing.com/problem/content/146/) 可以转化为**最大异或对**问题求解。
+
+[**143. 最大异或对 - AcWing题库**](https://www.acwing.com/problem/content/145/) 
+
+Tire 的拓展应用。
+
+<br/>
+
+
+[**144. 最长异或值路径 - AcWing题库**](https://www.acwing.com/problem/content/146/) 
+
+可以转化为**最大异或对**问题求解。
 
 ---
 

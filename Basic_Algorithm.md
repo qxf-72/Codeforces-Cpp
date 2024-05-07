@@ -8,37 +8,64 @@
 ```cpp
 int lowbit(int x)
 {
-	return x&-x;
+	return x & -x;
 }
 ```
 
-> GCC 编译器提供了一些位运算的**内建函数**，这些函数并非 C 或 C++语言标准，需**谨慎使用**。下面的内建函数中以 ll 结尾的表示处理 unsigned long long ，否则表示处理 int ：
-> 
-> - `__builtin_ctz ( ),__buitlin_ctzll ( )`：二进制表示形式中末尾 0 的个数。
-> - `__builtin_clz( ),__builtin_clzll( )`：二进制表示形式中前导 0 的个数。
-> - `__builtin_popcount( ),__builtin_popcountlll( )`：二进制表示形式中 1 的个数。
+ 编译器提供了一些位运算的**内建函数**，这些函数并非 C 或 C++语言标准，需**谨慎使用**。下面的内建函数中以 ll 结尾的表示处理 unsigned long long ，否则表示处理 int ：
+
+- `__builtin_ctz ( ),__buitlin_ctzll ( )`：二进制表示形式中末尾 0 的个数。
+- `__builtin_clz( ),__builtin_clzll( )`：二进制表示形式中前导 0 的个数。
+- `__builtin_popcount( ),__builtin_popcountlll( )`：二进制表示形式中 1 的个数。
 
 ---
+
+<br/>
+
+
+<br/>
+
 
 ## 快速幂运算
 在常数时间内，计算出来 $base^{p}$ ，通常用于需要取余的场景。
 
 需要注意**将基数 base 和返回值 ret 的类型设置为 long long** ，避免在乘法运算过程中溢出造成结果错误。
+
 ```cpp
-int fast_power(long long base, long long power)  
-{  
-    long long ret = 1;  
-    for (; power; power >>= 1)  
-    {  
-       if (power & 1)  
-          ret = (ret * base) % mod;  
-       base = (base * base) % mod;  
-    }  
-    return ret;  
+long long fast_pow(long long a, long long b,long long mod) {
+    long long ret = 1;
+    for (; b; b >>= 1) {
+        if (b & 1)
+            ret = (ret * a) % mod;
+        a = (a * a) % mod;
+    }
+    return ret;
 }
 ```
 
+上一个模板适合于 mod 在 int 范围内的情况，**当 mod 超出 int 时，即使使用 long long，也可能发生溢出的情况**，在进行乘法时需要逐项相乘取模。
 
+```cpp
+long long qmul(long long a, long long b, long long c) {
+    long long res = 0;
+    while (b) {
+        if (b & 1) res = (res + a) % c;
+        a = (a + a) % c;
+        b >>= 1;
+    }
+    return res;
+}
+
+long long qpow(long long a, long long b, long long p) {
+    long long ret = 1;
+    for (; b; b >>= 1) {
+        if (b & 1)
+            ret = qmul(ret, a, p);
+        a = qmul(a, a, p);
+    }
+    return ret;
+}
+```
 
 ---
 
@@ -66,12 +93,23 @@ C++ 标准库中实现了前缀和函数 [`std::partial_sum`](https://zh.cppref
 
 
 **一维前缀和**
+
 一般设置一个开头，便于处理边界问题，下标从 1 开始。
 
+<br/>
+
+
 **二维前缀和**
+
 多维前缀和的普通求解方法几乎都是基于容斥原理。
 
 ---
+
+<br/>
+
+
+<br/>
+
 
 ## 差分
 
@@ -81,7 +119,8 @@ C++ 标准库中实现了前缀和函数 [`std::partial_sum`](https://zh.cppref
 
 ### 相关题目
 
-[100. 增减序列 - AcWing题库](https://www.acwing.com/problem/content/102/)
+[**100. 增减序列 - AcWing题库**](https://www.acwing.com/problem/content/102/)
+
 
 ---
 
@@ -101,13 +140,16 @@ C++ 标准库中实现了前缀和函数 [`std::partial_sum`](https://zh.cppref
 
 # 高精度运算
 
-由于 C++没有大数类，所以需要自己手写实现大数类。
+由于 C++没有大数类，所以需要自己手写实现大数类。（XCPC 类比赛并不涉及大数类，同样以取模的形式出题）
 
 ### 模板代码
 
 [**BigInt.cpp**](/copypasta/Basic_Algorithm/BigInt.cpp)
 - 只能用于**正数**
 - **乘除**对象为普通类型
+
+<br/>
+
 
 [**BigInt_mul.cpp**](/copypasta/Basic_Algorithm/BigInt_mul.cpp)
 - 只能用于**正数**
@@ -117,6 +159,9 @@ C++ 标准库中实现了前缀和函数 [`std::partial_sum`](https://zh.cppref
 - 大数的比较
 - 大数加法
 - 大数减法
+
+<br/>
+
 
 
 [**BigInt.cpp**](/copypasta/Basic_Algorithm/BigIntZip.cpp)
@@ -175,21 +220,32 @@ C++ 标准库中实现了前缀和函数 [`std::partial_sum`](https://zh.cppref
 
 ### 相关题目
 
-[103. 电影 - AcWing题库](https://www.acwing.com/problem/content/105/) ——本题使用哈希表也可以。
+[**103. 电影 - AcWing题库**](https://www.acwing.com/problem/content/105/)
+
+本题使用哈希表也可以。
 
 ---
+
+
+<br/>
+
+
+<br/>
+
 
 ## 中位数
 
 求中位数需要用到排序，或排序引申出的算法——快速选择。
 
-**中位数贪心**
+### 中位数贪心
 
 对一个序列 $a_0,a_1,a_{n-1}$ ，求 $sum(|a_i-a_k|)$ 的最小值。 $a_k$ 为序列的中位数，可以得到答案。
 
 经典的**仓库选址**问题。
 
-**动态中位数**
+<br/>
+
+### 动态中位数
 
 使用两个对顶堆，分别维护左半边和右半边，当两个堆数量不平均时，进行调整。
 
@@ -217,16 +273,33 @@ for (int i = 1; i <= m; ++i)
 ```
 
 
-
 ### 相关题目
 
-[104. 货仓选址 - AcWing题库](https://www.acwing.com/problem/content/106/) ——中位数性质
+[**104. 货仓选址 - AcWing题库**](https://www.acwing.com/problem/content/106/) 
 
-[105. 七夕祭 - AcWing题库](https://www.acwing.com/problem/content/107/) ——**均分纸牌**、**环形纸牌**、中位数性质
+中位数性质
 
-[106. 动态中位数 - AcWing题库](https://www.acwing.com/problem/content/108/) ——动态中位数
+<br/>
+
+
+[**105. 七夕祭 - AcWing题库**](https://www.acwing.com/problem/content/107/) 
+
+**均分纸牌**、**环形纸牌**、中位数性质
+
+<br/>
+
+
+[**106. 动态中位数 - AcWing题库**](https://www.acwing.com/problem/content/108/) 
+
+动态中位数
 
 ---
+
+<br/>
+
+
+<br/>
+
 
 ## 快速选择
 
@@ -274,14 +347,22 @@ int quick_select(vector<int>& a, int left, int right, int k)
 
 ### 相关题目
 
-[LCR 076. 数组中的第 K 个最大元素 - 力扣（LeetCode）](https://leetcode.cn/problems/xx4gT2/description/) ——快速选择
+[**LCR 076. 数组中的第 K 个最大元素 - 力扣（LeetCode）**](https://leetcode.cn/problems/xx4gT2/description/) 
+
+快速选择
 
 ---
 
 
+<br/>
+
+
+<br/>
+
+
 ## 逆序对
 
-在一个序列中，如果 i<j , a[i]>a[j] ，那么 a[i],a[j] 构成序列中一个逆序对。
+在一个序列中，如果 $i<j$, $a[i]>a[j]$ ，那么 $a[i],a[j]$ 构成序列中一个逆序对。
 
 可以使用归并排序的方式求逆序对。另外逆序对数等于冒泡排序的总交换次数。
 
@@ -318,9 +399,15 @@ ll merge_sort(vector<int>& a, int l, int r)
 
 ### 相关题目
 
-[107. 超快速排序 - AcWing题库](https://www.acwing.com/problem/content/109/) ——逆序对
+[**107. 超快速排序 - AcWing题库**](https://www.acwing.com/problem/content/109/) 
 
-[108. 奇数码问题 - AcWing题库](https://www.acwing.com/problem/content/110/) ——利用逆序对求解**奇数码问题**
+逆序对
+
+<br/>
+
+[**108. 奇数码问题 - AcWing题库**](https://www.acwing.com/problem/content/110/) 
+
+利用逆序对求解**奇数码问题**
 
 ---
 
@@ -355,11 +442,19 @@ ll merge_sort(vector<int>& a, int l, int r)
 
 ### 相关题目
 
-[109. 天才ACM - AcWing题库](https://www.acwing.com/problem/content/111/) ——倍增、归并优化
+[**109. 天才ACM - AcWing题库**](https://www.acwing.com/problem/content/111/) 
+
+倍增、归并优化
 
 ---
 
-## ST 算法
+<br/>
+
+
+<br/>
+
+
+## ST 表
 
 ST 表（Sparse Table）稀疏表，是基于倍增思想，在 RMQ 问题的产物。给定一个长度为 N 的序列，ST 算法在经过 **N * logN 时间的预处理**之后，以 **O (1) 复杂度在线查询**某个区间的信息，比如区间最大值。
 
@@ -372,6 +467,7 @@ ST 表能维护的区间信息必须是**可重复贡献**的信息，并且 ST 
 ### 模板代码
 
 [**SparseTable. cpp**](/copypasta/Basic_Algorithm/SparseTable.cpp)
+
 该模板使用了 template，根据数据类型设置 T，同时根据题目设置操作类型 op，op 为 `function<T(const T&,const T&)>` 类型。
 
 ---
@@ -400,17 +496,31 @@ ST 表能维护的区间信息必须是**可重复贡献**的信息，并且 ST 
 
 ### 相关题目
 
-[1055. 股票买卖 II - AcWing题库](https://www.acwing.com/problem/content/1057/)
+[**1055. 股票买卖 II - AcWing题库**](https://www.acwing.com/problem/content/1057/)
 
-[110. 防晒 - AcWing题库](https://www.acwing.com/problem/content/112/)
 
-[111. 畜栏预定 - AcWing题库](https://www.acwing.com/problem/content/113/)
+<br/>
 
-[112. 雷达设备 - AcWing题库](https://www.acwing.com/problem/content/114/) 
+[**110. 防晒 - AcWing题库**](https://www.acwing.com/problem/content/112/)
+
+<br/>
+
+
+[**111. 畜栏预定 - AcWing题库**](https://www.acwing.com/problem/content/113/)
+
+<br/>
+
+
+[**112. 雷达设备 - AcWing题库**](https://www.acwing.com/problem/content/114/) 
+
 和一维的情况有区别，不能线性的扫描 (对于左端点，要求 y 从大到小排列，但是已经确定雷达位置，来跳过雷达的覆盖范围时，要求 y 从小到大排列。)
 对于每一个小岛，确定一段雷达能够放置的区间，对于所有区间，有重叠部分，可以合并，问题转化为——将重叠的区间合并之后，有多少个独立的区间。
 
-[114. 国王游戏 - AcWing题库](https://www.acwing.com/problem/content/116/)
+<br/>
+
+
+[**114. 国王游戏 - AcWing题库**](https://www.acwing.com/problem/content/116/)
+
 本题使用**微扰法**解决。对于两个相邻的大臣 $i$ 和 $i+1$ ，他们获得奖励：
 
 $$
@@ -438,7 +548,11 @@ $$
 所以可以按照 ab 乘积从小到大排序，得到最优顺序。另外，需要实现**高精度**。
 
 
-[115. 给树染色 - AcWing题库](https://www.acwing.com/problem/content/117/)
-困难题，[题解链接]((https://www.acwing.com/solution/content/1065/))
+<br/>
+
+
+[**115. 给树染色 - AcWing题库**](https://www.acwing.com/problem/content/117/)
+
+困难题，[题解链接](https://www.acwing.com/solution/content/1065/)
 
 ---
