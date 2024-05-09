@@ -508,6 +508,36 @@ void euler(int n)
 
 # 同余
 
+## 同余基本性质
+
+**性质一**
+
+$$
+\text{如果}a\equiv b\left( mod\ m \right) \ ,\ \text{并且}x\equiv y\left( mod\ m \right) \ ,\text{则}a+x\equiv b+y\left( mod\ m \right) 
+$$
+
+**性质二**
+
+$$
+\text{如果}a\equiv b\left( mod\ m \right) \ ,\ \text{并且}x\equiv y\left( mod\ m \right) \ ,\text{则}a\times x\equiv b\times y\left( mod\ m \right) 
+$$
+
+**性质三**
+
+$$
+\text{如果}a\times c\equiv b\times c\left( mod\ m \right) \ ,\ \text{并且}c,m\text{互质\ ,则}a\equiv b\left( mod\ m \right) 
+$$
+
+
+---
+
+
+<br/>
+
+
+<br/>
+
+
 ## 欧拉定理
 
 ### 剩余系
@@ -515,6 +545,7 @@ void euler(int n)
 - **完全剩余系**：模 m 的 m 个同余类构成完全剩余系。
 - **简化剩余系**：1 到 m 中与 m 互质的 $\varphi (N)$ 个数代表的同余类构成简化剩余系。**简化剩余系关于模 m 乘法封闭**。设 n 的简化剩余系为 $\left\{ a_1, a_2,..., a_{\varphi \left ( n \right)} \right\}$ ，则，**当 $a_i \ne a_j$ 并且 $a$ 与 $p$ 互质 时， $aa_i$ 和 $aa_j$ 代表不同的同余类**。
 
+----
 
 <br/>
 
@@ -522,6 +553,7 @@ void euler(int n)
 
 **$p$ 为质数**，对于任意整数 $a$，有 $a^{p-1}\equiv 1(mod \ p)$ 。
 
+---
 
 <br/>
 
@@ -529,6 +561,7 @@ void euler(int n)
 
 **$a$ 与 $n$ 互质**，则 $a^{\varphi (n)} \equiv 1\ (mod\ n)$ 。可以看出，费马小定理是欧拉定理的特殊情况。
 
+---
 
 <br/>
 
@@ -543,7 +576,7 @@ a^b\equiv \left\{ \begin{array}{l}
 \end{array} \right. 
 $$
 
-特别的，如果 $a$ 和 $n$ 互质，则 $a^b\equiv \ a^{b\ mod\ \varphi \left ( n \right)}\ \left ( mod\ n \right)$ 。
+<span style="background:#fff88f">特别的，如果 $a$ 和 $n$ 互质，则 $a^b\equiv \ a^{b\ mod\ \varphi \left ( n \right)}\ \left ( mod\ n \right)$ 。</span>
 
 当需要求解 $a^b$ 取模的结果时，并且 $b$ 非常大（字符串表示的大整数），可以**使用拓展欧拉定理降幂**，再使用快速幂。
 
@@ -566,6 +599,12 @@ int depow(string &b, int phi) {
 
 
 ```
+
+---
+
+<br/>
+
+
 
 ### 例题
 
@@ -607,12 +646,15 @@ $$
 
 假设 $a\times x+b \times y=s$ ，当 $gcd(a,b)$ 不能整除 $s$ 时，方程无整数解。
 
+---
 
 <br/>
 
 ### 裴蜀定理推广
 
 一定存在一组整数 $x_1,x_2,...,x_n$ ，满足 $\sum_{i=1}^n{a_i\times x_i}=s$ ，其中 $gcd\left ( a_1, a_2,..., a_n \right)|s$ 。 
+
+---
 
 
 <br/>
@@ -666,7 +708,7 @@ $$
 
 $k$ 取值不同，对应不同的解，除以 $gcd$ 保证解一定是整数。
 
-
+---
 
 <br/>
 
@@ -687,6 +729,8 @@ $$
 \frac{a}{b}\equiv a\times x\left( mod\ m \right) \ ,\ x\text{为}b\text{模}m\text{乘法逆元}
 $$
 
+
+---
 
 <br/>
 
@@ -747,6 +791,7 @@ $$
 
 乘法逆元是 $b$ 等于 1 的特殊情况，也可以使用拓展欧几里得算法求解。
 
+---
 
 <br/>
 
@@ -762,17 +807,17 @@ $$
 \end{array} \right. 
 $$
 
-其中模数 $m_1,m_2,...,m_n$ **两两互质**。求 $x$ 最小非负整数解。
+其中模数 $m_1,m_2,...,m_n$ **两两互质**。求 $x$ **最小非负整数解**。
 
 中国剩余定理 CRT 求解步骤如下
 - 计算所有模数的积 $M$
 - 计算第 $i$ 个方程的 $c_i=\frac{M}{m_i}$
 - 计算 $c_i$ 模 $m_i$ 的乘法逆元 $c_i^{-1}$
 
-$x=\sum{c_i\times c_i^{-1}\times r_i}$ 。
+$x=\sum{c_i\times c_i^{-1}\times r_i}(mod\ M)$ 。
 
 ```cpp
-int exgcd(long long a, long long b, long long &x, long long &y) {
+long long exgcd(long long a, long long b, long long &x, long long &y) {
     if (b == 0) {
         x = 1, y = 0;
         return a;
@@ -800,12 +845,14 @@ long long CRT(vector<long long> &m, vector<long long> &r) {
 ```
 
 
+---
+
 <br/>
 
 
 ### 拓展中国剩余定理
 
-当线性同余方程组中的模 $m_i$ 不能保证两两互质时，不能使用 CRT 算法求解。
+当线性同余方程组中的模 $m_i$ **不能**保证两两互质时，不能使用 CRT 算法求解。
 
 使用数学归纳法求解，首先考虑前两个方程
 
@@ -825,8 +872,66 @@ $$
 pm_1+qm_2=r_2-r_1
 $$
 
-由裴蜀定理，当且仅当 $gcd(m_1,m_2)|r_2-r_1$ 时有解。在有解的情况下，
+由裴蜀定理，当且仅当 $gcd(m_1,m_2)|r_2-r_1$ 时有解。在有解的情况下，通过拓展欧几里得算法求出 $p$ ，得到特解 $p=p\times \frac{r_2-r_1}{gcd\left( m_1,m_2 \right)}$
 
+可以构造出通解
+
+$$
+P=p+\frac{m_2}{gcd\left( m_1,m_2 \right)}\times k
+$$
+
+将通解代入不定方程：
+
+$$
+x=m_1\times P+r_1=m_1p+\frac{m_1m_2}{gcd\left( m_1,m_2 \right)}\times k+r_1
+$$
+$$
+x\equiv m_1p+r_1\ \left( mod\ lcm\left( m_1,m_2 \right) \right) 
+$$
+
+
+```cpp
+using int64 = long long;
+using int128 = __int128_t;
+
+int128 exgcd(int128 a, int128 b, int128 &x, int128 &y) {
+    if (b == 0) {
+        x = 1, y = 0;
+        return a;
+    }
+    int128 x1, y1, d;
+    d = exgcd(b, a % b, x1, y1);
+    x = y1, y = x1 - a / b * y1;
+    return d;
+}
+
+void solve() {
+    int64 n;
+    cin >> n;
+    vector<int64> m(n), r(n);
+    for (int i = 0; i < n; ++i)
+        cin >> m[i] >> r[i];
+
+    int128 m1, m2, r1, r2, p, q;
+    m1 = m[0], r1 = r[0];
+    for (int i = 1; i < n; ++i) {
+        m2 = m[i], r2 = r[i];
+
+        int128 d = exgcd(m1, m2, p, q);
+        if ((r2 - r1) % d) {
+            cout << "-1\n";
+            return;
+        }
+
+        p = p * (r2 - r1) / d;                  // 一个特解
+        p = (p % (m2 / d) + m2 / d) % (m2 / d); // 根据通解公式，获得一个最小非负的特解
+
+        r1 = m1 * p + r1;
+        m1 = m1 / d * m2;
+    }
+    cout << (int64)((r1 % m1 + m1) % m1);
+}
+```
 
 ---
 
@@ -866,7 +971,19 @@ long long qmul(long long a, long long b, long long c) {
 或者使用 **GCC 和 Clang 编译器**提供的 `__int128_t` 类型。
 
 
+<br/>
 
+[**P4777 【模板】扩展中国剩余定理（EXCRT） - 洛谷**](https://www.luogu.com.cn/problem/P4777)
+
+拓展中国剩余定理模板题，由于题目中数据可以达到 $10^{12}$ ，所以需要使用 `__int128_t` 类型。
+
+
+
+<br/>
+
+[**204. 表达整数的奇怪方式 - AcWing题库**](https://www.acwing.com/problem/content/206/)
+
+题目不保证有解，需要判断无解情况。
 
 ---
 
@@ -879,5 +996,410 @@ long long qmul(long long a, long long b, long long c) {
 
 ## 高次同余方程
 
+对于高次同余方程，我们主要讨论 $a^x\equiv b(mod \ p)$ 这种类型。
+
+### BSGS 算法
+
+对于高次同余方程 $a^x\equiv b(mod \ p)$ ，**当 $a,p$ 互质时**，使用 Baby Step Gaint Step 算法求解 $x$ 。
+
+由拓展欧拉算法，得 $a^x\equiv a^{x\  mod \  \varphi (p)}\equiv b(mod\ p)$
+
+所以 ** $x$ 的取值范围肯定在 $0$ 到 $p-1$ 之间**，如果直接枚举，时间复杂度为 $O(p)$ ，可以对取值的区间进行分块，令每一块的长度 $m=\ \lceil \sqrt{p} \rceil$ ，则有
+
+$$
+x=i\times m-j
+$$
+
+则 $(a^m)^i\equiv b\times a^j(mod \ m)$ （从这一步看出 $a,p$ 必然是互质的，否则无法从这一步倒退会前一步。 ）
+
+显然有，$i\in \left[ 1, m \right] ,\ j\in \left[ 0, m-1 \right]$
+
+- 枚举 $j$ ，算出对应的 $b\times a^j (mod \ m)$ ，存入哈希表中
+- 枚举 $i$ ，算出 $(a^m)^i(mod \ m)$ ，在哈希表查找，如果找到，算法结束
+
+```cpp
+using LL = long long;
+
+LL bsgs(LL a, LL b, LL p) {
+    // 要求a,p互质
+    a %= p, b %= p; // 不影响结果
+    // 特判
+    if (b == 1)
+        return 0;
+    LL m = ceil(sqrt(p)); // 分块
+    unordered_map<LL, LL> hash;
+    LL t = b;
+    hash[t] = 0;
+    for (int j = 1; j < m; ++j) {
+        t = t * a % p;
+        hash[t] = j;
+    }
+    LL mi = 1;
+    for (int i = 1; i <= m; ++i)
+        mi = mi * a % p;
+    t = 1;
+    for (int i = 1; i <= m; ++i) {
+        t = t * mi % p;
+        if (hash.find(t) != hash.end())
+            return i * m - hash[t]; // 找到解
+    }
+    return -1; // 无解
+}
+```
+
 
 ---
+
+
+<br/>
+
+
+### 拓展 BSGS 算法
+
+在 BSGS 算法中，要求 $a,p$ 是互质的
+
+当 $a,p$ 不互质时，无法求解，需要设法将方程进行变换得到 $a,p$ 互质的形式。
+
+原方程等价于 $a\times a^{x-1}+p\times y=b$
+
+设 $d_1=gcd(a,p)$ ，如果 $d_1$ 不能整除 $b$ ，则无解。
+
+方程两边同时除以 $d_1$ ，得
+
+$$
+\frac{a}{d_1}a^{x-1}\equiv \frac{b}{d_1}\left( mod\ \frac{p}{d_1} \right) 
+$$
+
+如果 $a$ 和 $\frac{p}{d_1}$ 不互质，需要重复上面的步骤，直到重复 $k$ 次之后，有 $a\bot \frac{p}{d_1...d_k}$ ，令 $D=d_1...d_k$ ，有
+
+$$
+\frac{a^k}{D}a^{x-k}\equiv \frac{b}{D}\left( mod\ \frac{p}{D} \right) 
+$$
+
+可以使用 BSGS 算法求解。
+
+```cpp
+using LL  = long long;
+LL exbsgs(LL a, LL b, LL p) {
+    a %= p, b %= p;
+    if (b == 1 || p == 1)
+        return 0;
+
+    LL d, k = 0, A = 1;
+    for (;;) {
+        d = std::gcd(a, p);
+        if (d == 1)
+            break; // 互质，可以使用bsgs
+        if (b % d)
+            return -1; // 无解
+        ++k, b /= d, p /= d;
+        A = A * (a / d) % p;
+        if (A == b)
+            return k;
+    }
+    LL m = std::ceil(sqrt(p));
+    LL t = b;
+    unordered_map<LL, LL> hash;
+    hash[b] = 0;
+    for (int j = 1; j < m; ++j) {
+        t = t * a % p;
+        hash[t] = j;
+    }
+    LL mi = 1;
+    for (int i = 1; i <= m; ++i)
+        mi = mi * a % p;
+    t = A; // 需要多一个系数
+    for (int i = 1; i <= m; ++i) {
+        t = t * mi % p;
+        if (hash.find(t) != hash.end())
+            return i * m - hash[t] + k;
+    }
+    return -1;
+}
+```
+
+
+----
+
+<br/>
+
+
+
+
+### 例题
+
+
+[**P3846 [TJOI2007] 可爱的质数/【模板】BSGS - 洛谷**]( https://www.luogu.com.cn/problem/P3846 )
+
+BSGS 模板题
+
+<br/>
+
+[**P4195 【模板】扩展 BSGS/exBSGS - 洛谷**](https://www.luogu.com.cn/problem/P4195)
+
+exBSGS 模板题
+
+---
+
+
+<br/>
+
+
+<br/>
+
+
+<br/>
+
+
+<br/>
+
+
+# 矩阵快速幂
+
+矩阵的快速幂运算，跟整数的快速幂运算类似，模板代码如下：
+
+```cpp
+const int N = 100;
+const int mod = 10000;
+
+struct matrix {
+    int data[N + 1][N + 1]{};
+    matrix operator*(const matrix &b) const {
+        matrix c;
+        for (int i = 1; i <= N; ++i)
+            for (int j = 1; j <= N; ++j)
+                for (int k = 1; k <= N; ++k)
+                    c.data[i][j] = (c.data[i][j] + data[i][k] * b.data[k][j] % mod) % mod;
+        return c;
+    }
+};
+
+matrix matrix_qpow(matrix a, long long b) {
+    matrix res;
+    for (int i = 1; i <= N; ++i)
+        res.data[i][i] = 1;
+    for (; b; b >>= 1) {
+        if (b & 1)
+            res = res * a;
+        a = a * a;
+    }
+    return res;
+}
+```
+
+矩阵快速幂可以用于**加快状态的递推**。当一类问题具有以下特点时，可以考虑使用矩阵快速幂优化：
+
+- 可以抽象出一个长度为 $n$ 的向量
+- 变化的形式是线性递推（若干个加法或乘以一个系数）
+- 递推式本身保持不变
+- 向量递推的轮数很大，但是向量长度 $n$ 不大
+
+时间复杂度为 $O(n^3\times log \ T)$ 其中 $n^3$ 为一次矩阵乘法的时间代价。
+
+
+
+### 例题
+
+[**205. 斐波那契 - AcWing题库**](https://www.acwing.com/problem/content/207/)
+
+由于斐波那契数列的每一项都是由前两项递推而来，可以写出递推关系，
+
+$$
+\left[ \begin{matrix}
+	F_n&		F_{n-1}\\
+\end{matrix} \right] =\left[ \begin{matrix}
+	F_{n-1}&		F_{n-2}\\
+\end{matrix} \right] \left[ \begin{matrix}
+	1&		1\\
+	1&		0\\
+\end{matrix} \right] 
+$$
+
+所以有，
+
+$$
+\left[ \begin{matrix}
+	F_n&		F_{n-1}\\
+\end{matrix} \right] =\left[ \begin{matrix}
+	F_1&		F_0\\
+\end{matrix} \right] \left[ \begin{matrix}
+	1&		1\\
+	1&		0\\
+\end{matrix} \right] ^{n-1}
+$$
+
+而$\left[ \begin{matrix}
+	1&		1\\
+	1&		0\\
+\end{matrix} \right] ^{n-1}$可以使用矩阵的快速幂运算加速计算。
+
+
+<br/>
+
+
+[**206. 石头游戏 - AcWing题库**](https://www.acwing.com/problem/content/description/208/)
+
+**在使用矩阵计算加速递推时，需要将初始状态设置为一个一维的向量 $F_0$ 。**
+
+在本题中，可以将二维数组一维化，一维向量中每个数字代表一个格子的石头数量，初始全为 0。
+
+接下来考虑状态转移矩阵，在本题中，转移矩阵会随着指令序列变化，但是**执行序列存在周期性变化**，由于指令序列长度最长为 6，1 到 6 的最小公倍数为 60，则有 $A_i=A_{k\times 60+i}$ ，设
+
+$$
+A=\prod_{i=1}^{60}{A_i}
+$$
+
+将 $A$ 一整块看作是一个转移矩阵，进行快速幂。设 $t=p\times 60 +r$ ，则 $Ft=F_0\times A^p\times \prod_{i=1}^r{A_i}$ 。
+
+对于状态转移矩阵的设置也很有技巧，对于第 $k$ 个转移矩阵：
+- $A_k[0][0]=1$
+- 如果在格子 $(i,j)$ 放上 $x$ 个石头，则 $A_k[0][num(i,j)]=x$ ， $num$ 是下标转换函数，另外本来格子的石头数量不变， $A_k[num(i,j)][num(i,j)]=1$
+- 如果将格子 $(a,b)$ 的石头移动到 $(c,d)$ ，则 $A_k[num(a,b)][num(c,d)]=1$ 
+
+---
+
+
+<br/>
+
+
+<br/>
+
+
+<br/>
+
+
+<br/>
+
+
+# 高斯消元与线性空间
+
+## 高斯消元法
+
+高斯消元法是一种求解**线性方程组**的方法，另外可以其思想求解**异或方程组**。
+
+求解方法为，先写出方程组对应的增广矩阵（系数矩阵+等号右边的常数）。对于增广矩阵，可以通过初等行变换进行求解。**高斯-约旦消元法**先将系数矩阵消成主对角矩阵，然后除以主元得到解，步骤如下：
+- 枚举主元（即， $a[i][i]$ ），如果主元为零，则向下找到一个 $a[k][i],k\ge i$ 非零的行，与当前行交换。
+	- 接下来实行对角化，从 $1$ 到 $n$ 行（除了当前行本身），通过行变换使当前主元对应的列全为零（除了单前行本身）
+- 最后对应行常数除以主元得到解。
+
+以上为有唯一解的情况。在不是唯一解的情况下，还需要判断是否无解还是有无穷多解。
+
+```cpp
+const double eps = 1e-8;
+
+/**
+ * @brief 高斯-约旦消元法
+ *
+ * @return int 自由元个数, -1表示无解
+ */
+int Gauess_Jordan(vector<vector<double>> &a, int n) {
+    int row = 1, col = 1;
+    for (; row <= n && col <= n; ++col) {
+        int r = row;
+        for (int k = row; k <= n; ++k)
+            if (fabs(a[k][col]) > eps) {
+                r = k;
+                break;
+            }
+        if (r != row)
+            swap(a[row], a[r]);
+        if (fabs(a[row][col]) < eps) {
+            continue;
+        }
+
+        // 消去其余行col列的系数
+        for (int k = 1; k <= n; ++k) {
+            if (k == row)
+                continue;
+            double t = a[k][col] / a[row][col];
+            for (int j = 1; j <= n + 1; ++j)
+                a[k][j] -= t * a[row][j];
+        }
+        ++row;
+    }
+    // 无解 或者 无穷多解
+    if (row <= n) {
+        for (int i = row; i <= n; ++i)
+            if (fabs(a[i][n + 1]) > eps)
+                return -1;
+        return n - row + 1; // 自由元的个数
+    }
+    for (int i = 1; i <= n; ++i)
+        a[i][n + 1] /= a[i][i];
+    return 0;
+}
+```
+
+
+### 例题
+
+[**P3389 【模板】高斯消元法 - 洛谷**](https://www.luogu.com.cn/problem/P3389)
+
+高斯消元法模板题，需要四舍五入保留两位小数，输出时应使用 
+```cpp
+cout << fixed << setprecision(2) << round(a[i][n + 1] * 100) / 100 << '\n';
+```
+
+当输入类型为 `long double` 使用 `roundl` 函数。
+
+
+<br/>
+
+[**207. 球形空间产生器 - AcWing题库**](https://www.acwing.com/problem/content/209/)
+
+球面上所有点到球心的距离相等，所以需要求出一个点满足
+
+$$
+\sum_{j=1}^n{\left( a_{i,j}-x_j \right) ^2=C}
+$$
+
+可以列出 $n+1$ 个 $n$ 元二次方程，并非线性方程，但是可以相邻两个方程作差消去平方项，得到线性方程组，然后使用高斯消元求解。
+
+本题中需要注意，由于输出保留三位小数，当答案是一个很小的负数时，可能会出现 `-0.000` 的情况，为了规避这样的情况可以，进行以下处理：
+
+```cpp
+double a = -0.0001;
+cout<< (long long)(a*1000)/1000.0;
+```
+
+
+<br/>
+
+
+[**208. 开关问题 - AcWing题库**](https://www.acwing.com/problem/content/210/)
+
+一个开关受到多个开关（当然包括自己本身）影响时，将这个开关集合称为 $S$ ， 只要其中一个发生变化，该开关的状态就会发生变化，当一个开关的初始和结束状态一样时， $S$ 中一定有偶数个开关被按下。
+
+所以可以列出**异或方程组**， $a_{i,j}=1$ 表示第 $i$ 个开关会受到第 $j$ 个开关的影响， $x_i=1$ 表示第 $i$ 个开关被按动。
+
+$$
+\left\{ \begin{array}{l}
+	a_{1,1}x_1\,\,xor\,\,a_{1,2}x_2\,\,xor\,\,...\,\,a_{1,n}x_n\,\,=\,\,src_1\,\,xor\,\,dst_1\\
+	...\\
+	a_{n,1}x_1\,\,xor\,\,a_{n,2}x_2\,\,xor\,\,...\,\,a_{n,n}x_n\,\,=\,\,src_n\,\,xor\,\,dst_n\\
+\end{array} \right. 
+$$
+
+本题求的是方案数量，可以统计出自由元的数量 $cnt$ ，每个 $x$ 的取值只有 $0,1$ ，所以总方案数为 $2^{cnt}$ 。
+
+
+---
+
+
+<br/>
+
+
+<br/>
+
+
+## 线性空间
+
+线性空间是关于下面运算封闭的向量集合：
+- 向量加法
+- 标量乘法
+
+
+
+---
+
+
