@@ -25,6 +25,9 @@ bool is_prime(int n)
 <br/>
 
 
+<br/>
+
+
 ## 质数筛
 
 ### 埃氏筛
@@ -92,6 +95,9 @@ void get_prime(int n)
 **任何一个合数 n，必然包含一个不超过 $\sqrt N$ 的质因数**。区间筛法——先筛出所有位于 $[2,\sqrt R]$ 中的质数，然后利用这些质数标记区间 $[L,R]$ 中的合数。时间复杂度为 $O(\sqrt R log(log \sqrt R) + (R-L)log(log (R-L)))$ 。
  
 ---
+
+
+<br/>
 
 
 <br/>
@@ -271,7 +277,13 @@ void solve()
 }
 ```
 
+
+从本题可以得出结论—— **<span style="background:#fff88f">$\forall i\in \left[ x,\lfloor \frac{a}{\lfloor \frac{a}{x} \rfloor} \rfloor \right]$ ，都有 $\lfloor \frac{a}{i} \rfloor$ 等于同一个值</span>**。
+
 ---
+
+<br/>
+
 
 <br/>
 
@@ -375,6 +387,10 @@ $x$ 是 $d$ 的余数，所以 $x$ 的质因子一定是 $d$ 的质因子，对�
 
 
 <br/>
+
+
+<br/>
+
 
 ## 欧拉函数
 
@@ -538,6 +554,10 @@ $$
 <br/>
 
 
+<br/>
+
+
+
 ## 欧拉定理
 
 ### 剩余系
@@ -630,6 +650,9 @@ $$
 
 
 ---
+
+
+<br/>
 
 
 <br/>
@@ -767,6 +790,11 @@ $$
 
 
 <br/>
+
+
+<br/>
+
+
 
 
 ## 线性同余方程
@@ -992,6 +1020,11 @@ long long qmul(long long a, long long b, long long c) {
 
 
 <br/>
+
+
+<br/>
+
+
 
 
 ## 高次同余方程
@@ -1271,7 +1304,7 @@ $$
 <br/>
 
 
-# 高斯消元与线性空间
+# 高斯消元、线性空间
 
 ## 高斯消元法
 
@@ -1392,14 +1425,408 @@ $$
 <br/>
 
 
+<br/>
+
+
+
 ## 线性空间
 
 线性空间是关于下面运算封闭的向量集合：
 - 向量加法
 - 标量乘法
 
+一个向量能被若干个向量通过向量加法和标量乘法得到，则称向量可以被这若干个向量**表出**。能被这若干个向量标出的所有向量构成一个线性空间，这若干个向量就是该线性空间的**生成子集**。
+
+在若个向量中，如果其中一个向量能被其他向量表出，则这些向量**线性相关**。线性无关的子集称为线性空间的**基**，基底包含向量个数称为**维数**。
+
+对于一个 $n$ 行 $m$ 列的矩阵，可以看作 $n$ 个行向量，这 $n$ 个向量构成的线性空间的维数称为矩阵的**行秩**，矩阵的行秩等于列秩。
+
+把矩阵进行高斯消元（行变换的运算本质上就是向量加法和标量乘法，不改变线性空间），**简化阶梯矩阵所有非零行向量线性无关**。
+
+
+
+<br/>
+
+
+线性空间可以推广得到<span style="background:#fff88f">**异或空间**</span>：
+- 关于异或运算封闭
+
+
+将一个数字看作是一个向量，每一个二进制为为分量。同样可以推导出生成子集、线性无关等概念。
+
+可以通过高斯消元得到异或空间的基底：
+
+```cpp
+for (int i = 1; i <= n; ++i) {
+    for (int j = i + 1; j <= n; ++j)
+        if (a[j] > a[i])
+            swap(a[i], a[j]);
+
+    if (a[i] == 0) {
+        break;
+    }
+    for (int k = 63; k >= 0; --k) {
+        if (a[i] >> k & 1) {
+            for (int j = 1; j <= n; ++j) {
+                if (i != j && (a[j] >> k & 1))
+                    a[j] ^= a[i];
+            }
+            break; // 只消去当前列
+        }
+    }
+}
+```
+
+
+假设一个异或空间有 $t$ 个基底，分别是 $b_0 > b_1 > ..> b_{t-1}$ ，其对应的最高位 $c_0 > c_1> ... > c_{t-1}$ 。该异或空间中的所有数字都是选出若干个基底得到的，所以， **<span style="background:#fff88f">$t$ 维异或空间，一共有    $2^t$ 个整数</span>**。
+
+<span style="background:#fff88f">该异或空间中所有数字，按从小到大排序，**第 $i$ 个数字（从 $0$ 开始），对应的二进制数和 $b_0 > b_1 > ..> b_{t-1}$ ，有一一对应的关系**</span>。例如求第 $1$ 小的数字，二进制拆分为 $...0001$ ，只有第 $0$ 位为 1，所以选出 $b_0$ 进行异或操作。
+
+
+<br/>
+
+
+### 例题
+
+
+[**209. 装备购买 - AcWing题库**](https://www.acwing.com/problem/content/211/)
+
+题目意思等价于求一个线性空间的基底，同时有最小花费大要求，随意在进行高斯消元时，有多个行可供选择时，优先权费用最小的。
+
+<br/>
+
+
+[**210. 异或运算 - AcWing题库**](https://www.acwing.com/problem/content/212/)
+
+求解异或空间第 $k$ 小的数字，先进行高斯消去得到基底，然后对 $k$ 进行二进制拆分得到答案。
+
+本题不同之处在于，是选不同的数字进行异或，在异或空间中，可以选择两个 0 进行异或，所以如果高斯消元之后没有全为 0 的行，那么最小不可能得到 0 。另外需要注意的是，**异或空间中第 $i$ 数字是从 $0$ 开始编号的。**
 
 
 ---
 
 
+<br/>
+
+
+<br/>
+
+
+<br/>
+
+
+<br/>
+
+
+# 组合计数
+
+## 组合数性质
+
+**排列数**： $A_n^m=\frac{n!}{\left( n-m \right) !}$
+
+**组合数**： $C_n^m=\frac{n!}{m!\times \left( n-m \right) !}$
+
+**性质**
+- $C_n^m=C_{n-1}^m+C_{n-1}^{m-1}$ ，递推可以得出
+- $C_n^0+C_n^1+C_n^2+...+C_n^n=2^n$ ， $n$ 选出任意个得到的排列数，对于每个数有选与不选两种可能
+- **二项式定理**： $\left( a+b \right) ^n=\sum_{k=0}^n{C_n^ka^kb^{n-k}}$
+
+---
+
+
+<br/>
+
+
+<br/>
+
+
+<br/>
+
+
+
+## 求组合数
+
+### 递推法
+
+根据 $C_n^m=C_{n-1}^m+C_{n-1}^{m-1}$ 进行递推，时间复杂度为 $O(n^2)$
+
+---
+
+<br/>
+
+
+### 乘法逆元法
+
+如果求的是**组合数 $C_n^m$ 对 $p$ 取模的结果**，并且 <span style="background:#fff88f">**$1$ 到 $m$ 都与 $p$ 互质**</span>，即可以求乘法逆元（一般 $p$ 都是一个质数，只要保证分母不是 $p$ 的倍数即可 ）。可以求出分子、分母对 $p$ 取模的结果，再分子乘以分母的乘法逆元。
+
+当需要频繁求组合数时，可以预处理出 $k,0\le k\le n$ 的阶乘及其逆元。预处理时间复杂度为 $O(n\times log P)$
+
+```cpp
+using LL = long long;
+const int N = 10000;
+
+LL f[N], inv[N];
+
+LL qpow(LL a, LL b, LL mod) {
+    LL res = 1;
+    for (; b; b >>= 1) {
+        if (b & 1)
+            res = res * a % mod;
+        a = a * a % mod;
+    }
+    return res;
+}
+
+void init(LL mod) {
+    f[0] = inv[0] = 1;
+    for (LL i = 1; i < N; ++i) {
+        f[i] = f[i - 1] * i % mod;
+        inv[i] = inv[i - 1] * qpow(i, mod - 2, mod) % mod;
+    }
+}
+
+LL C(LL n, LL m, LL mod) {
+    return f[n] * inv[m] % mod * inv[n - m] % mod;
+}
+```
+
+---
+
+<br/>
+
+
+### 卢卡斯定理
+
+<span style="background:#fff88f">**如果 $p$ 是质数**</span>，则对于任意整数 $1\le m\le n$ ，有
+
+$$
+C_n^m\equiv C_{n\ mod\ p}^{m\ mod\ p}\times C_{n\ /\ p}^{m\ /\ p}\left( mod\ p \right) 
+$$
+
+卢卡斯定理用于处理**大组合数取模问题**——当 $n$ 取值非常大时，而 $p$ 的取值相对较小。
+
+在代码实现时， $n \ mod \ p$ 一定是小于 $p$ 的，可以直接计算组合数， $\frac{n}{p}$ 的数量级可能还是很大，可以进行递归处理。
+
+<span style="background:#fff88f">**在代码实现时，因为进行了取模处理，所以在计算组合数的函数中，可能会出现 $m > n$ 的情况，需要特殊处理**。</span>
+
+```cpp
+LL C(LL n, LL m, LL p) {
+    if (m > n)  //很重要的条件判断
+        return 0;
+    return f(n, p) * inv(m, p) % p * inv(n - m, p);
+}
+
+LL lucas(LL n, LL m, LL mod) {
+    if (m == 1)
+        return 1;
+    return lucas(n / mod, m / mod, mod) * C(n % mod, m % mod, mod) % mod;
+}
+```
+
+**当 $n,p$ 都非常大时，可以考虑对 $p$ 进行质因数分解**，计算组合数对每个因数分别取模的结果，然后使用中国剩余定理计算出答案，如例题古代朱文。
+
+---
+
+
+<br/>
+
+
+### 例题
+
+[**211. 计算系数 - AcWing题库**](https://www.acwing.com/problem/content/213/)
+
+二项式定理求组合数即可，由于 $n$ 小于 $p$ ，所以可用逆元转化为乘法运算。
+
+<br/>
+
+
+
+[**P3807 【模板】卢卡斯定理/Lucas 定理 - 洛谷**](https://www.luogu.com.cn/problem/P3807)
+
+本题咋一看可以直接使用乘法逆元求组合数，但是从本题的数据范围来看， $n$ 可能是 $p$ 的倍数，即不满足 $n,p$ 互质的条件，无法求乘法逆元。
+
+使用卢卡斯定理，由于进行了取模运算，取模之后 $n$ 必定小于 $p$ ，可以使用乘法逆元代替除法。
+
+
+<br/>
+
+
+[**212. 计数交换 - AcWing题库**](https://www.acwing.com/problem/content/description/214/)
+
+本题是一道相当困难的推理题，需要从本题中学习几个结论：
+- <span style="background:#fff88f">**把一个长度为 $n$ 的环变成 $n$ 个自环，最少需要 $n-1$ 次交换操作**</span>。可以是使用归纳法证明。
+- <span style="background:#fff88f">**$F_n$ 表示把一个长度为 $n$ 的环变成 $n$ 个自环，共有多少种操作方法。 $F_n=n^{n-2}$ 。**</span>
+
+
+<br/>
+
+
+[**213. 古代猪文 - AcWing题库**](https://www.acwing.com/problem/content/215/)
+
+本题需要计算 $q^{\sum_{d|n}{C_{n}^{d}}}\ mod\ 999911659$ ，显然 $\varphi(999911659)=999911658$ ， 由欧拉定理推论可知，关键在于求出
+
+$$
+\sum_{d|n}{C_{n}^{d}}\ mod\ 999911658
+$$
+
+由于 $n，d$ 的范围都很大，所以无法直接使用卢卡斯定理。**<span style="background:#fff88f">令 $P=999911658$ 进行质因数分解，得到 $P=2\times 3\times 4679 \times 35617$ ，可以使用卢卡斯定理，分别求出 $\sum_{d|n}{C_{n}^{d}}$ 对这四个数取模的结果，然后利用中国成语定理建立同余方程组，求解出 $\sum_{d|n}{C_{n}^{d}}\ mod \ P$ 。</span>**
+
+
+
+---
+
+<br/>
+
+
+<br/>
+
+
+<br/>
+
+
+
+## 多重集的计数
+
+**多重集的排列数**
+
+假设多重集中有 $k$ 类元素，集合大小为 $n$ ， 每类元素数量分别为 $n_1,n_2,n_3,..,n_k$ ，则集合的全排列数：
+
+$$
+\frac{n!}{n_1!\times n_2!\times ...\times n_k!}
+$$
+
+**多重集的组合数**
+
+对于集合 $S=\left\{ n_1\times a_1, n_2\times a_2,..., n_k\times a_k \right\}$ ，求从 $S$ 中取出 $r$ 个元素组成的多重集的数量
+
+**先考虑 $r\le n_i, i\in \left[ 1, k \right]$ 的特殊情况**——此时问题等价于 $k-1$ 个 $1$ 把 $r$ 个 $0$ 分为 $k$ 组，每组的数量对应 从该组取出的元素数量。求 $r$ 个 $0$ ， $k-1$ 个 $1$ 组成的全排列：
+
+$$
+\frac{\left( r+k-1 \right) !}{r!\times \left( k-1 \right) !}=C_{r+k-1}^{k-1}
+$$
+
+
+**对于普遍的情况**，先不考虑 $n_i$ 的限制，相当于从集合 $\left\{ \infty a_1,\infty a_2,...,\infty a_k \right\}$ 中取出 $r$ 个元素，有 $C_{r+k-1}^{k-1}$ 种方法。
+
+接下来剔除非法情况，对于 $a_i$ ，先选出 $n_i+1$ 个 $a_i$ ，再任选的 $r-n_i-1$ ，有 $C_{r+k-n_i-2}^{k-1}$ ，接下来根据容斥原理进行推导。最终合法的多重集数为：
+
+$$
+C_{r+k-1}^{k-1}-\sum_{i=1}^k{C_{r+k-n_i-2}^{k-1}}+\sum_{1\le i<j\le k}{C_{r+k-n_i-n_j-3}^{k-1}-....+\left( -1 \right) ^kC_{r+k-\sum_{i=1}^k{n_i-\left( k+1 \right)}}^{k-1}}
+$$
+
+
+---
+
+
+<br/>
+
+
+<br/>
+
+
+<br/>
+
+
+## Catalan 数列
+
+给定 $n$ 个 $0$ 和 $n$ 个 $1$ ，按照某种顺序排成长度为 $2n$ 的序列，满足任意前缀中 $0$ 的个数不少于 $1$ 的个数的序列数量为：
+
+$$
+Cat_n=\frac{C_{2n}^{n}}{n+1}
+$$
+
+---
+
+
+<br/>
+
+
+<br/>
+
+
+<br/>
+
+
+<br/>
+
+
+# 容斥原理、Mobius函数
+
+## 容斥原理
+
+设 $S_1,S_2,...,S_n$ 为有限集合，则
+
+$$
+|\underset{i=1}{\overset{n}{\cup S_i}}|=\sum_{i=1}^n{|S_i|-\sum_{i\le i<j\le n}{|S_i\cap S_j|}+...+\left( -1 \right) ^{n+1}|S_1\cap S_2\cap ...\cap S_n|}
+$$
+
+
+组合计数中多重集合的组合数的求法，就是使用容斥原理求出不合法的求法的数量。
+
+### 例题
+
+[**214. Devu和鲜花 - AcWing题库**](https://www.acwing.com/problem/content/216/)
+
+
+本题是经典的多重集组合计数问题。由于本题中 $k+r-1$ 的数量级达到 $10^{14}$ ，同时 $p$ 的数量级为 $10^9$ ，但是 $k-1$ 的数量级很小，所以计算组合数时，采用以下公式：
+
+$$
+C_{n}^{m}=\frac{n\times \left( n-1 \right) \times ...\times \left( n-m+1 \right)}{n!}
+$$
+
+同时可以使用卢卡斯定理，避免在计算组合数的分子时 64 位整数溢出。
+
+在实现容斥原理时，可以**进行二进制枚举** $x\in [0,2^n-1]$ 。
+
+
+---
+
+
+<br/>
+
+
+<br/>
+
+
+<br/>
+
+
+## 莫比乌斯函数
+
+将正整数 $N$ 按照算术基本定理分解质因数 $N=p_1^{c_1}\times p_2^{t_2}\times...\times p_m^{t_m}$ ，莫比乌斯函数定义为：
+
+$$
+\mu \left( N \right) =\left\{ \begin{array}{l}
+	0\ ,\ \exists i\in \left[ 1,m \right] \ c_i>1\\
+	1\ ,\ m\equiv 0\left( mod\ 2 \right)\\
+	-1,\ m\equiv 1\left( mod\ 2 \right)\\
+\end{array} \right. 
+$$
+
+计算一个数的莫比乌斯函数时，直接分解质因数即可。
+
+当需要计算 $1$ 到 $N$ 中每一个数的莫比乌斯函数，使用埃氏筛进行计算：
+- 初始化所有 $\mu$ 值为 $1$ 。
+- 筛出每一个质数 $p$ ，对于 $p$ ，令 $x=2p,3p,...\lfloor \frac{n}{p} \rfloor \times p$ ，**<span style="background:#fff88f">检查 $x$ 能否被 $p^2$ 整除</span>**，如果能令 $\mu(x)=0$ ，否则令 $\mu(x)=-\mu(x)$ 。
+
+
+
+### 例题
+
+[**215. 破译密码 - AcWing题库**](https://www.acwing.com/problem/content/217/)
+
+本题可以转化为 **<span style="background:#fff88f">$x\le a/d$ ， $y\le b/d$ ，有多少对 $x,y$ 互质</span>**。
+
+设 $D[a,b,k]$ 表示 $a\le a,y\le b$ 中有多少对 $x,y$ 满足 $gcd(x,y)$ 是 $k$ 的倍数，显然只要 $x,y$ 都是 $k$ 的倍数即可，一共有 $\lfloor \frac{a}{k} \rfloor \times \lfloor \frac{b}{k} \rfloor$ 对。
+
+设 $F[a,b]$ 表示 $x\le a$ ， $y\le b$ ，有多少对 $x,y$ 互质。由容斥原理可以得：
+
+$$
+F\left[ a,b \right] =\sum_{i=1}^{\min \left( a,b \right)}{\mu \left( i \right) \times D\left[ a,b,i \right]}
+$$
+
+对上式子的解释，当没有任何限制时，二元组对数为 $D[a,b,1]$ ，接下来需要剔除 $gcd(x,y)$ 是 $2,3,5,7,11,13,...$ 倍数的情况，这样会重复剔除 $gcd(x,y)$ 既是 2 的倍数，又是 3 的倍数的情况，所以需要加回来，可以看出 $D[a,b,i]$ 的系数正好是莫比乌斯函数。
+
+在实现时，由于 $\forall i\ \in \ \left[ x\ ,\ \min \left ( \lfloor \frac{a}{\lfloor \frac{a}{x} \rfloor} \rfloor ,\lfloor \frac{b}{\lfloor \frac{b}{x} \rfloor} \rfloor \right) \right]$ ， $D[a,b,i]$ 的值是相等的，所以可以先预处理出莫比乌斯函数的前缀和，直接累加这一段答案。
+
+----
