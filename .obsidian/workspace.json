@@ -1,0 +1,253 @@
+{
+  "main": {
+    "id": "309dcfbafa6879a0",
+    "type": "split",
+    "children": [
+      {
+        "id": "25a84f1ec0763ab1",
+        "type": "tabs",
+        "dimension": 56.557377049180324,
+        "children": [
+          {
+            "id": "cb11c8400f66c8b1",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Dynamic_Programming.md",
+                "mode": "preview",
+                "source": true
+              }
+            },
+            "group": "956accf36d5d763a"
+          }
+        ]
+      },
+      {
+        "id": "f3bf97896ff72415",
+        "type": "tabs",
+        "dimension": 43.44262295081967,
+        "children": [
+          {
+            "id": "adebd599ea43fb58",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Dynamic_Programming.md",
+                "mode": "source",
+                "source": true
+              }
+            },
+            "group": "956accf36d5d763a"
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "9a181df1e905c27f",
+    "type": "split",
+    "children": [
+      {
+        "id": "f899daf50ba71f7e",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "fb8dc3bc7f6bb644",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "e2ed9ca95437b272",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "aee9bb2c29655b00",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 237.5,
+    "collapsed": true
+  },
+  "right": {
+    "id": "1ecccdf50d4c253f",
+    "type": "split",
+    "children": [
+      {
+        "id": "d7a77d45f5769e14",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "3fb4ef3b526e87c8",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Dynamic_Programming.md",
+                "collapseAll": true,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "45eb44bdfdb02d5b",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "d1a3646c1851862c",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Dynamic_Programming.md",
+                "linksCollapsed": true,
+                "unlinkedCollapsed": false
+              }
+            }
+          },
+          {
+            "id": "458860cdf8b00102",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Dynamic_Programming.md"
+              }
+            }
+          },
+          {
+            "id": "a7fff82004227ca4",
+            "type": "leaf",
+            "state": {
+              "type": "advanced-tables-toolbar",
+              "state": {}
+            }
+          },
+          {
+            "id": "dc13cbf5ea96ead5",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              }
+            }
+          },
+          {
+            "id": "740c4131a34d7c68",
+            "type": "leaf",
+            "state": {
+              "type": "calendar",
+              "state": {}
+            }
+          },
+          {
+            "id": "15e649c09f54288e",
+            "type": "leaf",
+            "state": {
+              "type": "quiet-outline",
+              "state": {}
+            }
+          }
+        ],
+        "currentTab": 7
+      }
+    ],
+    "direction": "horizontal",
+    "width": 200
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "vscode-editor:新建代码文件": false,
+      "switcher:打开快速切换": false,
+      "graph:查看关系图谱": false,
+      "canvas:新建白板": false,
+      "daily-notes:打开/创建今天的日记": true,
+      "templates:插入模板": true,
+      "command-palette:打开命令面板": false,
+      "obsidian-excalidraw-plugin:新建绘图文件": false,
+      "table-editor-obsidian:Advanced Tables Toolbar": false
+    }
+  },
+  "active": "adebd599ea43fb58",
+  "lastOpenFiles": [
+    "Math.md",
+    "README.md",
+    "Advanced_Data_Structure.md",
+    "Basic_Data_Structure.md",
+    "Basic_Algorithm.md",
+    "copypasta/String/Tire.cpp",
+    "copypasta/String/TireXor.cpp",
+    "String.md",
+    "Graph_Theory.md",
+    "Search_Algorithm.md",
+    "Dynamic_Programming.md",
+    "copypasta/Graph_Theory/Prim.cpp",
+    "copypasta/Graph_Theory/Kruskal.cpp",
+    "copypasta/Advanced_Data_Structure/DSU.cpp",
+    "copypasta/Graph_Theory/Floyd.cpp",
+    "copypasta/Graph_Theory/SPFA.cpp",
+    "copypasta/Graph_Theory/Dijkstra.cpp",
+    "copypasta/Graph_Theory/Dijstra.cpp",
+    "copypasta/Graph_Theory",
+    "算法分析与设计/算法书籍/算法竞赛进阶指南.md",
+    "开发工具/数据库/MySQL是怎样运行的.md",
+    "开发工具/Make工具/跟我一起写Makefile.md",
+    "计算机基础/计算机网络/计算机网络.md",
+    "开发工具/Git/Git入门.md",
+    "计算机基础/计算机组成原理/计算机组成原理.md",
+    "开发工具/Linux/Vim实用技巧.md",
+    "程序设计语言/Python/Python编程：从入门到实践.md",
+    "算法分析与设计/算法书籍/Algorithm_PrincetonUniversity.md",
+    "开发工具/数据库/SQL必知必会.md",
+    "杂项/README.md",
+    "杂项/课堂笔记/大三上/机器学习复习.md",
+    "杂项/课堂笔记/大三上/机器学习.md",
+    "杂项/课堂笔记/大三上/数字图像处理复习.md",
+    "杂项/课堂笔记/大三上/数字图像处理.md",
+    "杂项/草稿.md",
+    "9A06F5FA339DC751B8032B8840B77BD7.png",
+    "Pasted Image 20231101203027_904.jpg",
+    "未命名.canvas",
+    "未命名 1.canvas"
+  ]
+}

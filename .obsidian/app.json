@@ -1,0 +1,10 @@
+{
+  "livePreview": false,
+  "defaultViewMode": "preview",
+  "strictLineBreaks": true,
+  "showLineNumber": false,
+  "promptDelete": false,
+  "vimMode": false,
+  "showIndentGuide": true,
+  "foldHeading": false
+}
