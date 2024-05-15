@@ -2,21 +2,21 @@
  * @brief 异或前缀树模板
  *
  */
-class Tire_Xor {
-    struct TireNode {
-        TireNode *child[2]{};
-        ~TireNode() {
+class Trie {
+    struct Node {
+        Node *child[2]{};
+        ~Node() {
             delete child[0];
             delete child[1];
         }
     };
-    TireNode *root;
+    Node *root;
 
 public:
-    Tire_Xor() :
-        root(new TireNode()) {
+    Trie() :
+        root(new Node()) {
     }
-    ~Tire_Xor() {
+    ~Trie() {
         delete root;
     }
 
@@ -26,11 +26,12 @@ public:
      * @param num
      */
     void insert(int num) {
-        TireNode *p = root;
-        for (int i = 31; i >= 0; --i) {
+        Node *p = root;
+        for (int i = 30; i >= 0; --i) {
             int nxt = (num >> i) & 1;
-            if (p->child[nxt] == nullptr)
-                p->child[nxt] = new TireNode();
+            if (p->child[nxt] == nullptr) {
+                p->child[nxt] = new Node();
+            }
             p = p->child[nxt];
         }
     }
@@ -42,14 +43,15 @@ public:
      * @return int
      */
     int cal(int num) {
-        TireNode *p = root;
         int ans = 0;
-        for (int i = 31; i >= 0; --i) {
+        Node *p = root;
+        for (int i = 30; i >= 0; --i) {
             int nxt = ((num >> i) & 1) ? 0 : 1;
-            if (p->child[nxt] == nullptr)
-                nxt = nxt == 0 ? 1 : 0;
-            else
+            if (p->child[nxt] == nullptr) {
+                nxt ^= 1;
+            } else {
                 ans |= (1 << i);
+            }
             p = p->child[nxt];
         }
         return ans;
