@@ -453,20 +453,12 @@ int phi(int n) {
 	根据欧拉公式的计算式，分解质因数后，可以容易证出。
 
 - 若 $f$ 为积性函数，在算术基本定理中 $n=\prod{p_i^{c_i}}$ ，则 $f\left( n \right) =\prod{f\left( p_i^{c_i} \right)}$ 。
-- 若 $p|n$ 且 $p^2|n$ ，则 $\varphi \left( n \right) =\varphi \left( \frac{n}{p} \right) \times p$ 。 **$p$ 为质数**。
+- <span style="background:#fff88f">若 $p|n$ 且 $p^2|n$ ，则 $\varphi \left( n \right) =\varphi \left( \frac{n}{p} \right) \times p$ 。 **其中 $p$ 为质数**。</span>
 
-- 若 $p|n$ 且 $p^2$ 不能给你整除 $n$ ，则 $\varphi \left( n \right) =\varphi \left( \frac{n}{p} \right) \times (p-1)$ 。
+- <span style="background:#fff88f">若 $p|n$ 且 $p^2$ 不能整除 $n$ ，则 $\varphi \left( n \right) =\varphi \left( \frac{n}{p} \right) \times (p-1)$ 。</span>
 - $\sum_{d|n}{\varphi \left ( d \right)}=n$
 
-
-### 例题
-
-
-[**201. 可见的点 - AcWing题库**](https://www.acwing.com/problem/content/203/)
-
-除了（1,0）、（0,1）和（1,1）这三个钉子以外，一个钉子（x，y）能被看见当且仅当， $1\le x,y \le N$ 并且 $gcd(x,y)=1$ （否则就会被前面的钉子挡住）。由于对称，只考虑上面部分，对于每个 $y$ ，求出 $\varphi (y)$ 。
-
-利用埃氏筛，在 $O(N\times log(log N))$ 求出 2 到 $N$ 每个数的欧拉函数：
+利用埃氏筛，在 $O(N\times log(log N))$ **<span style="background:#fff88f">求出 2 到 $N$ 每个数的欧拉函数</span>**：
 ```cpp
 void euler(int n)
 {
@@ -482,29 +474,63 @@ void euler(int n)
 }
 ```
 
-同样的，可以利用线性筛和欧拉函数性质，在 $O(n)$ 时间求解：
+同样的，可以利用线性筛和欧拉函数性质，**<span style="background:#fff88f">在 $O(n)$ 时间求解</span>**：
 
 ```cpp
-void euler(int n)
-{
-	memset(v, 0, sizeof v);
-    int m = 0;
+const int N = 1e6 + 1;
+int v[N];     // 记录每个数的最小质因子
+int prime[N]; // 记录质数
+int phi[N];   // 欧拉函数
+
+void euler(int n) {
+    memset(v, 0, sizeof v);
+    int m = 0; // 质数数量
     for (int i = 2; i <= n; ++i) {
+        // 未被筛过，则为质数
         if (v[i] == 0) {
             v[i] = i;
             prime[++m] = i;
-            phi[i] = i - 1;
+            phi[i] = i - 1; // 可以直接得出质数的欧拉函数
         }
         for (int j = 1; j <= m; ++j) {
+            // i的最小质因子更小 或 超出范围，则break
             if (prime[j] > v[i] || prime[j] * i > n)
                 break;
-            v[i * prime[j]] = prime[j];
+            v[i * prime[j]] = prime[j]; // 更新最小质因子
+            // 根据欧拉函数性质，递推
             phi[i * prime[j]] = phi[i] * (i % prime[j] ? prime[j] - 1 : prime[j]);
         }
     }
 }
-
 ```
+
+
+
+<br/>
+
+
+### 例题
+
+
+[**201. 可见的点 - AcWing题库**](https://www.acwing.com/problem/content/203/)
+
+除了（1,0）、（0,1）和（1,1）这三个钉子以外，一个钉子（x，y）能被看见当且仅当， $1\le x,y \le N$ 并且 $gcd(x,y)=1$ （否则就会被前面的钉子挡住）。由于对称，只考虑上面部分，对于每个 $y$ ，求出 $\varphi (y)$ 。
+
+
+<br/>
+
+
+[**220. 最大公约数 - AcWing题库**](https://www.acwing.com/problem/content/description/222/)
+
+可以枚举以每一个质数作为最大公约数的数对有多少，需要计算欧拉函数。
+
+由于本题数量范围较大，所以在计算 2 到 N 的欧拉函数时，必须使用 $O(N)$ 的算法。
+
+
+<br/>
+
+[**221. 龙哥的问题 - AcWing题库**](https://www.acwing.com/problem/content/223/)
+
 
 
 ---
@@ -1304,7 +1330,7 @@ $$
 <br/>
 
 
-# 高斯消元、线性空间
+# 高斯消元 & 线性空间
 
 ## 高斯消元法
 
@@ -1750,7 +1776,7 @@ $$
 <br/>
 
 
-# 容斥原理、Mobius函数
+# 容斥原理 & Mobius 函数
 
 ## 容斥原理
 
@@ -1830,3 +1856,221 @@ $$
 在实现时，由于 $\forall i\ \in \ \left[ x\ ,\ \min \left ( \lfloor \frac{a}{\lfloor \frac{a}{x} \rfloor} \rfloor ,\lfloor \frac{b}{\lfloor \frac{b}{x} \rfloor} \rfloor \right) \right]$ ， $D[a,b,i]$ 的值是相等的，所以可以先预处理出莫比乌斯函数的前缀和，直接累加这一段答案。
 
 ----
+
+
+<br/>
+
+
+<br/>
+
+
+<br/>
+
+
+<br/>
+
+
+# 概率与数学期望
+
+概率和数学期望的定义不再赘述。
+
+数学期望是线性函数，满足 $E\left ( aX+bY \right) =aE\left ( X \right) +bE\left ( Y \right)$ 。
+
+### 例题
+
+[**216. Rainbow的信号 - AcWing题库**](https://www.acwing.com/problem/content/218/)
+
+根据题目中的选法，对于 $l = r$ 的情况，被选中的概率为 $\frac{1}{n^2}$ ，其余情况为 $\frac{2}{n^2}$ ，如果直接枚举区间进行计算的话，时间复杂度为 $O(N^2)$ 。
+
+<span style="background:#fff88f">**位运算是不进位的，所以可以单独考虑每一个位对答案的贡献** </span>。对于 and 和 or 运算，记录上一次出现 1 或 0 的位置，可以分方便的统计出符合要求的左端点的数量。对于 xor 运算，根据异或运算的性质，可以计算一个前缀和，同时统计前缀和为 1 或者为 0 的数量。
+
+```cpp
+// 计算第k位对答案贡献
+void cal(int k) {
+    int last[2]{0, 0};
+    double w = (double)(1 << k) / n / n;
+
+    int x = 0;
+    int last0 = 0 ,c0 = 1;  // 注意此处赋值
+    int last1 = -1,c1 = 0;
+
+    for (int i = 1; i <= n; ++i) {
+        int b = (a[i] >> k) & 1;
+        // ....省略其余计算内容
+
+        x ^= b;
+        if (x) {
+			// 剔除区间长度为1的情况（前面已经计算过）
+            ansxor += w * 2 * (last0 == i - 1 ? c0 - 1 : c0);
+            ++c1;
+            last1 = i;
+        } else {
+            ansxor += w * 2 * (last1 == i - 1 ? c1 - 1 : c1);
+            ++c0;
+            last0 = i;
+        }
+    }
+}
+```
+
+
+如果是求**最大子区间异或和**问题，可以使用 xor 的前缀树解决。
+
+
+
+<br/>
+
+
+[**217. 绿豆蛙的归宿 - AcWing题库**](https://www.acwing.com/problem/content/219/)
+
+设 $F[x]$ 为节点 $x$ 走到终点所经过路径的期望长度，假设从 $x$ 出发有 $k$ 条路径，则有
+
+$$
+F\left[ x \right] =\frac{1}{k}\sum_{i=1}^k{\left( F\left[ y_i \right] +z_i \right)}
+$$
+
+显然，要想计算 $x$ 必须先计算所有在 $x$ 之后的节点，所以可以建立反向图，进行拓扑排序。一边拓扑排序，一边更新答案。
+
+
+<br/>
+
+
+[**218. 扑克牌 - AcWing题库**](https://www.acwing.com/problem/content/220/)
+
+数学期望结合动态规划的题目。
+
+设 $F[a,b,c,d,x,y]$ 表示已经翻开 $a$ 张黑桃、 $b$ 张红桃、 $c$ 张梅花
+$d$ 张方块， $x$ 表示用小王代替哪一张牌 ，还需要翻开的牌数的期望。
+
+边界状态为翻开的牌数已经符合要求，目标状态是求 $F[0,0,0,0,4,4]$ 。在数学期望递推、数学期望动态规划中，通常把终止状态作为初值（边界），把起始状态作为目标（要计算的）。
+
+另外本题使用记忆化搜索解决，有以下技巧：
+- 当状态数量较大，但是每一个维度的尺度较小时，适合使用数组存储结果。
+- 当状态数量不太多，但是每一个维度的尺度很大，并且分布很广泛时，适合使用哈希表记录结果。
+
+---
+
+
+<br/>
+
+
+<br/>
+
+
+<br/>
+
+
+<br/>
+
+
+# 0/1 分数规划
+
+0/1 分数规划模型——给定 $n$ 对整数 $a_i,b_i$ ，从中选出若干对，使得选出数对的 $a$ 之和和 $b$ 之和的商最大。
+
+
+如果存在一组解使得 $\sum_{i=1}^n{\left( a_i-L\times b_i \right)}\times x_i\ge 0\ \ \ ,(x_i=0\text{或}1)$ ，那么有
+
+$$
+\frac{\sum_{i=1}^n{a_i\times x_i}}{\sum_{i=1}^n{b_i\times x_i}}\ge L
+$$
+
+
+所以可以进行实数的二分寻找答案。
+
+### 例题
+
+[**234. 放弃测试 - AcWing题库**](https://www.acwing.com/problem/content/236/)
+
+0/1 分数规划题目的基础上限制了最少需要选取的数的对数。
+
+在进行判断时，对 $a_i-L\times b_i$ 进行排序，优先选择数值最大的。
+
+
+----
+
+
+
+<br/>
+
+
+<br/>
+
+
+<br/>
+
+
+<br/>
+
+
+# SG 函数
+
+**NIM 博弈**
+
+给定 $n$ 堆物品，第 $i$ 堆物品有 $A_i$ 个。两名玩家轮流行动，每次可以任选一堆，取走任意多的物品（但是不能不取）。取走最后一件物品的玩家获胜。
+
+尼姆博弈不存在平局，只有先手必胜和先手必败的情况。
+
+**尼姆博弈先手必胜，当且仅当 $A_1\ xor\ A_2\ xor\ ...\ xor\ A_n\ \ne \ 0$** 。当所有物品都被取走时，此时必败，所有 $A_i$ 都是 $0$ ，异或的结果为 $0$ 。 当 $A_1\ xor\ A_2\ xor\ ...\ xor\ A_n\  =x \ \ne \ 0$ 时，可以在最大的一堆中选出若干个物品，使得该堆剩余 $A_i\ xor \ x$ 个物品，下一个局面则必败。
+
+
+<br/>
+
+
+**公平组合游戏 ICG**
+
+- 两名玩家交替行动
+- 任意时刻，可以执行的合法动作与轮到哪一个玩家无关
+- 不能行动的玩家判负
+
+NIM 博弈俗语公平组合游戏。
+
+
+<br/>
+
+
+**有向图游戏**
+
+任何一个公平组合游戏都可以转化为有向图游戏。把每个局面看作是图中的一个节点。
+
+
+<br/>
+
+
+**Mex 运算**
+
+$mex(S)$ 为不属于集合 $S$ 的最小非负整数。
+
+
+<br/>
+
+
+**SG 函数**
+
+在有向图游戏中，对于节点 $x$ ，设从 $x$ 出发有 $k$ 条边，分别到达 $y_1,y_2,...,y_k$ ，则
+
+$$
+SG\left( x \right) =mex\left\{ SG\left( y_1 \right) ,SG\left( y_2 \right) ,...,SG\left( y_k \right) \right\} 
+$$
+
+有向图游戏的 $SG$ 值定义为游戏起点的 $SG$ 函数值。
+
+对于多个有向图游戏，他们的和的 $SG$ 函数值定义为各个子游戏的 $SG$ 函数值的异或和。
+
+
+- 有向图游戏某个局面 $x$ 必胜，当且仅当 $SG(x)>0$ 。
+- 有向图游戏某个局面 $x$ 必败，当且仅当 $SG(x)=0$ 。
+
+
+<br/>
+
+### 例题
+
+[**219. 剪纸游戏 - AcWing题库**](https://www.acwing.com/problem/content/221/)
+
+剪纸游戏盒有向图游戏有些不同，需要重新定义不能行动的局面。在本题中，必胜局面是出现 $1\times X$ 或 $X\times 1$ 规格的剪纸，采取最优策略行动，所以两人必定不会剪出这样的规格给对手。
+
+所以， $1\times X$ 或 $X\times 1$ 规格的剪纸只能从 $2\times 2,2\times 3,3\times 2$ 这三种规格中得到，可以将其定义为必败局面，即 $sg$ 函数值为 $0$ 。
+
+可以枚举剪的位置（哪一行或者哪一列），不同的减法可以转移到不同的局面，对所有可以转移到局面组成的集合进行 $mex$ 运算，而对于一个特定的剪法（特定的一个局面），会分为两个部分，两个部分视为子游戏，执行 $xor$ 运算。
+
+---
