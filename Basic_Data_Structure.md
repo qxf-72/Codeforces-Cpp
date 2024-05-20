@@ -61,6 +61,9 @@ class MinStack
 <br/>
 
 
+<br/>
+
+
 
 ## 出栈序列问题
 
@@ -91,6 +94,10 @@ $$
 <br/>
 
 
+<br/>
+
+
+
 ## 表达式计算
 
 表达式计算是栈的经典应用，表达式分为三类：
@@ -110,6 +117,9 @@ $$
 - 最后将栈中剩余运算符一一弹出。
 
 ---
+
+<br/>
+
 
 <br/>
 
@@ -202,11 +212,14 @@ $$
 
 链表和二叉树主要是在工作面试中考察。下面讨论 C++STL 中链表的使用，和一些相关算法。
 
-## `list` 和 `forward_list`
+## list 和 forward_list
 
 `list `是双向链表。`forward_list` 为单链表，`forward_list` 不提供 `size` 操作，效率接近手写的链表，此外，`forward_list `的插入操作与其他容器很不一样，是在指定位置之后插入。
 
 ---
+
+<br/>
+
 
 <br/>
 
@@ -237,6 +250,8 @@ $$
 ### 相关题目 
 
 [**141. 环形链表**](https://leetcode.cn/problems/linked-list-cycle/)
+
+<br/>
 
 [**142. 环形链表 II**](https://leetcode.cn/problems/linked-list-cycle-ii/)
 
@@ -417,6 +432,10 @@ void solve()
 
 
 <br/>
+
+
+<br/>
+
 
 
 ## Huffman 树

@@ -699,6 +699,7 @@ $$
 
 <br/>
 
+
 ### 裴蜀定理推广
 
 一定存在一组整数 $x_1,x_2,...,x_n$ ，满足 $\sum_{i=1}^n{a_i\times x_i}=s$ ，其中 $gcd\left ( a_1, a_2,..., a_n \right)|s$ 。 
@@ -808,6 +809,30 @@ $$
 现在，使用等比数列求和式求解，对于每一项，其和为 $\frac{p^{B\times c}-1}{p-1}$ ，先使用快速幂计算出分子 mod 9901 的值：
 - **当分母 $p-1$ 为 9901 的倍数时（即，不互质），不存在乘法逆元**。但是此时有 $p\equiv p^2 \equiv ,,, \equiv 1(mod 9901)$ ，所以 $\left( 1+p+p^{2}+...+p^{c\times B} \right) \equiv (1+ 1+ 1^2 +1^3+...+1^{B\times c}) \equiv B\times c+1(mod \ 9901)$ 。
 - 当分母 $p-1$ 不是 9901 的倍数时，9901 为质数，所以分母和 9901 互质，使用费马小定理计算出乘法逆元 $inv$ ，替代处理分母。
+
+
+<br/>
+
+
+[**222. 青蛙的约会 - AcWing题库**](https://www.acwing.com/problem/content/224/)
+
+根据题意有
+
+$$
+x+t\times m\equiv y+t\times n\ \left( mod\ L \right) 
+$$
+
+可以化为
+$$
+\left( m-n \right) \times t\equiv y-x\ \left( mod\ L \right) 
+$$
+
+显然这是一个一次同余方程可以使用拓展欧几里得算法求解。
+
+需要注意的是，**<span style="background:#fff88f">拓展欧几里得算法中输入的参数应该为正数，否则会出错</span>**。
+
+
+
 
 ---
 

@@ -19,6 +19,15 @@
 
 [**2709. 最大公约数遍历** - 力扣（LeetCode）](https://leetcode.cn/problems/greatest-common-divisor-traversal/description/)
 
+
+<br/>
+
+[**237. 程序自动分析 - AcWing题库**](https://www.acwing.com/problem/content/239/)
+
+简单题，属于并查集模板题。
+
+本题的数据范围比较大，但是 $n$ 的范围可以接受，可以先进行离散化。
+
 ---
 
 <br/>

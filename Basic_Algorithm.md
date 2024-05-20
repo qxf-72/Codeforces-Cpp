@@ -12,7 +12,7 @@ int lowbit(int x)
 }
 ```
 
- 编译器提供了一些位运算的**内建函数**，这些函数并非 C 或 C++语言标准，需**谨慎使用**。下面的内建函数中以 ll 结尾的表示处理 unsigned long long ，否则表示处理 int ：
+ 编译器提供了一些位运算的**内建函数**，这些函数并非 C 或 C++语言标准，需**谨慎使用**。下面的内建函数中以 ll 结尾的表示处理 unsigned long long ，否则表示处理 unsigned int ：
 
 - `__builtin_ctz ( ),__buitlin_ctzll ( )`：二进制表示形式中末尾 0 的个数。
 - `__builtin_clz( ),__builtin_clzll( )`：二进制表示形式中前导 0 的个数。
@@ -26,10 +26,14 @@ int lowbit(int x)
 <br/>
 
 
-## 快速幂运算
-在常数时间内，计算出来 $base^{p}$ ，通常用于需要取余的场景。
+<br/>
 
-需要注意**将基数 base 和返回值 ret 的类型设置为 long long** ，避免在乘法运算过程中溢出造成结果错误。
+
+
+## 快速幂运算
+在常数时间内，计算出来 $a^{b}$ ，通常用于需要取余的场景。
+
+需要注意**将基数 a 和返回值 ret 的类型设置为 long long** ，避免在乘法运算过程中溢出造成结果错误。
 
 ```cpp
 long long fast_pow(long long a, long long b,long long mod) {
@@ -111,6 +115,10 @@ C++ 标准库中实现了前缀和函数 [`std::partial_sum`](https://zh.cppref
 <br/>
 
 
+<br/>
+
+
+
 ## 差分
 
 差分是前缀和运算的逆运算。一般而言 $d[i]=a[i]-a[i-1]$ ，但是差分数组如何构造并不重要，要求差分数组进行前缀和运算能够得到原数组即可。
@@ -140,22 +148,22 @@ C++ 标准库中实现了前缀和函数 [`std::partial_sum`](https://zh.cppref
 
 # 高精度运算
 
-由于 C++没有大数类，所以需要自己手写实现大数类。（XCPC 类比赛并不涉及大数类，同样以取模的形式出题）
+由于 C++没有大数类，所以需要自己手写实现大数类。（XCPC 类比赛并不涉及大数类，以取模的形式出题）
 
 ### 模板代码
 
 [**BigInt.cpp**](/copypasta/Basic_Algorithm/BigInt.cpp)
-- 只能用于**正数**
-- **乘除**对象为普通类型
+
+该模板只能用于**正数**， **乘除**对象为普通整型。
 
 <br/>
 
-
 [**BigInt_mul.cpp**](/copypasta/Basic_Algorithm/BigInt_mul.cpp)
-- 只能用于**正数**
-- 乘法
-	- 大数类 乘 大数类
-	- 大数类 乘  int
+
+该模板只能用于**正数**，支持
+
+- 大数类 $\times$ 大数类
+- 大数类 $\times$  int
 - 大数的比较
 - 大数加法
 - 大数减法
@@ -163,11 +171,9 @@ C++ 标准库中实现了前缀和函数 [`std::partial_sum`](https://zh.cppref
 <br/>
 
 
-
 [**BigInt.cpp**](/copypasta/Basic_Algorithm/BigIntZip.cpp)
-- 实现**压位**，计算效率更高。
-- 乘法——大数类 乘以 int
-- 输出
+
+该模板实现**压位**，计算效率更高。支持大数类 $\times$ int，重载了输出运算符。
 
 
 ---
@@ -191,7 +197,6 @@ C++ 标准库中实现了前缀和函数 [`std::partial_sum`](https://zh.cppref
 判定难度小于求解，当问题答案具有某种单调性时，通过二分法把问题求解转化为判定。
 
 
-  
 
 ---
 
@@ -222,7 +227,7 @@ C++ 标准库中实现了前缀和函数 [`std::partial_sum`](https://zh.cppref
 
 [**103. 电影 - AcWing题库**](https://www.acwing.com/problem/content/105/)
 
-本题使用哈希表也可以。
+本题除了使用离散化进行映射，也可以使用哈希表解决。
 
 ---
 
@@ -231,6 +236,10 @@ C++ 标准库中实现了前缀和函数 [`std::partial_sum`](https://zh.cppref
 
 
 <br/>
+
+
+<br/>
+
 
 
 ## 中位数
@@ -454,21 +463,48 @@ ll merge_sort(vector<int>& a, int l, int r)
 <br/>
 
 
+<br/>
+
+
+
 ## ST 表
 
-ST 表（Sparse Table）稀疏表，是基于倍增思想，在 RMQ 问题的产物。给定一个长度为 N 的序列，ST 算法在经过 **N * logN 时间的预处理**之后，以 **O (1) 复杂度在线查询**某个区间的信息，比如区间最大值。
+ST 表（Sparse Table）稀疏表，是基于倍增思想，在 RMQ 问题上的产物。给定一个长度为 N 的序列，ST 算法在经过 ** $O(N * logN)$ 时间的预处理**之后，以 ** $O (1)$ 复杂度在线查询**某个区间的信息，比如区间最大值。
 
-ST 表能维护的区间信息必须是**可重复贡献**的信息，并且 ST 表**不支持进行修改**，适合存在大量离线查询且无修改的情况。
+ST 表能维护的区间信息必须是**可重复贡献**的信息，并且 ST 表**不支持进行修改**，**<span style="background:#fff88f">适合存在大量离线查询且无修改的情况</span>**
 - 最大值
+- 最小值
 - 区间 按位和
 - 区间 按位或
 - 区间 GCD
+
+用维护区间最大值举例， $F(i,j)$ 维护区间 $[i,i+2^j-1]$ （区间长度为 $2^j$ ） 的最大值，该区间可以分为两个长度为 $2^{j-1}$ 的子区间—— $[i,i+2^{j-1}-1]$ 和 $[i+2^{j-1},i+2^j-1]$ ，所以递推公式：
+
+$$
+F\left[ i,j \right] =\max \left( F\left[ i,j-1 \right] ,F\left[ j+2^{j-1},j-1 \right] \right) 
+$$
+
+在建立稀疏表时，先给 $F[i,0]$ 赋值，然后让 $j$ 从 $1$ 开始进行递推。
+
+在进行查询时，对于区间 $[l,r]$ ，先求出一个 $k$ ，使得 $2^k\le r-l+1<2^{k+1}$ ，目的是确保两个长度为 $2^k$ 的子区间能够完全覆盖 $[l,r]$ 。对于 $k$ ，`int k = log2(r-l+1);`，int 类型会向下取整正好符合要求。为了保证查询的时间复杂度为 $O(1)$ ，应该预处理出 $n$ 种区间长度对应的 $k$ 值，计算方式为 `Log[i]=Log[i/2]+1`。
+
+
+
+<br/>
+
 
 ### 模板代码
 
 [**SparseTable. cpp**](/copypasta/Basic_Algorithm/SparseTable.cpp)
 
 该模板使用了 template，根据数据类型设置 T，同时根据题目设置操作类型 op，op 为 `function<T(const T&,const T&)>` 类型。
+
+
+### 例题
+
+[**P3865 【模板】ST 表 - 洛谷**](https://www.luogu.com.cn/problem/P3865)
+
+模板题
 
 ---
 
