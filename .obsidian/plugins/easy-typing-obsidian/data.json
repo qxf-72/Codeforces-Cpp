@@ -52,5 +52,6 @@
   "userCvtRuleSettingsOpen": true,
   "EnterTwice": false,
   "TryFixChineseIM": false,
-  "PuncRectify": false
+  "PuncRectify": false,
+  "FixMacOSContextMenu": false
 }

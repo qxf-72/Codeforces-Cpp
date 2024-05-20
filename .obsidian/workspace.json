@@ -6,7 +6,7 @@
       {
         "id": "25a84f1ec0763ab1",
         "type": "tabs",
-        "dimension": 56.557377049180324,
+        "dimension": 55.942622950819676,
         "children": [
           {
             "id": "cb11c8400f66c8b1",
@@ -14,32 +14,32 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Dynamic_Programming.md",
+                "file": "Advanced_Data_Structure.md",
                 "mode": "preview",
                 "source": true
               }
             },
-            "group": "956accf36d5d763a"
+            "group": "0c5aabde363ac997"
           }
         ]
       },
       {
-        "id": "f3bf97896ff72415",
+        "id": "3b53e6ee86b2c9fe",
         "type": "tabs",
-        "dimension": 43.44262295081967,
+        "dimension": 44.05737704918033,
         "children": [
           {
-            "id": "adebd599ea43fb58",
+            "id": "1520d8a3ce896988",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Dynamic_Programming.md",
+                "file": "Advanced_Data_Structure.md",
                 "mode": "source",
                 "source": true
               }
             },
-            "group": "956accf36d5d763a"
+            "group": "0c5aabde363ac997"
           }
         ]
       }
@@ -108,7 +108,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Dynamic_Programming.md",
+                "file": "Advanced_Data_Structure.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -136,7 +136,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Dynamic_Programming.md",
+                "file": "Advanced_Data_Structure.md",
                 "linksCollapsed": true,
                 "unlinkedCollapsed": false
               }
@@ -148,7 +148,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Dynamic_Programming.md"
+                "file": "Advanced_Data_Structure.md"
               }
             }
           },
@@ -208,19 +208,19 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "adebd599ea43fb58",
+  "active": "1520d8a3ce896988",
   "lastOpenFiles": [
-    "Math.md",
-    "README.md",
-    "Advanced_Data_Structure.md",
-    "Basic_Data_Structure.md",
-    "Basic_Algorithm.md",
-    "copypasta/String/Tire.cpp",
-    "copypasta/String/TireXor.cpp",
-    "String.md",
-    "Graph_Theory.md",
-    "Search_Algorithm.md",
     "Dynamic_Programming.md",
+    "Basic_Algorithm.md",
+    "Search_Algorithm.md",
+    "Graph_Theory.md",
+    "Basic_Data_Structure.md",
+    "Advanced_Data_Structure.md",
+    "String.md",
+    "README.md",
+    "Math.md",
+    "copypasta/String/TireXor.cpp",
+    "copypasta/String/Tire.cpp",
     "copypasta/Graph_Theory/Prim.cpp",
     "copypasta/Graph_Theory/Kruskal.cpp",
     "copypasta/Advanced_Data_Structure/DSU.cpp",

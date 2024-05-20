@@ -11,7 +11,7 @@
   "search_support": true,
   "level_switch": true,
   "markdown": true,
-  "expand_level": "1",
+  "expand_level": "0",
   "hide_unsearched": true,
   "auto_expand": false,
   "regex_search": true,
