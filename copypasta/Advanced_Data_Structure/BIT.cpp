@@ -1,45 +1,54 @@
-// 以维护区间和为例,维护其他信息仅需要进行少量修改
-template <typename T>
+/**
+ * @brief 以维护区间和为例
+ * @tparam T
+ */
+template<typename T>
 class BIT
 {
-private:
-    int n;
-    vector<T> data;
+	int n;
+	vector<T> bit;	// 也可以替换为一个数组
+	int lowbit(int x)
+	{
+		return x & -x;
+	}
 
-    int lowbit(int i) { return i & -i; }
+ public:
+	BIT(int n)
+	{
+		this->n = n;
+		bit.assign(n + 1, 0);
+	}
+	explicit BIT(vector<T>& arr)
+	{
+		this->n = arr.size();    // 这里默认arr数组下标1开始
+		bit.resize(n + 1);
+		// O(n)建树
+		for (int i = 1; i <= n; ++i)
+		{
+			bit[i] += arr[i];
+			int j = i + lowbit(i);
+			if (j <= n)
+				bit[j] += bit[i];
+		}
+	}
 
-public:
-    explicit BIT(vector<T> &arr)
-    {
-        n = arr.size();
-        data.resize(n + 1);
-        // O(n)建树
-        for (int i = 1; i <= n; ++i)
-        {
-            data[i] += arr[i - 1];
-            int j = i + lowbit(i);
-            if (j <= n)
-                data[j] += data[i];
-        }
-    }
+	/**
+	 * @brief 前缀信息查询
+	 */
+	T ask(int x)
+	{
+		T res = 0;
+		for (; x; x -= lowbit(x))
+			res += bit[x];
+		return res;
+	}
 
-    T get_sum(int i)
-    {
-        T res = 0;
-        while (i > 0)
-        {
-            res += data[i];
-            i -= lowbit(i);
-        }
-        return res;
-    }
-
-    void update(int i, int x)
-    {
-        while (i <= n)
-        {
-            data[i] += x;
-            i += lowbit(i);
-        }
-    }
+	/**
+	 * @brief 单点修改
+	 */
+	void add(int x, int y)
+	{
+		for (; x <= n; x += lowbit(x))
+			bit[x] += y;
+	}
 };
