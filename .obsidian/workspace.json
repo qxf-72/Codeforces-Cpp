@@ -14,7 +14,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Advanced_Data_Structure.md",
+                "file": "String.md",
                 "mode": "preview",
                 "source": true
               }
@@ -34,7 +34,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Advanced_Data_Structure.md",
+                "file": "String.md",
                 "mode": "source",
                 "source": true
               }
@@ -91,7 +91,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 237.5,
+    "width": 291.5,
     "collapsed": true
   },
   "right": {
@@ -108,7 +108,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Advanced_Data_Structure.md",
+                "file": "String.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -136,7 +136,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Advanced_Data_Structure.md",
+                "file": "String.md",
                 "linksCollapsed": true,
                 "unlinkedCollapsed": false
               }
@@ -148,7 +148,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Advanced_Data_Structure.md"
+                "file": "String.md"
               }
             }
           },
@@ -210,25 +210,26 @@
   },
   "active": "1520d8a3ce896988",
   "lastOpenFiles": [
-    "Dynamic_Programming.md",
-    "Basic_Algorithm.md",
-    "Search_Algorithm.md",
-    "Graph_Theory.md",
-    "Basic_Data_Structure.md",
-    "Advanced_Data_Structure.md",
+    "copypasta/String/Trie.cpp",
     "String.md",
-    "README.md",
+    "Advanced_Data_Structure.md",
+    "Dynamic_Programming.md",
+    "Graph_Theory.md",
+    "Search_Algorithm.md",
     "Math.md",
-    "copypasta/String/TireXor.cpp",
-    "copypasta/String/Tire.cpp",
-    "copypasta/Graph_Theory/Prim.cpp",
-    "copypasta/Graph_Theory/Kruskal.cpp",
-    "copypasta/Advanced_Data_Structure/DSU.cpp",
-    "copypasta/Graph_Theory/Floyd.cpp",
     "copypasta/Graph_Theory/SPFA.cpp",
-    "copypasta/Graph_Theory/Dijkstra.cpp",
-    "copypasta/Graph_Theory/Dijstra.cpp",
-    "copypasta/Graph_Theory",
+    "copypasta/Advanced_Data_Structure/SegTree.cpp",
+    "copypasta/Advanced_Data_Structure/SegTree_lazytag.cpp",
+    "copypasta/Advanced_Data_Structure/BIT_simplified.cpp",
+    "Basic_Algorithm.md",
+    "copypasta/Advanced_Data_Structure/DSU_simplified.cpp",
+    "copypasta/Advanced_Data_Structure/DSU_simp.cpp",
+    "未命名.md",
+    "copypasta/Advanced_Data_Structure/DSU_2.cpp",
+    "Basic_Data_Structure.md",
+    "README.md",
+    "copypasta/String/TrieXor.cpp",
+    "copypasta/Graph_Theory/Prim.cpp",
     "算法分析与设计/算法书籍/算法竞赛进阶指南.md",
     "开发工具/数据库/MySQL是怎样运行的.md",
     "开发工具/Make工具/跟我一起写Makefile.md",
@@ -244,7 +245,6 @@
     "杂项/课堂笔记/大三上/机器学习.md",
     "杂项/课堂笔记/大三上/数字图像处理复习.md",
     "杂项/课堂笔记/大三上/数字图像处理.md",
-    "杂项/草稿.md",
     "9A06F5FA339DC751B8032B8840B77BD7.png",
     "Pasted Image 20231101203027_904.jpg",
     "未命名.canvas",

@@ -6,5 +6,6 @@
   "promptDelete": false,
   "vimMode": false,
   "showIndentGuide": true,
-  "foldHeading": false
+  "foldHeading": false,
+  "alwaysUpdateLinks": true
 }

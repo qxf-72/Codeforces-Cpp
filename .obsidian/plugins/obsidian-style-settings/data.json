@@ -13,7 +13,7 @@
   "blue-topaz-theme@@bg-markdown-page-opacity-cp": 0.25,
   "blue-topaz-theme@@background-image-settings-markdown-page-random": false,
   "blue-topaz-theme@@toggle-split-note-background": false,
-  "Blue-Topaz-Codebox-Highlight@@code-theme-selection": "code-theme-sublime",
+  "Blue-Topaz-Codebox-Highlight@@code-theme-selection": "code-theme-solarized-light",
   "blue-topaz-theme@@bt-colorful-titlebar": true,
   "blue-topaz-theme@@layout-style-options": "layout-style-options-default",
   "blue-topaz-theme@@color-scheme-options": "color-scheme-options-default",

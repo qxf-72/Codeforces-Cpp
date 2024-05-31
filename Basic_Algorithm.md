@@ -393,13 +393,14 @@ ll merge_sort(vector<int>& a, int l, int r)
 		else
 		{
 			tmp[k++] = a[j++];
-			ans += mid - i + 1; // 每一步只考虑 以a[j]为右边能构成的逆序对数
+			ans += mid - i + 1; // 每一步只考虑 以a[j]为右端 能构成的逆序对数
 		}
 	}
 	while (i <= mid)
 		tmp[k++] = a[i++];
 
-	while (j <= r) tmp[k++] = a[j++];
+	while (j <= r) 
+		tmp[k++] = a[j++];
 	for (k = 0; k < r - l + 1; ++k)
 		a[l + k] = tmp[k];
 	return ans;
