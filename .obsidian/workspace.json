@@ -4,42 +4,46 @@
     "type": "split",
     "children": [
       {
-        "id": "25a84f1ec0763ab1",
+        "id": "ddfc30a83112a09f",
         "type": "tabs",
-        "dimension": 55.942622950819676,
+        "dimension": 59.42622950819673,
         "children": [
           {
-            "id": "cb11c8400f66c8b1",
+            "id": "7d0c069f996e6469",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "String.md",
+                "file": "Basic_Algorithm.md",
                 "mode": "preview",
                 "source": true
-              }
+              },
+              "icon": "lucide-file",
+              "title": "Basic_Algorithm"
             },
-            "group": "0c5aabde363ac997"
+            "group": "e7cadccae8ddc54a"
           }
         ]
       },
       {
-        "id": "3b53e6ee86b2c9fe",
+        "id": "8bdbc6b2a1609de8",
         "type": "tabs",
-        "dimension": 44.05737704918033,
+        "dimension": 40.57377049180328,
         "children": [
           {
-            "id": "1520d8a3ce896988",
+            "id": "d92101082f7851fc",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "String.md",
+                "file": "Basic_Algorithm.md",
                 "mode": "source",
                 "source": true
-              }
+              },
+              "icon": "lucide-file",
+              "title": "Basic_Algorithm"
             },
-            "group": "0c5aabde363ac997"
+            "group": "e7cadccae8ddc54a"
           }
         ]
       }
@@ -60,8 +64,11 @@
             "state": {
               "type": "file-explorer",
               "state": {
-                "sortOrder": "alphabetical"
-              }
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "文件列表"
             }
           },
           {
@@ -76,7 +83,9 @@
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical"
-              }
+              },
+              "icon": "lucide-search",
+              "title": "搜索"
             }
           },
           {
@@ -84,14 +93,16 @@
             "type": "leaf",
             "state": {
               "type": "bookmarks",
-              "state": {}
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "书签"
             }
           }
         ]
       }
     ],
     "direction": "horizontal",
-    "width": 291.5,
+    "width": 200,
     "collapsed": true
   },
   "right": {
@@ -108,7 +119,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "String.md",
+                "file": "Basic_Algorithm.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -116,7 +127,9 @@
                 "searchQuery": "",
                 "backlinkCollapsed": false,
                 "unlinkedCollapsed": true
-              }
+              },
+              "icon": "links-coming-in",
+              "title": "Basic_Algorithm 的反向链接列表"
             }
           },
           {
@@ -126,8 +139,12 @@
               "type": "tag",
               "state": {
                 "sortOrder": "frequency",
-                "useHierarchy": true
-              }
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "标签"
             }
           },
           {
@@ -136,10 +153,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "String.md",
+                "file": "Basic_Algorithm.md",
                 "linksCollapsed": true,
                 "unlinkedCollapsed": false
-              }
+              },
+              "icon": "links-going-out",
+              "title": "Basic_Algorithm 的出链列表"
             }
           },
           {
@@ -148,8 +167,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "String.md"
-              }
+                "file": "Basic_Algorithm.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Basic_Algorithm 的大纲"
             }
           },
           {
@@ -157,7 +181,9 @@
             "type": "leaf",
             "state": {
               "type": "advanced-tables-toolbar",
-              "state": {}
+              "state": {},
+              "icon": "spreadsheet",
+              "title": "Advanced Tables"
             }
           },
           {
@@ -169,7 +195,9 @@
                 "sortOrder": "frequency",
                 "showSearch": false,
                 "searchQuery": ""
-              }
+              },
+              "icon": "lucide-archive",
+              "title": "添加笔记属性"
             }
           },
           {
@@ -177,7 +205,9 @@
             "type": "leaf",
             "state": {
               "type": "calendar",
-              "state": {}
+              "state": {},
+              "icon": "calendar-with-checkmark",
+              "title": "Calendar"
             }
           },
           {
@@ -185,7 +215,9 @@
             "type": "leaf",
             "state": {
               "type": "quiet-outline",
-              "state": {}
+              "state": {},
+              "icon": "lines-of-text",
+              "title": "Quiet Outline"
             }
           }
         ],
@@ -197,6 +229,7 @@
   },
   "left-ribbon": {
     "hiddenItems": {
+      "bases:新建数据库": false,
       "vscode-editor:新建代码文件": false,
       "switcher:打开快速切换": false,
       "graph:查看关系图谱": false,
@@ -208,28 +241,28 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "1520d8a3ce896988",
+  "active": "d92101082f7851fc",
   "lastOpenFiles": [
-    "copypasta/String/Trie.cpp",
-    "String.md",
-    "Advanced_Data_Structure.md",
+    "README.md",
+    "Basic_Algorithm.md",
     "Dynamic_Programming.md",
-    "Graph_Theory.md",
-    "Search_Algorithm.md",
-    "Math.md",
-    "copypasta/Graph_Theory/SPFA.cpp",
+    "Advanced_Data_Structure.md",
     "copypasta/Advanced_Data_Structure/SegTree.cpp",
+    "Basic_Data_Structure.md",
+    "copypasta/Basic_Data_Structure/Monotonic_Stack.cpp",
+    "Math.md",
+    "Search_Algorithm.md",
+    "String.md",
+    "copypasta/Basic_Algorithm/SparseTable.cpp",
+    "copypasta/String/Trie.cpp",
+    "Graph_Theory.md",
+    "copypasta/Graph_Theory/SPFA.cpp",
     "copypasta/Advanced_Data_Structure/SegTree_lazytag.cpp",
     "copypasta/Advanced_Data_Structure/BIT_simplified.cpp",
-    "Basic_Algorithm.md",
     "copypasta/Advanced_Data_Structure/DSU_simplified.cpp",
     "copypasta/Advanced_Data_Structure/DSU_simp.cpp",
     "未命名.md",
     "copypasta/Advanced_Data_Structure/DSU_2.cpp",
-    "Basic_Data_Structure.md",
-    "README.md",
-    "copypasta/String/TrieXor.cpp",
-    "copypasta/Graph_Theory/Prim.cpp",
     "算法分析与设计/算法书籍/算法竞赛进阶指南.md",
     "开发工具/数据库/MySQL是怎样运行的.md",
     "开发工具/Make工具/跟我一起写Makefile.md",

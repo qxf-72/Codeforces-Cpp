@@ -1,7 +1,7 @@
 {
   "blue-topaz-theme@@background-settings-workplace-background-image": false,
   "blue-topaz-theme@@toggle-nonoverlapping-bg": true,
-  "blue-topaz-theme@@background-notebook-liked-switch": true,
+  "blue-topaz-theme@@background-notebook-liked-switch": false,
   "blue-topaz-theme@@notebook-liked-markdown-page-options": "notebook-liked-markdown-page-grid-notebook-1",
   "blue-topaz-theme@@toggle-fixed-pattern": false,
   "blue-topaz-theme@@background-settings-workplace-theme-light": "background-settings-workplace-theme-light-blue-mountain",
