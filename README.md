@@ -1,5 +1,9 @@
 # 程序设计竞赛模板库
 
+![GitHub License](https://img.shields.io/github/license/qxf-72/Codeforces-Cpp)
+![GitHub top language](https://img.shields.io/github/languages/top/qxf-72/Codeforces-Cpp)
+![GitHub Repo stars](https://img.shields.io/github/stars/qxf-72/Codeforces-Cpp)
+
 ## `Algorithm`
 
 受灵茶山艾府💭💡🎈启发，决定参考灵茶山艾府的[算法竞赛 Go 语言模板库](https://github.com/EndlessCheng/codeforces-go)建立一个 **C++** 算法模板库。
