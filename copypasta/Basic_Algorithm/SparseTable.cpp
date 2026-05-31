@@ -1,39 +1,55 @@
+#include <algorithm>
+#include <cassert>
+#include <functional>
+#include <vector>
+
 template <typename T>
 class SparseTable {
-    using func_type = function<T(const T &, const T &)>;
+    using func_type = std::function<T(const T &, const T &)>;
 
-    vector<vector<T>> St; // 稀疏表
-    vector<int> Log;      // 预处理k值
-    func_type op;         // 对元素的操作,默认为max()
+private:
+    int n;
+    std::vector<std::vector<T>>
+        st; // st[k][i] 表示从 i 开始，长度为 2^k 的区间结果
+    std::vector<int> Log;
+    func_type op;
 
-    static T default_func(const T &t1, const T &t2) {
-        return max(t1, t2);
+    static T default_func(const T &a, const T &b)
+    {
+        return std::max(a, b);
     }
 
 public:
-    SparseTable(const vector<T> &a, func_type _func = default_func) {
-        op = _func;
-        int len = a.size();
-        int len2 = (int)log2(len) + 1;
-        St.assign(len, vector<T>(len2, 0));
+    explicit SparseTable(const std::vector<T> &a, func_type func = default_func) :
+        n((int)a.size()), op(func)
+    {
+        assert(n > 0);
 
-        for (int i = 0; i < len; ++i)
-            St[i][0] = a[i];
-
-        for (int j = 1; j < len2; ++j) {
-            int jlen = (1 << j) - 1;
-            for (int i = 0; i + jlen < len; ++i) {
-                St[i][j] = op(St[i][j - 1], St[i + (1 << (j - 1))][j - 1]);
-            }
+        Log.assign(n + 1, 0);
+        for (int i = 2; i <= n; ++i) {
+            Log[i] = Log[i / 2] + 1;
         }
 
-        Log.assign(len + 1, 0);
-        for (int i = 2; i <= len; ++i)
-            Log[i] = Log[i / 2] + 1;
+        int K = Log[n] + 1;
+        st.assign(K, std::vector<T>(n));
+
+        for (int i = 0; i < n; ++i) {
+            st[0][i] = a[i];
+        }
+
+        for (int k = 1; k < K; ++k) {
+            for (int i = 0; i + (1 << k) <= n; ++i) {
+                st[k][i] = op(st[k - 1][i], st[k - 1][i + (1 << (k - 1))]);
+            }
+        }
     }
 
-    T query(int l, int r) {
+    // 查询闭区间 [l, r]
+    T query(int l, int r) const
+    {
+        assert(0 <= l && l <= r && r < n);
+
         int k = Log[r - l + 1];
-        return op(St[l][k], St[r - (1 << k) + 1][k]);
+        return op(st[k][l], st[k][r - (1 << k) + 1]);
     }
 };
