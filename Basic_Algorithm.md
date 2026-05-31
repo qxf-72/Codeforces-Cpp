@@ -24,14 +24,6 @@ int lowbit(int x)
 
 ---
 
-<br/>
-
-
-<br/>
-
-
-<br/>
-
 ## 快速幂运算
 
 在常数时间内，计算出来 $a^{b}$ ，适用于需要**取余**的场景。
@@ -86,10 +78,6 @@ long long qpow(long long a, long long b, long long p) {
 <br/>
 
 
-<br/>
-
-
-
 # 前缀和、差分
 
 ## 前缀和
@@ -112,13 +100,7 @@ C++ 标准库中实现了前缀和函数 [`std::partial_sum`](https://zh.cppref
 
 ---
 
-<br/>
 
-
-<br/>
-
-
-<br/>
 
 ## 差分
 
@@ -133,9 +115,6 @@ C++ 标准库中实现了前缀和函数 [`std::partial_sum`](https://zh.cppref
 构造原数组的差分数组，问题转化为对差分数组的操作问题。
 
 ---
-
-
-<br/>
 
 
 <br/>
@@ -187,9 +166,6 @@ C++ 标准库中实现了前缀和函数 [`std::partial_sum`](https://zh.cppref
 <br/>
 
 
-<br/>
-
-
 
 # 二分
 
@@ -230,25 +206,15 @@ C++ 标准库中实现了前缀和函数 [`std::partial_sum`](https://zh.cppref
 ---
 
 
-<br/>
-
-
-<br/>
-
-
-<br/>
-
-
-
 ## 中位数
 
-求中位数需要用到排序，或排序引申出的算法——快速选择。
+求中位数需要用到排序，或者由排序引申出的算法——快速选择。
 
 ### 中位数贪心
 
-对一个序列 $a_0,a_1,a_{n-1}$ ，求 $sum(|a_i-a_k|)$ 的最小值。 $a_k$ 为序列的中位数，可以得到答案。
+对一个序列 $a_0,a_1,a_{n-1}$ ，求 $sum(|a_i-a_k|)$ 的最小值。
 
-经典的**仓库选址**问题。
+**$a_k$ 为序列的中位数**，可以得到答案。这就是经典的**仓库选址**问题。
 
 <br/>
 
@@ -284,16 +250,12 @@ for (int i = 1; i <= m; ++i)
 
 [**104. 货仓选址 - AcWing题库**](https://www.acwing.com/problem/content/106/) 
 
-中位数性质
-
-<br/>
-
+中位数性质问题
 
 [**105. 七夕祭 - AcWing题库**](https://www.acwing.com/problem/content/107/) 
 
 **均分纸牌**、**环形纸牌**、中位数性质
 
-<br/>
 
 
 [**106. 动态中位数 - AcWing题库**](https://www.acwing.com/problem/content/108/) 
@@ -302,15 +264,11 @@ for (int i = 1; i <= m; ++i)
 
 ---
 
-<br/>
-
-
-<br/>
-
 
 ## 快速选择
 
 快速排序模板
+
 ```cpp
 void quick_sort(vector<int>& a, int left, int right)
 {
@@ -361,12 +319,6 @@ int quick_select(vector<int>& a, int left, int right, int k)
 ---
 
 
-<br/>
-
-
-<br/>
-
-
 ## 逆序对
 
 在一个序列中，如果 $i<j$, $a[i]>a[j]$ ，那么 $a[i],a[j]$ 构成序列中一个逆序对。
@@ -411,7 +363,7 @@ ll merge_sort(vector<int>& a, int l, int r)
 
 逆序对
 
-<br/>
+
 
 [**108. 奇数码问题 - AcWing题库**](https://www.acwing.com/problem/content/110/) 
 
@@ -427,10 +379,6 @@ ll merge_sort(vector<int>& a, int l, int r)
 
 
 <br/>
-
-
-<br/>
-
 
 
 # 倍增 
@@ -456,21 +404,12 @@ ll merge_sort(vector<int>& a, int l, int r)
 
 ---
 
-<br/>
-
-
-<br/>
-
-
-<br/>
-
-
 
 ## ST 表
 
 ST 表（Sparse Table）稀疏表，是基于倍增思想，在 RMQ 问题上的产物。给定一个长度为 N 的序列，ST 算法在经过 ** $O(N * logN)$ 时间的预处理**之后，以 ** $O (1)$ 复杂度在线查询**某个区间的信息，比如区间最大值。
 
-ST 表能维护的区间信息必须是**可重复贡献**的信息，并且 ST 表**不支持进行修改**，**<span style="background:#fff88f">适合存在大量离线查询且无修改的情况</span>**
+ST 表能维护的区间信息必须是**可重复贡献**的信息，并且 ST 表**不支持进行修改**，**<span style="background:#fff88f">适合存在大量离线查询且无修改的情况</span>**。
 - 最大值
 - 最小值
 - 区间 按位和
@@ -489,7 +428,6 @@ $$
 
 
 
-<br/>
 
 
 ### 模板代码
@@ -517,10 +455,6 @@ $$
 <br/>
 
 
-<br/>
-
-
-
 # 贪心
 
 贪心是一种每次决策是采取当前的最优解（局部最优解），因此贪心问题的整体最优性可以由局部最优性导出。常见的证明手段：
@@ -534,16 +468,10 @@ $$
 [**1055. 股票买卖 II - AcWing题库**](https://www.acwing.com/problem/content/1057/)
 
 
-<br/>
-
 [**110. 防晒 - AcWing题库**](https://www.acwing.com/problem/content/112/)
-
-<br/>
 
 
 [**111. 畜栏预定 - AcWing题库**](https://www.acwing.com/problem/content/113/)
-
-<br/>
 
 
 [**112. 雷达设备 - AcWing题库**](https://www.acwing.com/problem/content/114/) 
@@ -551,7 +479,6 @@ $$
 和一维的情况有区别，不能线性的扫描 (对于左端点，要求 y 从大到小排列，但是已经确定雷达位置，来跳过雷达的覆盖范围时，要求 y 从小到大排列。)
 对于每一个小岛，确定一段雷达能够放置的区间，对于所有区间，有重叠部分，可以合并，问题转化为——将重叠的区间合并之后，有多少个独立的区间。
 
-<br/>
 
 
 [**114. 国王游戏 - AcWing题库**](https://www.acwing.com/problem/content/116/)
@@ -581,9 +508,6 @@ $$
 $$
 
 所以可以按照 ab 乘积从小到大排序，得到最优顺序。另外，需要实现**高精度**。
-
-
-<br/>
 
 
 [**115. 给树染色 - AcWing题库**](https://www.acwing.com/problem/content/117/)
