@@ -1,1 +1,4 @@
 .vscode
+.obsidian
+.cache
+.clang-format
