@@ -1,70 +1,99 @@
-const int N = 1e5 + 10;
+#include <cassert>
+#include <vector>
 
-int a[N];
-template<typename T>
-class SegTree
-{
-	T n;
-	T data[4 * N]{};
+template <typename T>
+class SegTree {
+private:
+    int n;
+    std::vector<T> tree;
 
-	void build(T k, T l, T r)
-	{
-		if (l == r)
-		{
-			data[k] = a[l];
-			return;
-		}
-		int mid = (l + r) / 2;
-		build(2 * k + 1, l, mid);
-		build(2 * k + 2, mid + 1, r);
-		// 从下往上合并信息
-		data[k] = data[2 * k + 1] + data[2 * k + 2];
-	}
-	void update(T k, T l, T r, T x, T e)
-	{
-		if (l == r)
-		{
-			data[k] += e;
-			return;
-		}
-		T mid = (l + r) >> 1;
-		if (x <= mid)
-			update(2 * k + 1, l, mid, x, e);
-		else
-			update(2 * k + 2, mid + 1, r, x, e);
-		data[k] = data[2 * k + 1] + data[2 * k + 2];
-	}
-	T query(T k, T l, T r, T ql, T qr)
-	{
-		if (l >= ql && r <= qr)
-		{
-			return data[k];
-		}
-		T mid = (l + r) >> 1;
-		T res = 0;    // 默认为一个不影响答案的数
-		if (ql <= mid)
-			res += query(2 * k + 1, l, mid, ql, qr);
-		if (qr > mid)
-			res += query(2 * k + 2, mid + 1, r, ql, qr);
-		return res;
-	}
+    void build(int k, int l, int r, const std::vector<T>& a) {
+        if (l == r) {
+            tree[k] = a[l];
+            return;
+        }
 
- public:
-	explicit SegTree(int n)
-	{
-		this->n = n;
-		build(0, 0, n - 1);
-	}
+        int mid = (l + r) >> 1;
+        build(k * 2 + 1, l, mid, a);
+        build(k * 2 + 2, mid + 1, r, a);
 
-	/**
-	 * @brief a[x]加上e
-	 */
-	void update(T x, T e)
-	{
-		update(0, 0, n - 1, x, e);
-	}
-	T query(T l, T r)
-	{
-		return query(0, 0, n - 1, l, r);
-	}
+        tree[k] = tree[k * 2 + 1] + tree[k * 2 + 2];
+    }
+
+    void add(int k, int l, int r, int pos, T val) {
+        if (l == r) {
+            tree[k] += val;
+            return;
+        }
+
+        int mid = (l + r) >> 1;
+        if (pos <= mid) {
+            add(k * 2 + 1, l, mid, pos, val);
+        } else {
+            add(k * 2 + 2, mid + 1, r, pos, val);
+        }
+
+        tree[k] = tree[k * 2 + 1] + tree[k * 2 + 2];
+    }
+
+    void setValue(int k, int l, int r, int pos, T val) {
+        if (l == r) {
+            tree[k] = val;
+            return;
+        }
+
+        int mid = (l + r) >> 1;
+        if (pos <= mid) {
+            setValue(k * 2 + 1, l, mid, pos, val);
+        } else {
+            setValue(k * 2 + 2, mid + 1, r, pos, val);
+        }
+
+        tree[k] = tree[k * 2 + 1] + tree[k * 2 + 2];
+    }
+
+    T query(int k, int l, int r, int ql, int qr) const {
+        if (ql <= l && r <= qr) {
+            return tree[k];
+        }
+
+        int mid = (l + r) >> 1;
+        T res = T{};
+
+        if (ql <= mid) {
+            res += query(k * 2 + 1, l, mid, ql, qr);
+        }
+        if (qr > mid) {
+            res += query(k * 2 + 2, mid + 1, r, ql, qr);
+        }
+
+        return res;
+    }
+
+public:
+    explicit SegTree(const std::vector<T>& a) {
+        n = (int)a.size();
+        assert(n > 0);
+
+        tree.assign(4 * n, T{});
+        build(0, 0, n - 1, a);
+    }
+
+    // a[pos] += val
+    void add(int pos, T val) {
+        assert(0 <= pos && pos < n);
+        add(0, 0, n - 1, pos, val);
+    }
+
+    // a[pos] = val
+    void setValue(int pos, T val) {
+        assert(0 <= pos && pos < n);
+        setValue(0, 0, n - 1, pos, val);
+    }
+
+    // 查询闭区间 [l, r] 的和
+    T query(int l, int r) const {
+        assert(0 <= l && l <= r && r < n);
+        return query(0, 0, n - 1, l, r);
+    }
 };
