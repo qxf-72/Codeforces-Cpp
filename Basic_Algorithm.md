@@ -135,7 +135,8 @@ C++ 标准库中实现了前缀和函数 [`std::partial_sum`](https://zh.cppref
 
 [**BigInt.cpp**](/copypasta/Basic_Algorithm/BigInt.cpp)
 
-- 该模板只能用于**正数**， **乘除**对象为普通整型。
+- 该模板只能用于**正数**
+-  **乘除**对象为普通整型
 
 
 
@@ -409,7 +410,8 @@ ll merge_sort(vector<int>& a, int l, int r)
 
 ST 表（Sparse Table）稀疏表，是基于倍增思想，在 RMQ 问题上的产物。给定一个长度为 N 的序列，ST 算法在经过 ** $O(N * logN)$ 时间的预处理**之后，以 ** $O (1)$ 复杂度在线查询**某个区间的信息，比如区间最大值。
 
-ST 表能维护的区间信息必须是**可重复贡献**的信息，并且 ST 表**不支持进行修改**，**<span style="background:#fff88f">适合存在大量离线查询且无修改的情况</span>**。
+ST 表能维护的区间信息必须是**可重复贡献**的信息，并且 **ST 表不支持进行修改**，**<span style="background:#fff88f">适合存在大量离线查询，且无修改的情况</span>**。
+
 - 最大值
 - 最小值
 - 区间 按位和
