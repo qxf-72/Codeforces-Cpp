@@ -185,11 +185,6 @@ C++ 标准库中实现了前缀和函数 [`std::partial_sum`](https://zh.cppref
 <br/>
 
 
-<br/>
-
-
-
-
 # 排序
 
 排序作为最基础的算法，可以引申出很多相关的应用。
@@ -217,7 +212,6 @@ C++ 标准库中实现了前缀和函数 [`std::partial_sum`](https://zh.cppref
 
 **$a_k$ 为序列的中位数**，可以得到答案。这就是经典的**仓库选址**问题。
 
-<br/>
 
 ### 动态中位数
 
@@ -421,7 +415,7 @@ ST 表能维护的区间信息必须是**可重复贡献**的信息，并且 **S
 用维护区间最大值举例， $F(i,j)$ 维护区间 $[i,i+2^j-1]$ （区间长度为 $2^j$ ） 的最大值，该区间可以分为两个长度为 $2^{j-1}$ 的子区间—— $[i,i+2^{j-1}-1]$ 和 $[i+2^{j-1},i+2^j-1]$ ，所以递推公式：
 
 $$
-F\left[ i,j \right] =\max \left( F\left[ i,j-1 \right] ,F\left[ j+2^{j-1},j-1 \right] \right) 
+F\left[ i,j \right] =\max \left( F\left[ i,j-1 \right] ,F\left[ i+2^{j-1},j-1 \right] \right) 
 $$
 
 在建立稀疏表时，先给 $F[i,0]$ 赋值，然后让 $j$ 从 $1$ 开始进行递推。
@@ -514,6 +508,6 @@ $$
 
 [**115. 给树染色 - AcWing题库**](https://www.acwing.com/problem/content/117/)
 
-困难题，[题解链接](https://www.acwing.com/solution/content/1065/)
+困难题，[题解链接](https://www.acwing.com/solution/content/1065/)。
 
 ---

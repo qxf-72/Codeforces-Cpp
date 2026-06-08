@@ -1,7 +1,9 @@
+#include <functional>
+#include <iostream>
+#include <vector>
 #include <algorithm>
 #include <cassert>
-#include <functional>
-#include <vector>
+#include <numeric>
 
 template <typename T>
 class SparseTable {
@@ -9,8 +11,7 @@ class SparseTable {
 
 private:
     int n;
-    std::vector<std::vector<T>>
-        st; // st[k][i] 表示从 i 开始，长度为 2^k 的区间结果
+    std::vector<std::vector<T>> st; // st[k][i] 表示从 i 开始，长度为 2^k 的区间结果
     std::vector<int> Log;
     func_type op;
 
@@ -50,6 +51,38 @@ public:
         assert(0 <= l && l <= r && r < n);
 
         int k = Log[r - l + 1];
+        // l+(1<<k)-1=r  l=r-(1<<k)+1
         return op(st[k][l], st[k][r - (1 << k) + 1]);
     }
 };
+
+// test
+int func_min(const int &a, const int &b)
+{
+    return std::min(a, b);
+}
+int main()
+{
+    std::vector<int> a{0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+
+    int (*func_min_p)(const int &, const int &) = func_min;
+    auto func_gcd = [](const int &a, const int &b) -> int {
+        return std::gcd(a, b);
+    };
+    using namespace std::placeholders;
+    auto func_gcd_b = std::bind(std::gcd<int, int>, _1, _2);
+
+    SparseTable<int> st_max(a);
+    SparseTable<int> st_min(a, func_min);
+    SparseTable<int> st_min_p(a, func_min_p);
+    SparseTable<int> st_gcd(a, func_gcd);
+    SparseTable<int> st_gcd_b(a, func_gcd_b);
+
+    std::cout << st_max.query(0, 9) << std::endl;
+    std::cout << st_min.query(0, 9) << std::endl;
+    std::cout << st_min_p.query(0, 9) << std::endl;
+    std::cout << st_gcd.query(0, 9) << std::endl;
+    std::cout << st_gcd_b.query(0, 9) << std::endl;
+
+    return 0;
+}
